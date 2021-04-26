@@ -26,6 +26,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -45,18 +46,18 @@ public class detailInfor extends javax.swing.JDialog {
     /**
      * Creates new form detailInfor
      */
-    public detailInfor(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public detailInfor(hosoPanel pF, String MaNS) {
         initComponents();
         btn_gioitinh.add(gioitinh_nam);
         btn_gioitinh.add(gioitinh_nu);
-        acc = new NhanSu().getNhanSu("NS02");
+        acc = new NhanSu().getNhanSu(MaNS);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         jPanel1.setBackground(new java.awt.Color(255, 255, 255, 0));
         this.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_chinhtri.setLineWrap(true);
         txt_doanthe.setLineWrap(true);
+        previousPanel = pF;
         prepare();
     }
     
@@ -434,6 +435,8 @@ public class detailInfor extends javax.swing.JDialog {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
+        getAccessibleContext().setAccessibleDescription("");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -459,7 +462,7 @@ public class detailInfor extends javax.swing.JDialog {
                         Double.parseDouble(txt_phucap.getText()),
                         txt_mans.getText(),
                         txt_hoten.getText(),
-                        acc.getNgaySinh(),
+                        ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText(),
                         txt_quequan.getText(),
                         txt_dantoc.getText(),
                         txt_sdt.getText(),
@@ -475,6 +478,7 @@ public class detailInfor extends javax.swing.JDialog {
                 {
                     JOptionPane.showMessageDialog(this,"Thêm thành công!");
                     this.dispose();
+                    previousPanel.LoadData();
                 }
                 else
                 {
@@ -494,10 +498,14 @@ public class detailInfor extends javax.swing.JDialog {
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
-        filename = f.getAbsolutePath();
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon(filename).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
-        lb_avt.setIcon(imageIcon);
-        imageChange = true;
+        String filenamez = f.getAbsolutePath();
+        if(filenamez!=null)
+        {
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon(filenamez).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
+            lb_avt.setIcon(imageIcon);
+            imageChange = true;
+            filename = filenamez;
+        }
     }//GEN-LAST:event_btn_save1ActionPerformed
 
     /**
@@ -530,13 +538,7 @@ public class detailInfor extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                detailInfor dialog = new detailInfor(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
+                detailInfor dialog = new detailInfor(new hosoPanel(), null);
                 dialog.setVisible(true);
             }
         });

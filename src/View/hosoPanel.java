@@ -19,22 +19,22 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class hosoPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form hosoPanel
-     */
     public hosoPanel() {
         initComponents();
         table_ns.getTableHeader().setDefaultRenderer(new HeaderColor());
         table_ns.getTableHeader().setBackground(new Color(82,147,255));
         table_ns.getTableHeader().setBackground(new Color(32, 136, 203));
         table_ns.setBackground(Color.white);
+        hosoPanel aa = this;
         table_ns.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent mouseEvent) {
                 JTable table =(JTable) mouseEvent.getSource();
                 Point point = mouseEvent.getPoint();
                 int row = table.rowAtPoint(point);
                 if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
-                    
+                    String a = (String)table_ns.getValueAt(table_ns.getSelectedRow(), 0);
+                    detailInfor z = new detailInfor(aa,a);
+                    z.setVisible(true);
                 }
             }
         });
