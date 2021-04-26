@@ -7,10 +7,12 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 /**
@@ -18,14 +20,17 @@ import javax.swing.table.DefaultTableCellRenderer;
  * @author Iroha
  */
 public class hosoPanel extends javax.swing.JPanel {
-
-    public hosoPanel() {
+    
+    java.awt.Frame bb;
+    hosoPanel aa;
+    public hosoPanel(java.awt.Frame mainFrame) {
         initComponents();
         table_ns.getTableHeader().setDefaultRenderer(new HeaderColor());
         table_ns.getTableHeader().setBackground(new Color(82,147,255));
         table_ns.getTableHeader().setBackground(new Color(32, 136, 203));
         table_ns.setBackground(Color.white);
-        hosoPanel aa = this;
+        aa = this;
+        bb = mainFrame;
         table_ns.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent mouseEvent) {
                 JTable table =(JTable) mouseEvent.getSource();
@@ -33,7 +38,8 @@ public class hosoPanel extends javax.swing.JPanel {
                 int row = table.rowAtPoint(point);
                 if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
                     String a = (String)table_ns.getValueAt(table_ns.getSelectedRow(), 0);
-                    detailInfor z = new detailInfor(aa,a);
+                    detailInfor z = new detailInfor(aa,a,bb,true);
+                    z.setAlwaysOnTop(true);
                     z.setVisible(true);
                 }
             }
@@ -79,8 +85,9 @@ public class hosoPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_add = new javax.swing.JButton();
+        reload = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
+        btn_add = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_ns = new javax.swing.JTable();
         background = new javax.swing.JLabel();
@@ -89,19 +96,24 @@ public class hosoPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1250, 650));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_add.setBackground(new java.awt.Color(24, 98, 151));
-        btn_add.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_add.setForeground(new java.awt.Color(255, 255, 255));
-        btn_add.setText("Xóa");
-        btn_add.setBorder(null);
-        btn_add.setBorderPainted(false);
-        btn_add.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 20, 100, 50));
+        reload.setBackground(new java.awt.Color(24, 98, 151));
+        reload.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        reload.setForeground(new java.awt.Color(255, 255, 255));
+        reload.setText("Tải lại");
+        reload.setBorder(null);
+        reload.setBorderPainted(false);
+        reload.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        reload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reloadActionPerformed(evt);
+            }
+        });
+        add(reload, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 100, 50));
 
         btn_delete.setBackground(new java.awt.Color(24, 98, 151));
         btn_delete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_delete.setForeground(new java.awt.Color(255, 255, 255));
-        btn_delete.setText("Thêm");
+        btn_delete.setText("Xóa");
         btn_delete.setBorder(null);
         btn_delete.setBorderPainted(false);
         btn_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -111,6 +123,20 @@ public class hosoPanel extends javax.swing.JPanel {
             }
         });
         add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 20, 100, 50));
+
+        btn_add.setBackground(new java.awt.Color(24, 98, 151));
+        btn_add.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_add.setForeground(new java.awt.Color(255, 255, 255));
+        btn_add.setText("Thêm");
+        btn_add.setBorder(null);
+        btn_add.setBorderPainted(false);
+        btn_add.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_addActionPerformed(evt);
+            }
+        });
+        add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 20, 100, 50));
 
         table_ns.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -139,8 +165,28 @@ public class hosoPanel extends javax.swing.JPanel {
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 650));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
+        detailInforAdd z = new detailInforAdd(aa,bb,true);
+        z.setAlwaysOnTop(true);
+        z.setVisible(true);
+    }//GEN-LAST:event_btn_addActionPerformed
+
+    private void reloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadActionPerformed
+        LoadData();
+    }//GEN-LAST:event_reloadActionPerformed
+
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
-        
+        if(JOptionPane.showConfirmDialog (null, "Hành động này sẽ xoá vĩnh viễn hồ sơ","Bạn chắc chứ?",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+            int[] index = table_ns.getSelectedRows();
+            int count=0;
+            for(int a:index)
+            {
+                if (new NhanSu().deleteNS((String) table_ns.getValueAt(a, 0)))
+                    count++;
+            }
+            JOptionPane.showMessageDialog(this,"Đã xoá "+count+" hồ sơ!");
+            LoadData();
+        }
     }//GEN-LAST:event_btn_deleteActionPerformed
 
 
@@ -149,6 +195,7 @@ public class hosoPanel extends javax.swing.JPanel {
     private javax.swing.JButton btn_add;
     private javax.swing.JButton btn_delete;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton reload;
     private javax.swing.JTable table_ns;
     // End of variables declaration//GEN-END:variables
 }

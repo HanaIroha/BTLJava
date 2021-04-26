@@ -35,5 +35,17 @@ public class NhanSu extends DataSource<NhanSuModel> implements INhanSu{
         String sql = "Update dbo.NhanSu SET Anh=? WHERE MaNS=?";
         return update(sql, anh, MaNS);
     }
+
+    @Override
+    public boolean addNS(int BacLuong, double PhuCap, String maNS, String hoTen, String ngaySinh, String queQuan, String danToc, String soDienThoai, String trinhDoHocVan, String ChuyenNganh, String maPB, String maCV, String chinhTri, String doanThe, boolean gioiTinh, byte[] anh) {
+        String sql = "INSERT INTO dbo.NhanSu VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        return insert(sql, maNS, hoTen, ngaySinh, queQuan, gioiTinh, danToc, soDienThoai, trinhDoHocVan, ChuyenNganh, maPB, maCV, chinhTri, doanThe, BacLuong, PhuCap, anh);
+    }
+
+    @Override
+    public boolean deleteNS(String MaNS) {
+        String sql = "Delete from dbo.NhanSu Where MaNS=?";
+        return update(sql, MaNS);
+    }
     
 }

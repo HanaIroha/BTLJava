@@ -7,15 +7,11 @@ package View;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import DAO.implement.NhanSu;
 import Model.BacLuongModel;
 import Model.ChucVuModel;
 import Model.ComboItem;
-import Model.NhanSuModel;
 import Model.PhongBanModel;
 import java.awt.Image;
 import java.io.ByteArrayOutputStream;
@@ -32,10 +28,9 @@ import javax.swing.JTextField;
  *
  * @author Iroha
  */
-public class detailInfor extends javax.swing.JDialog {
+public class detailInforAdd extends javax.swing.JDialog {
 
     hosoPanel previousPanel;
-    NhanSuModel acc;
     ButtonGroup btn_gioitinh = new ButtonGroup();
     List<BacLuongModel> bl = new DAO.implement.BacLuong().getBacLuong();
     List<ChucVuModel> cv = new DAO.implement.ChucVu().getChucVu();
@@ -46,12 +41,11 @@ public class detailInfor extends javax.swing.JDialog {
     /**
      * Creates new form detailInfor
      */
-    public detailInfor(hosoPanel pF, String MaNS, java.awt.Frame parent, boolean modal) {
+    public detailInforAdd(hosoPanel pF, java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         btn_gioitinh.add(gioitinh_nam);
         btn_gioitinh.add(gioitinh_nu);
-        acc = new NhanSu().getNhanSu(MaNS);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         jPanel1.setBackground(new java.awt.Color(255, 255, 255, 0));
@@ -64,59 +58,15 @@ public class detailInfor extends javax.swing.JDialog {
     
     public void prepare(){
         jDateChooser1.setDateFormatString("yyyy-MM-dd");
-        try {
-            java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(acc.getNgaySinh());
-            jDateChooser1.setDate(date);
-        } catch (ParseException ex) {
-            Logger.getLogger(detailInfor.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //add thong tin.
-        txt_mans.setText(acc.getMaNS());
-        txt_chinhtri.setText(acc.getChinhTri());
-        txt_doanthe.setText(acc.getDoanThe());
-        txt_chuyennganh.setText(acc.getChuyenNganh());
-        txt_dantoc.setText(acc.getDanToc());
-        txt_hoten.setText(acc.getHoTen());
-        txt_quequan.setText(acc.getQueQuan());
-        txt_sdt.setText(acc.getSoDienThoai());
-        txt_trinhdo.setText(acc.getTrinhDoHocVan());
-        txt_phucap.setText(String.valueOf(acc.getPhuCap()));
-        if(acc.isGioiTinh())
-            gioitinh_nam.setSelected(true);
-        else
-            gioitinh_nu.setSelected(false);
         for(PhongBanModel s:pb)
         {
             txt_phongban.addItem(new ComboItem(s.getTenPB(),s.getMaPB()));
         }
-        int i = 0;
-        for(PhongBanModel s:pb)
-        {
-            if(s.getMaPB().equals(acc.getMaPB()))
-                txt_phongban.setSelectedIndex(i);
-            i++;
-        }
         for(ChucVuModel s:cv)
             txt_chucvu.addItem(new ComboItem(s.getTenCV(),s.getMaCV()));
-        i=0;
-        for(ChucVuModel s:cv)
-        {
-            if(s.getMaCV().equals(acc.getMaCV()))
-                txt_chucvu.setSelectedIndex(i);
-            i++;
-        }
         for(BacLuongModel s:bl)
             txt_bacluong.addItem(s.getBacLuong());
-        txt_bacluong.setSelectedItem(acc.getBacLuong());
-        try{
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon(acc.getAnh()).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
-            lb_avt.setIcon(imageIcon);
-        }
-        catch(Exception e){
-            
-        }
-        
-        
+        gioitinh_nam.setSelected(true);
     }
 
     /**
@@ -130,7 +80,7 @@ public class detailInfor extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         btn_save1 = new javax.swing.JButton();
-        btn_save = new javax.swing.JButton();
+        btn_add = new javax.swing.JButton();
         btn_cancel = new javax.swing.JButton();
         lb_avt = new javax.swing.JLabel();
         txt_chuyennganh = new javax.swing.JTextField();
@@ -196,19 +146,19 @@ public class detailInfor extends javax.swing.JDialog {
         });
         jPanel1.add(btn_save1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 120, 30));
 
-        btn_save.setBackground(new java.awt.Color(24, 98, 151));
-        btn_save.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_save.setForeground(new java.awt.Color(255, 255, 255));
-        btn_save.setText("Lưu");
-        btn_save.setBorder(null);
-        btn_save.setBorderPainted(false);
-        btn_save.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_save.addActionListener(new java.awt.event.ActionListener() {
+        btn_add.setBackground(new java.awt.Color(24, 98, 151));
+        btn_add.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_add.setForeground(new java.awt.Color(255, 255, 255));
+        btn_add.setText("Thêm");
+        btn_add.setBorder(null);
+        btn_add.setBorderPainted(false);
+        btn_add.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_saveActionPerformed(evt);
+                btn_addActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, 110, 50));
+        jPanel1.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, 110, 50));
 
         btn_cancel.setBackground(new java.awt.Color(24, 98, 151));
         btn_cancel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -225,13 +175,11 @@ public class detailInfor extends javax.swing.JDialog {
         jPanel1.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 480, 110, 50));
 
         lb_avt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lb_avt.setText("asdasdasdasdasdasdasdasdasdaasdasds");
         jPanel1.add(lb_avt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 180, 240));
 
         txt_chuyennganh.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_chuyennganh.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         txt_chuyennganh.setForeground(new java.awt.Color(255, 255, 255));
-        txt_chuyennganh.setText("Phạm Minh Tư");
         txt_chuyennganh.setBorder(null);
         txt_chuyennganh.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_chuyennganh.setOpaque(false);
@@ -240,17 +188,14 @@ public class detailInfor extends javax.swing.JDialog {
         txt_mans.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_mans.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
         txt_mans.setForeground(new java.awt.Color(255, 255, 255));
-        txt_mans.setText("Phạm Minh Tư");
         txt_mans.setBorder(null);
         txt_mans.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        txt_mans.setEnabled(false);
         txt_mans.setOpaque(false);
         jPanel1.add(txt_mans, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, 180, -1));
 
         txt_dantoc.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_dantoc.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         txt_dantoc.setForeground(new java.awt.Color(255, 255, 255));
-        txt_dantoc.setText("Phạm Minh Tư");
         txt_dantoc.setBorder(null);
         txt_dantoc.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_dantoc.setOpaque(false);
@@ -259,7 +204,6 @@ public class detailInfor extends javax.swing.JDialog {
         txt_sdt.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_sdt.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         txt_sdt.setForeground(new java.awt.Color(255, 255, 255));
-        txt_sdt.setText("Phạm Minh Tư");
         txt_sdt.setBorder(null);
         txt_sdt.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_sdt.setOpaque(false);
@@ -268,7 +212,6 @@ public class detailInfor extends javax.swing.JDialog {
         txt_trinhdo.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_trinhdo.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         txt_trinhdo.setForeground(new java.awt.Color(255, 255, 255));
-        txt_trinhdo.setText("Phạm Minh Tư");
         txt_trinhdo.setBorder(null);
         txt_trinhdo.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_trinhdo.setOpaque(false);
@@ -277,7 +220,6 @@ public class detailInfor extends javax.swing.JDialog {
         txt_quequan.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_quequan.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         txt_quequan.setForeground(new java.awt.Color(255, 255, 255));
-        txt_quequan.setText("Phạm Minh Tư");
         txt_quequan.setBorder(null);
         txt_quequan.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_quequan.setOpaque(false);
@@ -286,7 +228,6 @@ public class detailInfor extends javax.swing.JDialog {
         txt_phucap.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_phucap.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         txt_phucap.setForeground(new java.awt.Color(255, 255, 255));
-        txt_phucap.setText("Phạm Minh Tư");
         txt_phucap.setBorder(null);
         txt_phucap.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_phucap.setOpaque(false);
@@ -295,7 +236,6 @@ public class detailInfor extends javax.swing.JDialog {
         txt_hoten.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_hoten.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         txt_hoten.setForeground(new java.awt.Color(255, 255, 255));
-        txt_hoten.setText("Phạm Minh Tư");
         txt_hoten.setBorder(null);
         txt_hoten.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_hoten.setOpaque(false);
@@ -441,7 +381,7 @@ public class detailInfor extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
+    private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         try{
                 boolean isOK;
                 byte[] person_image;
@@ -457,9 +397,9 @@ public class detailInfor extends javax.swing.JDialog {
                 }
                 else
                 {
-                    person_image=acc.getAnh();
+                    person_image=null;
                 }
-                isOK = new NhanSu().updateNS((Integer)txt_bacluong.getSelectedItem(),
+                isOK = new NhanSu().addNS((Integer)txt_bacluong.getSelectedItem(),
                         txt_phucap.getText().equals("")?0:Double.parseDouble(txt_phucap.getText()),
                         txt_mans.getText(),
                         txt_hoten.getText(),
@@ -489,7 +429,7 @@ public class detailInfor extends javax.swing.JDialog {
             catch(Exception e){
                 
             }
-    }//GEN-LAST:event_btn_saveActionPerformed
+    }//GEN-LAST:event_btn_addActionPerformed
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
         this.dispose();
@@ -526,20 +466,21 @@ public class detailInfor extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(detailInfor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detailInforAdd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(detailInfor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detailInforAdd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(detailInfor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detailInforAdd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(detailInfor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detailInforAdd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                detailInfor dialog = new detailInfor(new hosoPanel(new java.awt.Frame()), null, new javax.swing.JFrame(), true);
+                detailInforAdd dialog = new detailInforAdd(new hosoPanel(new java.awt.Frame()), new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -553,8 +494,8 @@ public class detailInfor extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JButton btn_add;
     private javax.swing.JButton btn_cancel;
-    private javax.swing.JButton btn_save;
     private javax.swing.JButton btn_save1;
     private javax.swing.JRadioButton gioitinh_nam;
     private javax.swing.JRadioButton gioitinh_nu;

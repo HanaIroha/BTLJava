@@ -164,6 +164,9 @@ public class DataSource<T> implements IDataSource<T>{
                 if(parameter instanceof Double){
                     statement.setDouble(j, (Double) parameter);
                 }
+                if(parameter == null){
+                    statement.setNull(j, java.sql.Types.NULL);
+                }
             }
         }catch (SQLException ex){
             

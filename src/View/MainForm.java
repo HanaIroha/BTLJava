@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
+
 import Model.AccountModel;
 import java.awt.AlphaComposite;
 import java.awt.BorderLayout;
@@ -25,11 +21,13 @@ public class MainForm extends javax.swing.JFrame {
     private int mouseX,mouseY;
     public AccountModel taikhoan;
     private int indexTab = 0;
+    MainForm thisForm;
     /**
      * Creates new form MainForm
      */
     public MainForm() {
         initComponents();
+        thisForm = this;
         movePanel.setBackground(new java.awt.Color(255, 255, 255, 0));
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
@@ -343,14 +341,17 @@ public class MainForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_hosoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hosoActionPerformed
-        indexTab=1;
-        resetTab();
-        lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu1.png")));
-        btn_hoso.revalidate();
-        MainPanel.removeAll();
-        MainPanel.setLayout(new BorderLayout());
-        MainPanel.add(new hosoPanel());
-        MainPanel.revalidate();
+        if(indexTab!=1)
+        {
+            indexTab=1;
+            resetTab();
+            lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu1.png")));
+            btn_hoso.revalidate();
+            MainPanel.removeAll();
+            MainPanel.setLayout(new BorderLayout());
+            MainPanel.add(new hosoPanel(thisForm));
+            MainPanel.revalidate();
+        }
     }//GEN-LAST:event_btn_hosoActionPerformed
 
     private void btn_minimizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_minimizeActionPerformed
