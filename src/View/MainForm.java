@@ -15,7 +15,6 @@ import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,7 +33,6 @@ public class MainForm extends javax.swing.JFrame {
         movePanel.setBackground(new java.awt.Color(255, 255, 255, 0));
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        this.setBackground(new java.awt.Color(255, 255, 255, 0));
     }
     
     public MainForm(AccountModel tk) {

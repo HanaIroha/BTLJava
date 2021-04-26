@@ -161,6 +161,9 @@ public class DataSource<T> implements IDataSource<T>{
                 if(parameter instanceof byte[]){
                     statement.setBytes(j,(byte[]) parameter);
                 }
+                if(parameter instanceof Double){
+                    statement.setDouble(j, (Double) parameter);
+                }
             }
         }catch (SQLException ex){
             

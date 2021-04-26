@@ -2,6 +2,7 @@ package View;
 
 import Model.AccountModel;
 import DAO.implement.Account;
+import DAO.implement.NhanSu;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.ByteArrayOutputStream;
@@ -244,7 +245,7 @@ public class LoginForm extends javax.swing.JFrame {
                 f.setVisible(true);
             } 
 //            try{
-//                Account accDAO = new Account();
+//                NhanSu accDAO = new NhanSu();
 //                File image = new File("avt.png");
 //                FileInputStream fis = new FileInputStream(image);
 //                ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -253,8 +254,7 @@ public class LoginForm extends javax.swing.JFrame {
 //                    bos.write(buf,0,readNum);
 //                }
 //                byte[] person_image=bos.toByteArray();
-//                System.out.println(accDAO.updateAvatar("iroha", person_image));
-//                accDAO.createAccount("iroha", "123", "HanaIroha", person_image);
+//                System.out.println(accDAO.upadteAVT("NS01", person_image));
 //            }
 //            catch(Exception e){
 //                

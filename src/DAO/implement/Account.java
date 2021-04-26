@@ -30,38 +30,6 @@ public class Account extends DataSource<AccountModel> implements IAccount{
     @Override
     public boolean updateAvatar(String username, byte[] anh) {
         String sql = "Update dbo.TaiKhoan SET Anh = ? WHERE TenTaiKhoan = ?";
-//        return update(sql, anh, username);
-        
-        Connection connection = null;
-        PreparedStatement ps = null;
-        try{
-            connection = getConnection();
-            connection.setAutoCommit(false);
-            ps = connection.prepareStatement(sql);
-            ps.setBytes(1, anh);
-            ps.setString(2, username);
-            ps.executeUpdate();
-            connection.commit();
-            return true;
-        }catch (SQLException e){
-            try{
-                connection.rollback();
-            }catch (SQLException ex){
-                e.printStackTrace();
-            }
-            return false;
-        }finally {
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException ex) {
-                return false;
-            }
-        }
+        return update(sql, anh, username);
     }
-    
 }

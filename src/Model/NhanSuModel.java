@@ -5,15 +5,16 @@ package Model;
  * @author Iroha
  */
 public class NhanSuModel {
-    private double BacLuong, PhuCap;
+    private double PhuCap;
     private String maNS, hoTen, ngaySinh, queQuan, danToc, soDienThoai, trinhDoHocVan, ChuyenNganh, maPB, maCV, chinhTri, doanThe;
     private boolean gioiTinh;
     private byte[] anh;
+    private int BacLuong;
 
     public NhanSuModel() {
     }
 
-    public NhanSuModel(double BacLuong, double PhuCap, String maNS, String hoTen, String ngaySinh, String queQuan, String danToc, String soDienThoai, String trinhDoHocVan, String ChuyenNganh, String maPB, String maCV, String chinhTri, String doanThe, boolean gioiTinh, byte[] anh) {
+    public NhanSuModel(int BacLuong, double PhuCap, String maNS, String hoTen, String ngaySinh, String queQuan, String danToc, String soDienThoai, String trinhDoHocVan, String ChuyenNganh, String maPB, String maCV, String chinhTri, String doanThe, boolean gioiTinh, byte[] anh) {
         this.BacLuong = BacLuong;
         this.PhuCap = PhuCap;
         this.maNS = maNS;
@@ -32,7 +33,7 @@ public class NhanSuModel {
         this.anh = anh;
     }
 
-    public double getBacLuong() {
+    public int getBacLuong() {
         return BacLuong;
     }
 
@@ -96,7 +97,7 @@ public class NhanSuModel {
         return anh;
     }
 
-    public void setBacLuong(double BacLuong) {
+    public void setBacLuong(int BacLuong) {
         this.BacLuong = BacLuong;
     }
 
