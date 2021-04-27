@@ -61,7 +61,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         txt_username.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_username.setFont(new java.awt.Font("UVN Tin Tuc", 1, 15)); // NOI18N
-        txt_username.setForeground(new java.awt.Color(204, 204, 204));
+        txt_username.setForeground(new java.awt.Color(255, 255, 255));
         txt_username.setText("Nhập tài khoản...");
         txt_username.setBorder(null);
         txt_username.setOpaque(false);
@@ -77,7 +77,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         txt_password.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_password.setFont(new java.awt.Font("UVN Tin Tuc", 1, 15)); // NOI18N
-        txt_password.setForeground(new java.awt.Color(204, 204, 204));
+        txt_password.setForeground(new java.awt.Color(255, 255, 255));
         txt_password.setBorder(null);
         txt_password.setOpaque(false);
         txt_password.addFocusListener(new java.awt.event.FocusAdapter() {

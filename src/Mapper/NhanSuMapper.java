@@ -28,8 +28,8 @@ public class NhanSuMapper implements IMapper<NhanSuModel>{
             ns.setChinhTri(rs.getString("ChinhTri"));
             ns.setDoanThe(rs.getString("DoanThe"));
             ns.setBacLuong(rs.getInt("BacLuong"));
-            ns.setPhuCap(rs.getDouble("PhuCap"));
             ns.setAnh(rs.getBytes("Anh"));
+            ns.setNgayThamGia(rs.getString("NgayGiaNhap"));
             return ns;
         } catch (SQLException ex) {
             return null;

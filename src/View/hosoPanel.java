@@ -3,14 +3,17 @@ package View;
 import DAO.implement.NhanSu;
 import Model.HoSoTableModel;
 import Model.NhanSuModel;
+import Model.TableNhanSuModel;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -23,12 +26,13 @@ public class hosoPanel extends javax.swing.JPanel {
     
     java.awt.Frame bb;
     hosoPanel aa;
+    ArrayList<TableNhanSuModel> dsHoSo = new ArrayList<>();;
+    boolean isort[] = {true,true,true,true,true,true,true,true,true,true,true};
     public hosoPanel(java.awt.Frame mainFrame) {
         initComponents();
         table_ns.getTableHeader().setDefaultRenderer(new HeaderColor());
         table_ns.getTableHeader().setBackground(new Color(82,147,255));
         table_ns.getTableHeader().setBackground(new Color(32, 136, 203));
-        table_ns.setBackground(Color.white);
         aa = this;
         bb = mainFrame;
         table_ns.addMouseListener(new MouseAdapter() {
@@ -44,6 +48,13 @@ public class hosoPanel extends javax.swing.JPanel {
                 }
             }
         });
+        table_ns.getTableHeader().addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            int col = table_ns.columnAtPoint(e.getPoint());
+            sortData(col);
+        }
+    });
         LoadData();
     }
     
@@ -66,8 +77,17 @@ public class hosoPanel extends javax.swing.JPanel {
     
     public void LoadData(){
         jScrollPane1.getViewport().setBackground(Color.white);
-        List<NhanSuModel> ls = new NhanSu().getListNhanSu();
-        table_ns.setModel(new HoSoTableModel(ls));
+//        jScrollPane1.setOpaque(false);
+//        jScrollPane1.getViewport().setOpaque(false);
+//        table_ns.setOpaque(false);
+//        ((DefaultTableCellRenderer)table_ns.getDefaultRenderer(Object.class)).setOpaque(false);
+        List<NhanSuModel> list = new NhanSu().getListNhanSu();
+        for(int i = 0; i< list.size();i++)
+        {
+            TableNhanSuModel a =  new TableNhanSuModel(list.get(i));
+            dsHoSo.add(a);
+        }
+        table_ns.setModel(new HoSoTableModel(dsHoSo));
         table_ns.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         table_ns.getColumnModel().getColumn(0).setPreferredWidth(60);
         table_ns.getColumnModel().getColumn(1).setPreferredWidth(130);
@@ -80,6 +100,214 @@ public class hosoPanel extends javax.swing.JPanel {
         table_ns.getColumnModel().getColumn(8).setPreferredWidth(138);
         table_ns.getColumnModel().getColumn(9).setPreferredWidth(130);
         table_ns.getColumnModel().getColumn(10).setPreferredWidth(130);
+    }
+    
+    public void sortData(int index){
+        if(isort[index])
+        {
+            switch(index){
+            case 0:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o2.getMaNS().compareTo(o1.getMaNS());
+                    }
+                });
+                break;
+            case 1:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o2.getHoTen().compareTo(o1.getHoTen());
+                    }
+                });
+                break;
+            case 2:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o2.getNgaySinh().compareTo(o1.getNgaySinh());
+                    }
+                });
+                break;
+            case 3:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o2.getGioiTinh().compareTo(o1.getGioiTinh());
+                    }
+                });
+                break;
+            case 4:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o2.getSoDienThoai().compareTo(o1.getSoDienThoai());
+                    }
+                });
+                break;
+            case 5:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o2.getQueQuan().compareTo(o1.getQueQuan());
+                    }
+                });
+                break;
+            case 6:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o2.getDanToc().compareTo(o1.getDanToc());
+                    }
+                });
+                break;
+            case 7:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o2.getTrinhDoHocVan().compareTo(o1.getTrinhDoHocVan());
+                    }
+                });
+                break;
+            case 8:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o2.getChuyenNganh().compareTo(o1.getChuyenNganh());
+                    }
+                });
+                break;
+            case 9:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o2.getPhongBan().compareTo(o1.getPhongBan());
+                    }
+                });
+                break;
+            case 10:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o2.getChucVu().compareTo(o1.getChucVu());
+                    }
+                });
+                break;
+            default:
+                break;
+            }
+            isort[index]=false;
+        }
+        else{
+            switch(index){
+            case 0:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o1.getMaNS().compareTo(o2.getMaNS());
+                    }
+                });
+                break;
+            case 1:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o1.getHoTen().compareTo(o2.getHoTen());
+                    }
+                });
+                break;
+            case 2:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o1.getNgaySinh().compareTo(o2.getNgaySinh());
+                    }
+                });
+                break;
+            case 3:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o1.getGioiTinh().compareTo(o2.getGioiTinh());
+                    }
+                });
+                break;
+            case 4:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o1.getSoDienThoai().compareTo(o2.getSoDienThoai());
+                    }
+                });
+                break;
+            case 5:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o1.getQueQuan().compareTo(o2.getQueQuan());
+                    }
+                });
+                break;
+            case 6:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o1.getDanToc().compareTo(o2.getDanToc());
+                    }
+                });
+                break;
+            case 7:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o1.getTrinhDoHocVan().compareTo(o2.getTrinhDoHocVan());
+                    }
+                });
+                break;
+            case 8:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o1.getChuyenNganh().compareTo(o2.getChuyenNganh());
+                    }
+                });
+                break;
+            case 9:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o1.getPhongBan().compareTo(o2.getPhongBan());
+                    }
+                });
+                break;
+            case 10:
+                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                    @Override
+                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                       return o1.getChucVu().compareTo(o2.getChucVu());
+                    }
+                });
+                break;
+            default:
+                break;
+            }
+            isort[index]=true;
+        }
+        table_ns.setModel(new HoSoTableModel(dsHoSo));
+        table_ns.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        table_ns.getColumnModel().getColumn(0).setPreferredWidth(60);
+        table_ns.getColumnModel().getColumn(1).setPreferredWidth(130);
+        table_ns.getColumnModel().getColumn(2).setPreferredWidth(100);
+        table_ns.getColumnModel().getColumn(3).setPreferredWidth(80);
+        table_ns.getColumnModel().getColumn(4).setPreferredWidth(110);
+        table_ns.getColumnModel().getColumn(5).setPreferredWidth(130);
+        table_ns.getColumnModel().getColumn(6).setPreferredWidth(90);
+        table_ns.getColumnModel().getColumn(7).setPreferredWidth(110);
+        table_ns.getColumnModel().getColumn(8).setPreferredWidth(138);
+        table_ns.getColumnModel().getColumn(9).setPreferredWidth(130);
+        table_ns.getColumnModel().getColumn(10).setPreferredWidth(130);
+        table_ns.revalidate();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -138,6 +366,7 @@ public class hosoPanel extends javax.swing.JPanel {
         });
         add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 20, 100, 50));
 
+        table_ns.setBackground(new java.awt.Color(238, 253, 253));
         table_ns.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

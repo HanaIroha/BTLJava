@@ -5,8 +5,7 @@ package Model;
  * @author Iroha
  */
 public class NhanSuModel {
-    private double PhuCap;
-    private String maNS, hoTen, ngaySinh, queQuan, danToc, soDienThoai, trinhDoHocVan, ChuyenNganh, maPB, maCV, chinhTri, doanThe;
+    private String maNS, hoTen, ngaySinh, queQuan, danToc, soDienThoai, trinhDoHocVan, ChuyenNganh, maPB, maCV, chinhTri, doanThe, NgayThamGia;
     private boolean gioiTinh;
     private byte[] anh;
     private int BacLuong;
@@ -14,9 +13,9 @@ public class NhanSuModel {
     public NhanSuModel() {
     }
 
-    public NhanSuModel(int BacLuong, double PhuCap, String maNS, String hoTen, String ngaySinh, String queQuan, String danToc, String soDienThoai, String trinhDoHocVan, String ChuyenNganh, String maPB, String maCV, String chinhTri, String doanThe, boolean gioiTinh, byte[] anh) {
+    public NhanSuModel(int BacLuong, String NgayThamGia, String maNS, String hoTen, String ngaySinh, String queQuan, String danToc, String soDienThoai, String trinhDoHocVan, String ChuyenNganh, String maPB, String maCV, String chinhTri, String doanThe, boolean gioiTinh, byte[] anh) {
         this.BacLuong = BacLuong;
-        this.PhuCap = PhuCap;
+        this.NgayThamGia = NgayThamGia;
         this.maNS = maNS;
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
@@ -37,8 +36,8 @@ public class NhanSuModel {
         return BacLuong;
     }
 
-    public double getPhuCap() {
-        return PhuCap;
+    public String getNgayThamGia() {
+        return NgayThamGia;
     }
 
     public String getMaNS() {
@@ -101,8 +100,8 @@ public class NhanSuModel {
         this.BacLuong = BacLuong;
     }
 
-    public void setPhuCap(double PhuCap) {
-        this.PhuCap = PhuCap;
+    public void setNgayThamGia(String NgayThamGia) {
+        this.NgayThamGia = NgayThamGia;
     }
 
     public void setMaNS(String maNS) {

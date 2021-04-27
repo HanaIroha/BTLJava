@@ -89,7 +89,6 @@ public class detailInforAdd extends javax.swing.JDialog {
         txt_sdt = new javax.swing.JTextField();
         txt_trinhdo = new javax.swing.JTextField();
         txt_quequan = new javax.swing.JTextField();
-        txt_phucap = new javax.swing.JTextField();
         txt_hoten = new javax.swing.JTextField();
         txt_phongban = new javax.swing.JComboBox<>();
         txt_chucvu = new javax.swing.JComboBox<>();
@@ -100,12 +99,13 @@ public class detailInforAdd extends javax.swing.JDialog {
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
-        jSeparator10 = new javax.swing.JSeparator();
         jSeparator11 = new javax.swing.JSeparator();
         gioitinh_nu = new javax.swing.JRadioButton();
         gioitinh_nam = new javax.swing.JRadioButton();
         jLabel15 = new javax.swing.JLabel();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -144,7 +144,7 @@ public class detailInforAdd extends javax.swing.JDialog {
                 btn_save1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_save1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 120, 30));
+        jPanel1.add(btn_save1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 120, 30));
 
         btn_add.setBackground(new java.awt.Color(24, 98, 151));
         btn_add.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -158,7 +158,7 @@ public class detailInforAdd extends javax.swing.JDialog {
                 btn_addActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, 110, 50));
+        jPanel1.add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 500, 110, 50));
 
         btn_cancel.setBackground(new java.awt.Color(24, 98, 151));
         btn_cancel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -172,10 +172,10 @@ public class detailInforAdd extends javax.swing.JDialog {
                 btn_cancelActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 480, 110, 50));
+        jPanel1.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 500, 110, 50));
 
         lb_avt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(lb_avt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 180, 240));
+        jPanel1.add(lb_avt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 180, 240));
 
         txt_chuyennganh.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_chuyennganh.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
@@ -183,7 +183,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         txt_chuyennganh.setBorder(null);
         txt_chuyennganh.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_chuyennganh.setOpaque(false);
-        jPanel1.add(txt_chuyennganh, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 210, 170, -1));
+        jPanel1.add(txt_chuyennganh, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 230, 170, -1));
 
         txt_mans.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_mans.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
@@ -191,7 +191,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         txt_mans.setBorder(null);
         txt_mans.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_mans.setOpaque(false);
-        jPanel1.add(txt_mans, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, 180, -1));
+        jPanel1.add(txt_mans, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 180, -1));
 
         txt_dantoc.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_dantoc.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
@@ -199,7 +199,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         txt_dantoc.setBorder(null);
         txt_dantoc.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_dantoc.setOpaque(false);
-        jPanel1.add(txt_dantoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 200, -1));
+        jPanel1.add(txt_dantoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 200, -1));
 
         txt_sdt.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_sdt.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
@@ -207,7 +207,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         txt_sdt.setBorder(null);
         txt_sdt.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_sdt.setOpaque(false);
-        jPanel1.add(txt_sdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 170, -1));
+        jPanel1.add(txt_sdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 170, -1));
 
         txt_trinhdo.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_trinhdo.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
@@ -215,7 +215,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         txt_trinhdo.setBorder(null);
         txt_trinhdo.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_trinhdo.setOpaque(false);
-        jPanel1.add(txt_trinhdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, 200, -1));
+        jPanel1.add(txt_trinhdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, 200, -1));
 
         txt_quequan.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_quequan.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
@@ -223,15 +223,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         txt_quequan.setBorder(null);
         txt_quequan.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_quequan.setOpaque(false);
-        jPanel1.add(txt_quequan, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 180, -1));
-
-        txt_phucap.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_phucap.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
-        txt_phucap.setForeground(new java.awt.Color(255, 255, 255));
-        txt_phucap.setBorder(null);
-        txt_phucap.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        txt_phucap.setOpaque(false);
-        jPanel1.add(txt_phucap, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 200, -1));
+        jPanel1.add(txt_quequan, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 180, -1));
 
         txt_hoten.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_hoten.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
@@ -239,136 +231,145 @@ public class detailInforAdd extends javax.swing.JDialog {
         txt_hoten.setBorder(null);
         txt_hoten.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_hoten.setOpaque(false);
-        jPanel1.add(txt_hoten, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 200, -1));
+        jPanel1.add(txt_hoten, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 200, -1));
 
         txt_phongban.setBackground(new java.awt.Color(255, 204, 204));
         txt_phongban.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         txt_phongban.setOpaque(false);
-        jPanel1.add(txt_phongban, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 120, 180, -1));
+        jPanel1.add(txt_phongban, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 180, -1));
 
         txt_chucvu.setBackground(new java.awt.Color(255, 204, 204));
         txt_chucvu.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         txt_chucvu.setOpaque(false);
-        jPanel1.add(txt_chucvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 150, 200, -1));
+        jPanel1.add(txt_chucvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, 200, -1));
 
         txt_bacluong.setBackground(new java.awt.Color(255, 204, 204));
         txt_bacluong.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         txt_bacluong.setOpaque(false);
-        jPanel1.add(txt_bacluong, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 270, -1, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 200, -1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 180, -1));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 200, -1));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 170, -1));
-        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, 200, -1));
-        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 230, 170, -1));
-        jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 260, 200, -1));
-        jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 170, -1));
+        jPanel1.add(txt_bacluong, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 200, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 180, -1));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 200, -1));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, 170, -1));
+        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 220, 200, -1));
+        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 250, 170, -1));
+        jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 170, -1));
 
         gioitinh_nu.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         gioitinh_nu.setForeground(new java.awt.Color(255, 255, 255));
         gioitinh_nu.setText("Nữ");
         gioitinh_nu.setOpaque(false);
-        jPanel1.add(gioitinh_nu, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, -1, -1));
+        jPanel1.add(gioitinh_nu, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, -1, -1));
 
         gioitinh_nam.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         gioitinh_nam.setForeground(new java.awt.Color(255, 255, 255));
         gioitinh_nam.setText("Nam");
         gioitinh_nam.setOpaque(false);
-        jPanel1.add(gioitinh_nam, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, -1, -1));
+        jPanel1.add(gioitinh_nam, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Ngày Sinh:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, -1, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, -1, -1));
+
+        jDateChooser2.setBackground(new java.awt.Color(255, 255, 255, 0));
+        jDateChooser2.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        jDateChooser2.setOpaque(false);
+        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 260, 160, -1));
 
         jDateChooser1.setBackground(new java.awt.Color(255, 255, 255, 0));
         jDateChooser1.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         jDateChooser1.setOpaque(false);
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 180, -1));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 180, -1));
+
+        jLabel16.setFont(new java.awt.Font("UVN Van", 0, 24)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("THÊM NHÂN SỰ");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 200, 40));
 
         jLabel1.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Họ tên:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Quê quán:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Giới tính:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Dân tộc:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Số điện thoại:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Trình độ:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Chuyên ngành:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 210, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 230, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Phòng ban:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 140, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Đoàn thể:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 300, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Mã nhân sự:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Chức vụ:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Bậc lương:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Phụ cấp:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 240, -1, -1));
+        jLabel13.setText("Ngày tham gia:");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 260, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Chính trị:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, -1, -1));
 
         txt_chinhtri.setColumns(20);
         txt_chinhtri.setRows(5);
         txt_chinhtri.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txt_chinhtri);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 200, 120));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 200, 120));
 
         txt_doanthe.setColumns(20);
         txt_doanthe.setRows(5);
         txt_doanthe.setWrapStyleWord(true);
         jScrollPane2.setViewportView(txt_doanthe);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, 200, 150));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, 200, 150));
 
         background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/detailInfor.png"))); // NOI18N
@@ -400,7 +401,7 @@ public class detailInforAdd extends javax.swing.JDialog {
                     person_image=null;
                 }
                 isOK = new NhanSu().addNS((Integer)txt_bacluong.getSelectedItem(),
-                        txt_phucap.getText().equals("")?0:Double.parseDouble(txt_phucap.getText()),
+                        ((JTextField)jDateChooser2.getDateEditor().getUiComponent()).getText(),
                         txt_mans.getText(),
                         txt_hoten.getText(),
                         ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText(),
@@ -437,7 +438,7 @@ public class detailInforAdd extends javax.swing.JDialog {
 
     private void btn_save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save1ActionPerformed
         JFileChooser chooser = new JFileChooser();
-        chooser.showOpenDialog(null);
+        chooser.showOpenDialog(this);
         File f = chooser.getSelectedFile();
         String filenamez = f.getAbsolutePath();
         if(filenamez!=null)
@@ -500,6 +501,7 @@ public class detailInforAdd extends javax.swing.JDialog {
     private javax.swing.JRadioButton gioitinh_nam;
     private javax.swing.JRadioButton gioitinh_nu;
     private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -507,6 +509,7 @@ public class detailInforAdd extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -519,7 +522,6 @@ public class detailInforAdd extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
@@ -536,7 +538,6 @@ public class detailInforAdd extends javax.swing.JDialog {
     private javax.swing.JTextField txt_hoten;
     private javax.swing.JTextField txt_mans;
     private javax.swing.JComboBox<ComboItem> txt_phongban;
-    private javax.swing.JTextField txt_phucap;
     private javax.swing.JTextField txt_quequan;
     private javax.swing.JTextField txt_sdt;
     private javax.swing.JTextField txt_trinhdo;

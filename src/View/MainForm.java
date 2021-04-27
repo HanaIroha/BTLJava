@@ -22,6 +22,8 @@ public class MainForm extends javax.swing.JFrame {
     public AccountModel taikhoan;
     private int indexTab = 0;
     MainForm thisForm;
+    hosoPanel tab1;
+    
     /**
      * Creates new form MainForm
      */
@@ -31,6 +33,7 @@ public class MainForm extends javax.swing.JFrame {
         movePanel.setBackground(new java.awt.Color(255, 255, 255, 0));
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        tab1 = new hosoPanel(thisForm);
     }
     
     public MainForm(AccountModel tk) {
@@ -40,6 +43,8 @@ public class MainForm extends javax.swing.JFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         this.setBackground(new java.awt.Color(255, 255, 255, 0));
         taikhoan = new AccountModel(tk);
+        lb_name.setText("Xin chào "+tk.getTen()+"!");
+        lb_namesmall.setText(tk.getTen());
         try{
             ImageIcon imageIcon = new ImageIcon(new ImageIcon(tk.getAnh()).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
             BufferedImage master = new BufferedImage(
@@ -71,8 +76,7 @@ public class MainForm extends javax.swing.JFrame {
         catch(Exception e){
             
         }
-        lb_name.setText("Xin chào "+tk.getTen()+"!");
-        lb_namesmall.setText(tk.getTen());
+        tab1 = new hosoPanel(thisForm);
     }
 
     /**
@@ -262,7 +266,7 @@ public class MainForm extends javax.swing.JFrame {
                 btn_lscongtacActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_lscongtac, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, -1));
+        getContentPane().add(btn_lscongtac, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
 
         btn_hoso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/btn_hoso1.png"))); // NOI18N
         btn_hoso.setBorder(null);
@@ -346,10 +350,9 @@ public class MainForm extends javax.swing.JFrame {
             indexTab=1;
             resetTab();
             lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu1.png")));
-            btn_hoso.revalidate();
             MainPanel.removeAll();
             MainPanel.setLayout(new BorderLayout());
-            MainPanel.add(new hosoPanel(thisForm));
+            MainPanel.add(tab1);
             MainPanel.revalidate();
         }
     }//GEN-LAST:event_btn_hosoActionPerformed
@@ -478,24 +481,56 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_taikhoanMouseReleased
 
     private void btn_phongbanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_phongbanActionPerformed
-        indexTab=2;
-        resetTab();
+        if(indexTab!=2)
+        {
+            indexTab=2;
+            resetTab();
+            lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu2.png")));
+//            MainPanel.removeAll();
+//            MainPanel.setLayout(new BorderLayout());
+//            MainPanel.add(new hosoPanel(thisForm));
+//            MainPanel.revalidate();
+        }
 
     }//GEN-LAST:event_btn_phongbanActionPerformed
 
     private void btn_lscongtacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_lscongtacActionPerformed
-        indexTab=3;
-        resetTab();
+        if(indexTab!=3)
+        {
+            indexTab=3;
+            resetTab();
+            lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu3.png")));
+//            MainPanel.removeAll();
+//            MainPanel.setLayout(new BorderLayout());
+//            MainPanel.add(new hosoPanel(thisForm));
+//            MainPanel.revalidate();
+        }
     }//GEN-LAST:event_btn_lscongtacActionPerformed
 
     private void btn_luongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_luongActionPerformed
-        indexTab=4;
-        resetTab();
+        if(indexTab!=4)
+        {
+            indexTab=4;
+            resetTab();
+            lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu4.png")));
+//            MainPanel.removeAll();
+//            MainPanel.setLayout(new BorderLayout());
+//            MainPanel.add(new hosoPanel(thisForm));
+//            MainPanel.revalidate();
+        }
     }//GEN-LAST:event_btn_luongActionPerformed
 
     private void btn_taikhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_taikhoanActionPerformed
-        indexTab=5;
-        resetTab();
+        if(indexTab!=5)
+        {
+            indexTab=5;
+            resetTab();
+            lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu5.png")));
+//            MainPanel.removeAll();
+//            MainPanel.setLayout(new BorderLayout());
+//            MainPanel.add(new hosoPanel(thisForm));
+//            MainPanel.revalidate();
+        }
     }//GEN-LAST:event_btn_taikhoanActionPerformed
     private void resetTab(){
         if(indexTab!=1)

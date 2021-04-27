@@ -15,14 +15,22 @@ public class HoSoTableModel extends AbstractTableModel{
     private String name[] = {"Mã", "Họ tên", "Ngày sinh", "Giới tính", "Số điện thoại", "Quê quán", "Dân tộc", "Học vấn", "Chuyên ngành", "Phòng ban", "Chức vụ"};
     private Class classes[] = {String.class, String.class, String.class, String.class, String.class, String.class ,String.class, String.class, String.class, String.class, String.class};
     
-    ArrayList<NhanSuModel> dsHoSo = new ArrayList<>();
-
-    public HoSoTableModel(ArrayList<NhanSuModel> list) {
-        this.dsHoSo = list;
+    ArrayList<TableNhanSuModel> dsHoSo = new ArrayList<>();
+    
+    public HoSoTableModel(List<NhanSuModel> list) {
+        for(int i = 0; i< list.size();i++)
+        {
+            TableNhanSuModel a =  new TableNhanSuModel(list.get(i));
+            this.dsHoSo.set(i, a);
+        }
     }
     
-    public HoSoTableModel(List<NhanSuModel> list){
-        this.dsHoSo = new ArrayList<NhanSuModel>(list);
+    public HoSoTableModel(ArrayList<TableNhanSuModel> ls){
+        this.dsHoSo = ls;
+    }
+    
+    public HoSoTableModel() {
+        
     }
     
     @Override
@@ -41,14 +49,14 @@ public class HoSoTableModel extends AbstractTableModel{
             case 0: return dsHoSo.get(rowIndex).getMaNS();
             case 1: return dsHoSo.get(rowIndex).getHoTen();
             case 2: return dsHoSo.get(rowIndex).getNgaySinh();
-            case 3: return dsHoSo.get(rowIndex).isGioiTinh()?"Nam":"Nữ";
+            case 3: return dsHoSo.get(rowIndex).getGioiTinh();
             case 4: return dsHoSo.get(rowIndex).getSoDienThoai();
             case 5: return dsHoSo.get(rowIndex).getQueQuan();
             case 6: return dsHoSo.get(rowIndex).getDanToc();
             case 7: return dsHoSo.get(rowIndex).getTrinhDoHocVan();
             case 8: return dsHoSo.get(rowIndex).getChuyenNganh();
-            case 9: return new PhongBan().TimTenPB(dsHoSo.get(rowIndex).getMaPB());
-            case 10: return new ChucVu().TimTenChucVu(dsHoSo.get(rowIndex).getMaCV());
+            case 9: return dsHoSo.get(rowIndex).getPhongBan();
+            case 10: return dsHoSo.get(rowIndex).getChucVu();
             default: return null;
         }
     }
