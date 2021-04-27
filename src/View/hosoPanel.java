@@ -82,6 +82,7 @@ public class hosoPanel extends javax.swing.JPanel {
 //        table_ns.setOpaque(false);
 //        ((DefaultTableCellRenderer)table_ns.getDefaultRenderer(Object.class)).setOpaque(false);
         List<NhanSuModel> list = new NhanSu().getListNhanSu();
+        dsHoSo = new ArrayList<>();
         for(int i = 0; i< list.size();i++)
         {
             TableNhanSuModel a =  new TableNhanSuModel(list.get(i));
