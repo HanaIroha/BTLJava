@@ -78,7 +78,7 @@ public class detailInfor extends javax.swing.JDialog {
             LocalDate d2 = LocalDate.parse((String)formatter.format(dateToday), DateTimeFormatter.ISO_LOCAL_DATE);
             Duration diff = Duration.between(d1.atStartOfDay(), d2.atStartOfDay());
             long diffDays = diff.toDays();
-            txt_namcongtac.setText(String.valueOf(diffDays/365) + " năm");
+            txt_namcongtac.setText(String.valueOf(diffDays/365) + " năm (" + acc.getNgayThamGia() +")");
         } catch (ParseException ex) {
             Logger.getLogger(detailInfor.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -295,7 +295,7 @@ public class detailInfor extends javax.swing.JDialog {
         txt_namcongtac.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_namcongtac.setEnabled(false);
         txt_namcongtac.setOpaque(false);
-        jPanel1.add(txt_namcongtac, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 260, 160, -1));
+        jPanel1.add(txt_namcongtac, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, 150, -1));
 
         txt_hoten.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_hoten.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
@@ -325,7 +325,7 @@ public class detailInfor extends javax.swing.JDialog {
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, 170, -1));
         jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 220, 200, -1));
         jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 250, 170, -1));
-        jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 280, 160, -1));
+        jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 150, -1));
         jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 170, -1));
 
         gioitinh_nu.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
@@ -417,7 +417,7 @@ public class detailInfor extends javax.swing.JDialog {
 
         jLabel13.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Số năm công tác:");
+        jLabel13.setText("Thời gian công tác:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 260, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N

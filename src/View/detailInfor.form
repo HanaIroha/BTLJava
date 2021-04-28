@@ -311,7 +311,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="730" y="260" width="160" height="-1"/>
+              <AbsoluteConstraints x="740" y="260" width="150" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -451,7 +451,7 @@
         <Component class="javax.swing.JSeparator" name="jSeparator10">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="730" y="280" width="160" height="-1"/>
+              <AbsoluteConstraints x="740" y="280" width="150" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -744,7 +744,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="S&#x1ed1; n&#x103;m c&#xf4;ng t&#xe1;c:"/>
+            <Property name="text" type="java.lang.String" value="Th&#x1edd;i gian c&#xf4;ng t&#xe1;c:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
