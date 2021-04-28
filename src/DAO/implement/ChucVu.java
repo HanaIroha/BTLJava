@@ -23,5 +23,23 @@ public class ChucVu extends DataSource<ChucVuModel> implements IChucVu{
         String sql = "Select * from dbo.ChucVu";
         return excute(sql, new ChucVuMapper());
     }
+
+    @Override
+    public boolean xoaCV(String MaCV) {
+        String sql = "Delete from dbo.ChucVu WHERE MaCV = ?";
+        return update(sql, MaCV);
+    }
+
+    @Override
+    public boolean suaCV(String maCV, String tenCV, double phuCap) {
+        String sql = "Update dbo.ChucVu SET TenCV = ?, PhuCap=? WHERE MaCV=?";
+        return update(sql, tenCV, phuCap, maCV);
+    }
+
+    @Override
+    public boolean themCV(String maCV, String tenCV, double phuCap) {
+        String sql = "Insert into dbo.ChucVu VALUES (?,?,?)";
+        return update(sql, maCV, tenCV, phuCap);
+    }
     
 }

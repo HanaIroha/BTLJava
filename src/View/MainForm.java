@@ -350,10 +350,12 @@ public class MainForm extends javax.swing.JFrame {
             indexTab=1;
             resetTab();
             lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu1.png")));
+            tab1.reloadPanel();
             MainPanel.removeAll();
             MainPanel.setLayout(new BorderLayout());
             MainPanel.add(tab1);
             MainPanel.revalidate();
+            MainPanel.repaint();
         }
     }//GEN-LAST:event_btn_hosoActionPerformed
 
@@ -486,10 +488,11 @@ public class MainForm extends javax.swing.JFrame {
             indexTab=2;
             resetTab();
             lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu2.png")));
-//            MainPanel.removeAll();
-//            MainPanel.setLayout(new BorderLayout());
-//            MainPanel.add(new hosoPanel(thisForm));
-//            MainPanel.revalidate();
+            MainPanel.removeAll();
+            MainPanel.setLayout(new BorderLayout());
+            MainPanel.add(new phongbanPanel());
+            MainPanel.revalidate();
+            MainPanel.repaint();
         }
 
     }//GEN-LAST:event_btn_phongbanActionPerformed
@@ -500,10 +503,11 @@ public class MainForm extends javax.swing.JFrame {
             indexTab=3;
             resetTab();
             lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu3.png")));
-//            MainPanel.removeAll();
-//            MainPanel.setLayout(new BorderLayout());
-//            MainPanel.add(new hosoPanel(thisForm));
-//            MainPanel.revalidate();
+            MainPanel.removeAll();
+            MainPanel.setLayout(new BorderLayout());
+            MainPanel.add(new chucvuPanel());
+            MainPanel.revalidate();
+            MainPanel.repaint();
         }
     }//GEN-LAST:event_btn_lscongtacActionPerformed
 

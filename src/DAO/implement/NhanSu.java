@@ -31,7 +31,7 @@ public class NhanSu extends DataSource<NhanSuModel> implements INhanSu{
     }
 
     @Override
-    public boolean upadteAVT(String MaNS, byte[] anh) {
+    public boolean updateAVT(String MaNS, byte[] anh) {
         String sql = "Update dbo.NhanSu SET Anh=? WHERE MaNS=?";
         return update(sql, anh, MaNS);
     }
@@ -46,6 +46,18 @@ public class NhanSu extends DataSource<NhanSuModel> implements INhanSu{
     public boolean deleteNS(String MaNS) {
         String sql = "Delete from dbo.NhanSu Where MaNS=?";
         return update(sql, MaNS);
+    }
+
+    @Override
+    public boolean updatePhongBan(String MaNS, String MaPB) {
+        String sql = "UPDATE dbo.NhanSu SET MaPB=? WHERE MaNS=?";
+        return update(sql, MaPB, MaNS);
+    }
+
+    @Override
+    public boolean updateChucVu(String MaNS, String MaCV) {
+        String sql = "UPDATE dbo.NhanSu SET MaCV=? WHERE MaNS=?";
+        return update(sql, MaCV, MaNS);
     }
     
 }

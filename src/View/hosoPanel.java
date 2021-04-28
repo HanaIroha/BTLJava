@@ -1,6 +1,7 @@
 package View;
 
 import DAO.implement.NhanSu;
+import Model.ComboItem;
 import Model.HoSoTableModel;
 import Model.NhanSuModel;
 import Model.TableNhanSuModel;
@@ -30,11 +31,36 @@ public class hosoPanel extends javax.swing.JPanel {
     boolean isort[] = {true,true,true,true,true,true,true,true,true,true,true};
     public hosoPanel(java.awt.Frame mainFrame) {
         initComponents();
+        aa = this;
+        bb = mainFrame;
+        prepare();
+        
+    }
+    
+    public class HeaderColor extends DefaultTableCellRenderer {
+
+        public HeaderColor() {
+            setOpaque(true);
+        }
+
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);
+            setOpaque(false);
+            setFont(new Font("UVN Van", Font.PLAIN, 16));
+            setForeground(new Color(255,255,255));
+            setPreferredSize(new Dimension(1230, 35));
+            return this;
+        }
+
+    }
+    
+    public void prepare(){
+        for(int i = 0; i < new HoSoTableModel().getColumnCount();i++){
+            txt_searchOption.addItem(new ComboItem(new HoSoTableModel().getColumnName(i),String.valueOf(i)));
+        }
         table_ns.getTableHeader().setDefaultRenderer(new HeaderColor());
         table_ns.getTableHeader().setBackground(new Color(82,147,255));
         table_ns.getTableHeader().setBackground(new Color(32, 136, 203));
-        aa = this;
-        bb = mainFrame;
         table_ns.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent mouseEvent) {
                 JTable table =(JTable) mouseEvent.getSource();
@@ -48,35 +74,18 @@ public class hosoPanel extends javax.swing.JPanel {
                 }
             }
         });
-        table_ns.getTableHeader().addMouseListener(new MouseAdapter() {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            int col = table_ns.columnAtPoint(e.getPoint());
-            sortData(col);
-        }
-    });
-        LoadData();
-    }
-    
-    public class HeaderColor extends DefaultTableCellRenderer {
-
-        public HeaderColor() {
-            setOpaque(true);
-        }
-
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
-            super.getTableCellRendererComponent(table, value, selected, focused, row, column);
-            setOpaque(false);
-            setFont(new Font("Tahoma", Font.BOLD, 14));
-            setForeground(new Color(255,255,255));
-            setPreferredSize(new Dimension(1230, 35));
-            return this;
-        }
-
+            table_ns.getTableHeader().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int col = table_ns.columnAtPoint(e.getPoint());
+                sortData(col);
+            }
+        });
+            jScrollPane1.getViewport().setBackground(Color.white);
+            LoadData();
     }
     
     public void LoadData(){
-        jScrollPane1.getViewport().setBackground(Color.white);
 //        jScrollPane1.setOpaque(false);
 //        jScrollPane1.getViewport().setOpaque(false);
 //        table_ns.setOpaque(false);
@@ -88,6 +97,22 @@ public class hosoPanel extends javax.swing.JPanel {
             TableNhanSuModel a =  new TableNhanSuModel(list.get(i));
             dsHoSo.add(a);
         }
+        table_ns.setModel(new HoSoTableModel(dsHoSo));
+        table_ns.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        table_ns.getColumnModel().getColumn(0).setPreferredWidth(60);
+        table_ns.getColumnModel().getColumn(1).setPreferredWidth(130);
+        table_ns.getColumnModel().getColumn(2).setPreferredWidth(100);
+        table_ns.getColumnModel().getColumn(3).setPreferredWidth(80);
+        table_ns.getColumnModel().getColumn(4).setPreferredWidth(110);
+        table_ns.getColumnModel().getColumn(5).setPreferredWidth(130);
+        table_ns.getColumnModel().getColumn(6).setPreferredWidth(90);
+        table_ns.getColumnModel().getColumn(7).setPreferredWidth(110);
+        table_ns.getColumnModel().getColumn(8).setPreferredWidth(138);
+        table_ns.getColumnModel().getColumn(9).setPreferredWidth(130);
+        table_ns.getColumnModel().getColumn(10).setPreferredWidth(130);
+    }
+    
+    public void reloadPanel(){
         table_ns.setModel(new HoSoTableModel(dsHoSo));
         table_ns.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         table_ns.getColumnModel().getColumn(0).setPreferredWidth(60);
@@ -314,9 +339,13 @@ public class hosoPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn_Search = new javax.swing.JButton();
         reload = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
         btn_add = new javax.swing.JButton();
+        txt_searchOption = new javax.swing.JComboBox<>();
+        txt_searchkey = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_ns = new javax.swing.JTable();
         background = new javax.swing.JLabel();
@@ -325,8 +354,22 @@ public class hosoPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1250, 650));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btn_Search.setBackground(new java.awt.Color(24, 98, 151));
+        btn_Search.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
+        btn_Search.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Search.setText("Tìm kiếm");
+        btn_Search.setBorder(null);
+        btn_Search.setBorderPainted(false);
+        btn_Search.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SearchActionPerformed(evt);
+            }
+        });
+        add(btn_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, 100, 50));
+
         reload.setBackground(new java.awt.Color(24, 98, 151));
-        reload.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        reload.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
         reload.setForeground(new java.awt.Color(255, 255, 255));
         reload.setText("Tải lại");
         reload.setBorder(null);
@@ -340,7 +383,7 @@ public class hosoPanel extends javax.swing.JPanel {
         add(reload, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 100, 50));
 
         btn_delete.setBackground(new java.awt.Color(24, 98, 151));
-        btn_delete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_delete.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
         btn_delete.setForeground(new java.awt.Color(255, 255, 255));
         btn_delete.setText("Xóa");
         btn_delete.setBorder(null);
@@ -354,7 +397,7 @@ public class hosoPanel extends javax.swing.JPanel {
         add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 20, 100, 50));
 
         btn_add.setBackground(new java.awt.Color(24, 98, 151));
-        btn_add.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_add.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
         btn_add.setForeground(new java.awt.Color(255, 255, 255));
         btn_add.setText("Thêm");
         btn_add.setBorder(null);
@@ -367,7 +410,30 @@ public class hosoPanel extends javax.swing.JPanel {
         });
         add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 20, 100, 50));
 
-        table_ns.setBackground(new java.awt.Color(238, 253, 253));
+        txt_searchOption.setBackground(new java.awt.Color(255, 204, 204));
+        txt_searchOption.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_searchOption.setOpaque(false);
+        add(txt_searchOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 180, 30));
+
+        txt_searchkey.setBackground(new java.awt.Color(255, 255, 255, 0));
+        txt_searchkey.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
+        txt_searchkey.setForeground(new java.awt.Color(255, 255, 255));
+        txt_searchkey.setText("Nhập từ khoá...");
+        txt_searchkey.setBorder(null);
+        txt_searchkey.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txt_searchkey.setOpaque(false);
+        txt_searchkey.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_searchkeyFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_searchkeyFocusLost(evt);
+            }
+        });
+        add(txt_searchkey, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, 170, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 170, -1));
+
+        table_ns.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         table_ns.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -402,6 +468,8 @@ public class hosoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_addActionPerformed
 
     private void reloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadActionPerformed
+        txt_searchkey.setText("Nhập từ khoá...");
+        txt_searchOption.setSelectedIndex(0);
         LoadData();
     }//GEN-LAST:event_reloadActionPerformed
 
@@ -419,13 +487,94 @@ public class hosoPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btn_deleteActionPerformed
 
+    private void btn_SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SearchActionPerformed
+        String key = txt_searchkey.getText();
+        int searchIndex = Integer.valueOf(((ComboItem)txt_searchOption.getSelectedItem()).getValue());
+        ArrayList<TableNhanSuModel> dsHoSoz = new ArrayList<>();
+        for(TableNhanSuModel z:dsHoSo)
+            switch(searchIndex){
+                case 0:
+                    if(z.getMaNS().contains(key))
+                        dsHoSoz.add(z);
+                    break;
+                case 1:
+                    if(z.getHoTen().contains(key))
+                        dsHoSoz.add(z);
+                    break;
+                case 2:
+                    if(z.getNgaySinh().contains(key))
+                        dsHoSoz.add(z);
+                    break;
+                case 3:
+                    if(z.getGioiTinh().contains(key))
+                        dsHoSoz.add(z);
+                    break;
+                case 4:
+                    if(z.getSoDienThoai().contains(key))
+                        dsHoSoz.add(z);
+                    break;
+                case 5:
+                    if(z.getQueQuan().contains(key))
+                        dsHoSoz.add(z);
+                    break;
+                case 6:
+                    if(z.getDanToc().contains(key))
+                        dsHoSoz.add(z);
+                    break;
+                case 7:
+                    if(z.getTrinhDoHocVan().contains(key))
+                        dsHoSoz.add(z);
+                    break;
+                case  8:
+                    if(z.getChuyenNganh().contains(key))
+                        dsHoSoz.add(z);
+                    break;
+                case 9:
+                    if(z.getPhongBan().contains(key))
+                        dsHoSoz.add(z);
+                    break;
+                case 10:
+                    if(z.getChucVu().contains(key))
+                        dsHoSoz.add(z);
+                    break;
+            }
+        table_ns.setModel(new HoSoTableModel(dsHoSoz));
+        table_ns.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        table_ns.getColumnModel().getColumn(0).setPreferredWidth(60);
+        table_ns.getColumnModel().getColumn(1).setPreferredWidth(130);
+        table_ns.getColumnModel().getColumn(2).setPreferredWidth(100);
+        table_ns.getColumnModel().getColumn(3).setPreferredWidth(80);
+        table_ns.getColumnModel().getColumn(4).setPreferredWidth(110);
+        table_ns.getColumnModel().getColumn(5).setPreferredWidth(130);
+        table_ns.getColumnModel().getColumn(6).setPreferredWidth(90);
+        table_ns.getColumnModel().getColumn(7).setPreferredWidth(110);
+        table_ns.getColumnModel().getColumn(8).setPreferredWidth(138);
+        table_ns.getColumnModel().getColumn(9).setPreferredWidth(130);
+        table_ns.getColumnModel().getColumn(10).setPreferredWidth(130);
+        table_ns.revalidate();
+    }//GEN-LAST:event_btn_SearchActionPerformed
+
+    private void txt_searchkeyFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_searchkeyFocusGained
+        if(txt_searchkey.getText().equals("Nhập từ khoá..."))
+            txt_searchkey.setText("");
+    }//GEN-LAST:event_txt_searchkeyFocusGained
+
+    private void txt_searchkeyFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_searchkeyFocusLost
+        if(txt_searchkey.getText().equals(""))
+            txt_searchkey.setText("Nhập từ khoá...");
+    }//GEN-LAST:event_txt_searchkeyFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JButton btn_Search;
     private javax.swing.JButton btn_add;
     private javax.swing.JButton btn_delete;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton reload;
     private javax.swing.JTable table_ns;
+    private javax.swing.JComboBox<ComboItem> txt_searchOption;
+    private javax.swing.JTextField txt_searchkey;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,4 +28,13 @@ public class ComboItem {
     {
         return value;
     }
+
+//    @Override
+//    public boolean equals(Object obj) {
+//        int a = this.getValue().compareTo(((ComboItem)obj).getValue());
+//        if (a==0)
+//            return true;
+//        else
+//            return false;
+//    }
 }

@@ -194,8 +194,8 @@ public class detailInfor extends javax.swing.JDialog {
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_save1.setBackground(new java.awt.Color(240, 172, 235));
-        btn_save1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_save1.setBackground(new java.awt.Color(24, 98, 151));
+        btn_save1.setFont(new java.awt.Font("UVN Van", 0, 12)); // NOI18N
         btn_save1.setForeground(new java.awt.Color(255, 255, 255));
         btn_save1.setText("Thay Avatar");
         btn_save1.setBorder(null);
@@ -209,7 +209,7 @@ public class detailInfor extends javax.swing.JDialog {
         jPanel1.add(btn_save1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 120, 30));
 
         btn_save.setBackground(new java.awt.Color(24, 98, 151));
-        btn_save.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_save.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
         btn_save.setForeground(new java.awt.Color(255, 255, 255));
         btn_save.setText("Lưu");
         btn_save.setBorder(null);
@@ -223,7 +223,7 @@ public class detailInfor extends javax.swing.JDialog {
         jPanel1.add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 500, 110, 50));
 
         btn_cancel.setBackground(new java.awt.Color(24, 98, 151));
-        btn_cancel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_cancel.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
         btn_cancel.setForeground(new java.awt.Color(255, 255, 255));
         btn_cancel.setText("Huỷ");
         btn_cancel.setBorder(null);
