@@ -237,12 +237,12 @@ public class LoginForm extends javax.swing.JFrame {
                 lb_status.setText("Sai tài khoản hoặc mật khẩu!");
             }
             else{
-                this.dispose();
                 MainForm f = new MainForm(acc);
                 f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
                 f.setLocationRelativeTo(null);
                 f.setResizable(false);
                 f.setVisible(true);
+                this.dispose();
             } 
 //            try{
 //                NhanSu accDAO = new NhanSu();

@@ -15,16 +15,16 @@ public class TableNhanSuModel {
     
     public TableNhanSuModel(NhanSuModel a) {
         this.maNS = a.getMaNS();
-        this.hoTen = a.getHoTen();
-        this.ngaySinh = a.getNgaySinh();
+        this.hoTen = a.getHoTen()==null?"":a.getHoTen();
+        this.ngaySinh = a.getNgaySinh()==null?"":a.getNgaySinh();
         this.gioiTinh = a.isGioiTinh()?"Nam":"Nữ";
-        this.queQuan = a.getQueQuan();
-        this.danToc = a.getDanToc();
-        this.soDienThoai = a.getSoDienThoai();
-        this.trinhDoHocVan = a.getTrinhDoHocVan();
-        this.ChuyenNganh = a.getChuyenNganh();
-        this.PhongBan = new PhongBan().TimTenPB(a.getMaPB());
-        this.ChucVu = new ChucVu().TimTenChucVu(a.getMaCV());
+        this.queQuan = a.getQueQuan()==null?"":a.getQueQuan();
+        this.danToc = a.getDanToc()==null?"":a.getDanToc();
+        this.soDienThoai = a.getSoDienThoai()==null?"":a.getSoDienThoai();
+        this.trinhDoHocVan = a.getTrinhDoHocVan()==null?"":a.getTrinhDoHocVan();
+        this.ChuyenNganh = a.getChuyenNganh()==null?"":a.getHoTen();
+        this.PhongBan = new PhongBan().TimTenPB(a.getMaPB())==null?"":new PhongBan().TimTenPB(a.getMaPB());
+        this.ChucVu = new ChucVu().TimTenChucVu(a.getMaCV())==null?"":new ChucVu().TimTenChucVu(a.getMaCV());
     }
 
     public String getMaNS() {

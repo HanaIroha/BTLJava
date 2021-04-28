@@ -202,7 +202,7 @@ public class chucvuPanel extends javax.swing.JPanel {
                 isFreeItemStateChanged(evt);
             }
         });
-        add(isFree, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 210, -1, -1));
+        add(isFree, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 210, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("UVN Van", 0, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));

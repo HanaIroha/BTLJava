@@ -344,8 +344,8 @@ public class hosoPanel extends javax.swing.JPanel {
         btn_delete = new javax.swing.JButton();
         btn_add = new javax.swing.JButton();
         txt_searchOption = new javax.swing.JComboBox<>();
-        txt_searchkey = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        txt_searchkey = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_ns = new javax.swing.JTable();
         background = new javax.swing.JLabel();
@@ -414,9 +414,10 @@ public class hosoPanel extends javax.swing.JPanel {
         txt_searchOption.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         txt_searchOption.setOpaque(false);
         add(txt_searchOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 180, 30));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 170, -1));
 
         txt_searchkey.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_searchkey.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
+        txt_searchkey.setFont(new java.awt.Font("UVN Van", 0, 16)); // NOI18N
         txt_searchkey.setForeground(new java.awt.Color(255, 255, 255));
         txt_searchkey.setText("Nhập từ khoá...");
         txt_searchkey.setBorder(null);
@@ -431,7 +432,6 @@ public class hosoPanel extends javax.swing.JPanel {
             }
         });
         add(txt_searchkey, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, 170, -1));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 170, -1));
 
         table_ns.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
         table_ns.setModel(new javax.swing.table.DefaultTableModel(
