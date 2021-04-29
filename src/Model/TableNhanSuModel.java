@@ -23,8 +23,10 @@ public class TableNhanSuModel {
         this.soDienThoai = a.getSoDienThoai()==null?"":a.getSoDienThoai();
         this.trinhDoHocVan = a.getTrinhDoHocVan()==null?"":a.getTrinhDoHocVan();
         this.ChuyenNganh = a.getChuyenNganh()==null?"":a.getHoTen();
-        this.PhongBan = new PhongBan().TimTenPB(a.getMaPB())==null?"":new PhongBan().TimTenPB(a.getMaPB());
-        this.ChucVu = new ChucVu().TimTenChucVu(a.getMaCV())==null?"":new ChucVu().TimTenChucVu(a.getMaCV());
+        String pb = new PhongBan().TimTenPB(a.getMaPB());
+        String cv = new ChucVu().TimTenChucVu(a.getMaCV());
+        this.PhongBan = pb==null?"":pb;
+        this.ChucVu = cv==null?"":cv;
     }
 
     public String getMaNS() {

@@ -40,6 +40,8 @@ public class chucvuPanel extends javax.swing.JPanel {
     }
 
     public void loadData(){
+        btn_save.setVisible(false);
+        btn_cancel.setVisible(false);
         ls = new ArrayList<>(new ChucVu().getChucVu());
         listNS = new ArrayList<>(new PhongBan().getListNS());
         for(ChucVuModel z: ls)
@@ -226,7 +228,6 @@ public class chucvuPanel extends javax.swing.JPanel {
         btn_save.setBorder(null);
         btn_save.setBorderPainted(false);
         btn_save.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_save.setEnabled(false);
         btn_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_saveActionPerformed(evt);
@@ -241,7 +242,6 @@ public class chucvuPanel extends javax.swing.JPanel {
         btn_cancel.setBorder(null);
         btn_cancel.setBorderPainted(false);
         btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_cancel.setEnabled(false);
         btn_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cancelActionPerformed(evt);
@@ -444,8 +444,8 @@ public class chucvuPanel extends javax.swing.JPanel {
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
         txt_chucvu.setEnabled(true);
         txt_chucvu.setSelectedIndex(0);
-        btn_save.setEnabled(false);
-        btn_cancel.setEnabled(false);
+        btn_save.setVisible(false);
+        btn_cancel.setVisible(false);
         btn_edit.setEnabled(true);
         btn_delete.setEnabled(true);
         btn_add.setEnabled(true);
@@ -470,8 +470,8 @@ public class chucvuPanel extends javax.swing.JPanel {
             reLoad();
             txt_chucvu.setEnabled(true);
             txt_chucvu.setSelectedIndex(0);
-            btn_save.setEnabled(false);
-            btn_cancel.setEnabled(false);
+            btn_save.setVisible(false);
+            btn_cancel.setVisible(false);
             btn_edit.setEnabled(true);
             btn_delete.setEnabled(true);
             btn_add.setEnabled(true);
@@ -498,8 +498,8 @@ public class chucvuPanel extends javax.swing.JPanel {
 
     private void getStartAdd(){
         txt_macv.setEnabled(true);
-        btn_save.setEnabled(true);
-        btn_cancel.setEnabled(true);
+        btn_save.setVisible(true);
+        btn_cancel.setVisible(true);
         btn_edit.setEnabled(false);
         btn_delete.setEnabled(false);
         btn_add.setEnabled(false);

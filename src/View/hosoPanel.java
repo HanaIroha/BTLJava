@@ -433,7 +433,7 @@ public class hosoPanel extends javax.swing.JPanel {
         });
         add(txt_searchkey, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, 170, -1));
 
-        table_ns.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        table_ns.setFont(new java.awt.Font("UVN Tin Tuc", 0, 14)); // NOI18N
         table_ns.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
