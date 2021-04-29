@@ -24,7 +24,7 @@
           <Color blue="cc" green="cc" red="ff" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="UVN Van" size="14" style="1"/>
+          <Font name="UVN Van" size="24" style="1"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
@@ -39,7 +39,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="610" y="50" width="230" height="30"/>
+          <AbsoluteConstraints x="610" y="50" width="290" height="50"/>
         </Constraint>
       </Constraints>
     </Component>

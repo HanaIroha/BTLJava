@@ -181,14 +181,14 @@ public class chucvuPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_chucvu.setBackground(new java.awt.Color(255, 204, 204));
-        txt_chucvu.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_chucvu.setFont(new java.awt.Font("UVN Van", 1, 24)); // NOI18N
         txt_chucvu.setOpaque(false);
         txt_chucvu.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 txt_chucvuItemStateChanged(evt);
             }
         });
-        add(txt_chucvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 50, 230, 30));
+        add(txt_chucvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 50, 290, 50));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 360, -1));
 
         txt_macv.setBackground(new java.awt.Color(255, 255, 255, 0));
