@@ -18,9 +18,6 @@ import Model.ComboItem;
 import Model.NhanSuModel;
 import Model.PhongBanModel;
 import java.awt.Image;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -28,15 +25,12 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  *
  * @author Iroha
  */
-public class detailInfor extends javax.swing.JDialog {
+public class detailInforNotEdit extends javax.swing.JDialog {
 
     hosoPanel previousPanel;
     NhanSuModel acc;
@@ -50,7 +44,7 @@ public class detailInfor extends javax.swing.JDialog {
     /**
      * Creates new form detailInfor
      */
-    public detailInfor(hosoPanel pF, String MaNS, java.awt.Frame parent, boolean modal) {
+    public detailInforNotEdit(String MaNS, java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         btn_gioitinh.add(gioitinh_nam);
@@ -62,25 +56,20 @@ public class detailInfor extends javax.swing.JDialog {
         this.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_chinhtri.setLineWrap(true);
         txt_doanthe.setLineWrap(true);
-        previousPanel = pF;
         prepare();
     }
     
     public void prepare(){
-        jDateChooser1.setDateFormatString("yyyy-MM-dd");
-        try {
+       try {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            java.util.Date date = formatter.parse(acc.getNgaySinh());
-            jDateChooser1.setDate(date);
-            
-            Date dateToday = new Date();
+            java.util.Date date = formatter.parse(acc.getNgaySinh());Date dateToday = new Date();
             LocalDate d1 = LocalDate.parse(acc.getNgayThamGia(), DateTimeFormatter.ISO_LOCAL_DATE);
             LocalDate d2 = LocalDate.parse((String)formatter.format(dateToday), DateTimeFormatter.ISO_LOCAL_DATE);
             Duration diff = Duration.between(d1.atStartOfDay(), d2.atStartOfDay());
             long diffDays = diff.toDays();
             txt_namcongtac.setText(String.valueOf(diffDays/365) + " năm (" + acc.getNgayThamGia() +")");
         } catch (ParseException ex) {
-            Logger.getLogger(detailInfor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(detailInforNotEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
         //add thong tin.
         txt_mans.setText(acc.getMaNS());
@@ -98,27 +87,15 @@ public class detailInfor extends javax.swing.JDialog {
             gioitinh_nu.setSelected(false);
         for(PhongBanModel s:pb)
         {
-            txt_phongban.addItem(new ComboItem(s.getTenPB(),s.getMaPB()));
-        }
-        int i = 0;
-        for(PhongBanModel s:pb)
-        {
             if(s.getMaPB().equals(acc.getMaPB()))
-                txt_phongban.setSelectedIndex(i);
-            i++;
+                txt_phongban.setText(s.getTenPB());
         }
-        for(ChucVuModel s:cv)
-            txt_chucvu.addItem(new ComboItem(s.getTenCV(),s.getMaCV()));
-        i=0;
         for(ChucVuModel s:cv)
         {
             if(s.getMaCV().equals(acc.getMaCV()))
-                txt_chucvu.setSelectedIndex(i);
-            i++;
+                txt_chucvu.setText(s.getTenCV());
         }
-        for(BacLuongModel s:bl)
-            txt_bacluong.addItem(s.getBacLuong());
-        txt_bacluong.setSelectedItem(acc.getBacLuong());
+        txt_bacluong.setText(String.valueOf(acc.getBacLuong()));
         try{
             ImageIcon imageIcon = new ImageIcon(new ImageIcon(acc.getAnh()).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
             lb_avt.setIcon(imageIcon);
@@ -140,8 +117,14 @@ public class detailInfor extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btn_save1 = new javax.swing.JButton();
-        btn_save = new javax.swing.JButton();
+        jSeparator12 = new javax.swing.JSeparator();
+        txt_bacluong = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        txt_ngaysinh = new javax.swing.JTextField();
+        jSeparator6 = new javax.swing.JSeparator();
+        txt_phongban = new javax.swing.JTextField();
+        jSeparator7 = new javax.swing.JSeparator();
+        txt_chucvu = new javax.swing.JTextField();
         btn_cancel = new javax.swing.JButton();
         lb_avt = new javax.swing.JLabel();
         txt_chuyennganh = new javax.swing.JTextField();
@@ -152,9 +135,6 @@ public class detailInfor extends javax.swing.JDialog {
         txt_quequan = new javax.swing.JTextField();
         txt_namcongtac = new javax.swing.JTextField();
         txt_hoten = new javax.swing.JTextField();
-        txt_phongban = new javax.swing.JComboBox<>();
-        txt_chucvu = new javax.swing.JComboBox<>();
-        txt_bacluong = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
@@ -166,7 +146,6 @@ public class detailInfor extends javax.swing.JDialog {
         gioitinh_nu = new javax.swing.JRadioButton();
         gioitinh_nam = new javax.swing.JRadioButton();
         jLabel15 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -193,39 +172,51 @@ public class detailInfor extends javax.swing.JDialog {
 
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 310, 190, -1));
 
-        btn_save1.setBackground(new java.awt.Color(24, 98, 151));
-        btn_save1.setFont(new java.awt.Font("UVN Van", 0, 12)); // NOI18N
-        btn_save1.setForeground(new java.awt.Color(255, 255, 255));
-        btn_save1.setText("Thay Avatar");
-        btn_save1.setBorder(null);
-        btn_save1.setBorderPainted(false);
-        btn_save1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_save1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_save1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn_save1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 120, 30));
+        txt_bacluong.setBackground(new java.awt.Color(255, 255, 255, 0));
+        txt_bacluong.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_bacluong.setForeground(new java.awt.Color(255, 255, 255));
+        txt_bacluong.setBorder(null);
+        txt_bacluong.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txt_bacluong.setEnabled(false);
+        txt_bacluong.setOpaque(false);
+        jPanel1.add(txt_bacluong, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, 190, -1));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 180, -1));
 
-        btn_save.setBackground(new java.awt.Color(24, 98, 151));
-        btn_save.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
-        btn_save.setForeground(new java.awt.Color(255, 255, 255));
-        btn_save.setText("Lưu");
-        btn_save.setBorder(null);
-        btn_save.setBorderPainted(false);
-        btn_save.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_saveActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 500, 110, 50));
+        txt_ngaysinh.setBackground(new java.awt.Color(255, 255, 255, 0));
+        txt_ngaysinh.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_ngaysinh.setForeground(new java.awt.Color(255, 255, 255));
+        txt_ngaysinh.setBorder(null);
+        txt_ngaysinh.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txt_ngaysinh.setEnabled(false);
+        txt_ngaysinh.setOpaque(false);
+        jPanel1.add(txt_ngaysinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 180, -1));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 160, 180, -1));
+
+        txt_phongban.setBackground(new java.awt.Color(255, 255, 255, 0));
+        txt_phongban.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_phongban.setForeground(new java.awt.Color(255, 255, 255));
+        txt_phongban.setBorder(null);
+        txt_phongban.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txt_phongban.setEnabled(false);
+        txt_phongban.setOpaque(false);
+        jPanel1.add(txt_phongban, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 180, -1));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 190, 200, -1));
+
+        txt_chucvu.setBackground(new java.awt.Color(255, 255, 255, 0));
+        txt_chucvu.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_chucvu.setForeground(new java.awt.Color(255, 255, 255));
+        txt_chucvu.setBorder(null);
+        txt_chucvu.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txt_chucvu.setEnabled(false);
+        txt_chucvu.setOpaque(false);
+        jPanel1.add(txt_chucvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, 200, -1));
 
         btn_cancel.setBackground(new java.awt.Color(24, 98, 151));
         btn_cancel.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
         btn_cancel.setForeground(new java.awt.Color(255, 255, 255));
-        btn_cancel.setText("Huỷ");
+        btn_cancel.setText("OK");
         btn_cancel.setBorder(null);
         btn_cancel.setBorderPainted(false);
         btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -234,7 +225,7 @@ public class detailInfor extends javax.swing.JDialog {
                 btn_cancelActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 500, 110, 50));
+        jPanel1.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 170, 50));
 
         lb_avt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(lb_avt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 180, 240));
@@ -244,6 +235,7 @@ public class detailInfor extends javax.swing.JDialog {
         txt_chuyennganh.setForeground(new java.awt.Color(255, 255, 255));
         txt_chuyennganh.setBorder(null);
         txt_chuyennganh.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txt_chuyennganh.setEnabled(false);
         txt_chuyennganh.setOpaque(false);
         jPanel1.add(txt_chuyennganh, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 230, 170, -1));
 
@@ -261,6 +253,7 @@ public class detailInfor extends javax.swing.JDialog {
         txt_dantoc.setForeground(new java.awt.Color(255, 255, 255));
         txt_dantoc.setBorder(null);
         txt_dantoc.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txt_dantoc.setEnabled(false);
         txt_dantoc.setOpaque(false);
         jPanel1.add(txt_dantoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 200, -1));
 
@@ -269,6 +262,7 @@ public class detailInfor extends javax.swing.JDialog {
         txt_sdt.setForeground(new java.awt.Color(255, 255, 255));
         txt_sdt.setBorder(null);
         txt_sdt.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txt_sdt.setEnabled(false);
         txt_sdt.setOpaque(false);
         jPanel1.add(txt_sdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 170, -1));
 
@@ -277,6 +271,7 @@ public class detailInfor extends javax.swing.JDialog {
         txt_trinhdo.setForeground(new java.awt.Color(255, 255, 255));
         txt_trinhdo.setBorder(null);
         txt_trinhdo.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txt_trinhdo.setEnabled(false);
         txt_trinhdo.setOpaque(false);
         jPanel1.add(txt_trinhdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, 200, -1));
 
@@ -285,6 +280,7 @@ public class detailInfor extends javax.swing.JDialog {
         txt_quequan.setForeground(new java.awt.Color(255, 255, 255));
         txt_quequan.setBorder(null);
         txt_quequan.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txt_quequan.setEnabled(false);
         txt_quequan.setOpaque(false);
         jPanel1.add(txt_quequan, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 180, -1));
 
@@ -302,23 +298,9 @@ public class detailInfor extends javax.swing.JDialog {
         txt_hoten.setForeground(new java.awt.Color(255, 255, 255));
         txt_hoten.setBorder(null);
         txt_hoten.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txt_hoten.setEnabled(false);
         txt_hoten.setOpaque(false);
         jPanel1.add(txt_hoten, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 200, -1));
-
-        txt_phongban.setBackground(new java.awt.Color(255, 204, 204));
-        txt_phongban.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
-        txt_phongban.setOpaque(false);
-        jPanel1.add(txt_phongban, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 180, -1));
-
-        txt_chucvu.setBackground(new java.awt.Color(255, 204, 204));
-        txt_chucvu.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
-        txt_chucvu.setOpaque(false);
-        jPanel1.add(txt_chucvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, 200, -1));
-
-        txt_bacluong.setBackground(new java.awt.Color(255, 204, 204));
-        txt_bacluong.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
-        txt_bacluong.setOpaque(false);
-        jPanel1.add(txt_bacluong, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, -1, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 200, -1));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 180, -1));
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 200, -1));
@@ -344,11 +326,6 @@ public class detailInfor extends javax.swing.JDialog {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Ngày Sinh:");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, -1, -1));
-
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255, 0));
-        jDateChooser1.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
-        jDateChooser1.setOpaque(false);
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 180, -1));
 
         jLabel16.setFont(new java.awt.Font("UVN Van", 0, 24)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -425,6 +402,7 @@ public class detailInfor extends javax.swing.JDialog {
         jLabel14.setText("Chính trị:");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, -1, -1));
 
+        txt_chinhtri.setEditable(false);
         txt_chinhtri.setColumns(20);
         txt_chinhtri.setRows(5);
         txt_chinhtri.setWrapStyleWord(true);
@@ -432,6 +410,7 @@ public class detailInfor extends javax.swing.JDialog {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 200, 120));
 
+        txt_doanthe.setEditable(false);
         txt_doanthe.setColumns(20);
         txt_doanthe.setRows(5);
         txt_doanthe.setWrapStyleWord(true);
@@ -450,72 +429,9 @@ public class detailInfor extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
-        try{
-                boolean isOK;
-                byte[] person_image;
-                if(imageChange){
-                    File image = new File(filename);
-                    FileInputStream fis = new FileInputStream(image);
-                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                    byte[] buf = new byte[1024];
-                    for(int readNum; (readNum=fis.read(buf))!=-1;){
-                        bos.write(buf,0,readNum);
-                }
-                person_image=bos.toByteArray();
-                }
-                else
-                {
-                    person_image=acc.getAnh();
-                }
-                isOK = new NhanSu().updateNS((Integer)txt_bacluong.getSelectedItem(),
-                        txt_mans.getText(),
-                        txt_hoten.getText(),
-                        ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText(),
-                        txt_quequan.getText(),
-                        txt_dantoc.getText(),
-                        txt_sdt.getText(),
-                        txt_trinhdo.getText(),
-                        txt_chuyennganh.getText(),
-                        ((ComboItem)txt_phongban.getSelectedItem()).getValue(),
-                        ((ComboItem)txt_chucvu.getSelectedItem()).getValue(),
-                        txt_chinhtri.getText(),
-                        txt_doanthe.getText(),
-                        gioitinh_nam.isSelected()?true:false,
-                        person_image);
-                if (isOK)
-                {
-                    JOptionPane.showMessageDialog(this,"Sửa thành công");
-                    this.dispose();
-                    previousPanel.LoadData();
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(this,"Sửa thất bại!");
-                }
-            }
-            catch(Exception e){
-                
-            }
-    }//GEN-LAST:event_btn_saveActionPerformed
-
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
         this.dispose();
     }//GEN-LAST:event_btn_cancelActionPerformed
-
-    private void btn_save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save1ActionPerformed
-        JFileChooser chooser = new JFileChooser();
-        chooser.showOpenDialog(this);
-        File f = chooser.getSelectedFile();
-        String filenamez = f.getAbsolutePath();
-        if(filenamez!=null)
-        {
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon(filenamez).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
-            lb_avt.setIcon(imageIcon);
-            imageChange = true;
-            filename = filenamez;
-        }
-    }//GEN-LAST:event_btn_save1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -534,20 +450,21 @@ public class detailInfor extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(detailInfor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detailInforNotEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(detailInfor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detailInforNotEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(detailInfor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detailInforNotEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(detailInfor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(detailInforNotEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                detailInfor dialog = new detailInfor(new hosoPanel(new java.awt.Frame()), null, new javax.swing.JFrame(), true);
+                detailInforNotEdit dialog = new detailInforNotEdit(null, new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -562,11 +479,8 @@ public class detailInfor extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JButton btn_cancel;
-    private javax.swing.JButton btn_save;
-    private javax.swing.JButton btn_save1;
     private javax.swing.JRadioButton gioitinh_nam;
     private javax.swing.JRadioButton gioitinh_nu;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -589,22 +503,27 @@ public class detailInfor extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel lb_avt;
-    private javax.swing.JComboBox<Integer> txt_bacluong;
+    private javax.swing.JTextField txt_bacluong;
     private javax.swing.JTextArea txt_chinhtri;
-    private javax.swing.JComboBox<ComboItem> txt_chucvu;
+    private javax.swing.JTextField txt_chucvu;
     private javax.swing.JTextField txt_chuyennganh;
     private javax.swing.JTextField txt_dantoc;
     private javax.swing.JTextArea txt_doanthe;
     private javax.swing.JTextField txt_hoten;
     private javax.swing.JTextField txt_mans;
     private javax.swing.JTextField txt_namcongtac;
-    private javax.swing.JComboBox<ComboItem> txt_phongban;
+    private javax.swing.JTextField txt_ngaysinh;
+    private javax.swing.JTextField txt_phongban;
     private javax.swing.JTextField txt_quequan;
     private javax.swing.JTextField txt_sdt;
     private javax.swing.JTextField txt_trinhdo;

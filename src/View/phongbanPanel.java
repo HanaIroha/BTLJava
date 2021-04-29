@@ -10,14 +10,19 @@ import DAO.implement.PhongBan;
 import Model.ComboItem;
 import Model.NhanSuPBCVModel;
 import Model.PhongBanModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.ListModel;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -28,14 +33,16 @@ public class phongbanPanel extends javax.swing.JPanel {
     /**
      * Creates new form phongbanModel
      */
+    java.awt.Frame bb;
     ArrayList<PhongBanModel> ls = new ArrayList<>();
     ArrayList<NhanSuPBCVModel> listNS = new ArrayList<>();
     ArrayList<String> listIn = new ArrayList<>();
     ArrayList<String> listOut = new ArrayList<>();
     DefaultListModel<ComboItem> ls1;
     DefaultListModel<ComboItem> ls2;
-    public phongbanPanel() {
+    public phongbanPanel(java.awt.Frame mainFrame) {
         initComponents();
+        bb=mainFrame;
         loadData();
     }
 
@@ -79,6 +86,44 @@ public class phongbanPanel extends javax.swing.JPanel {
                     jList1.setModel(ls1);
                     jList2.setModel(ls2);
                     txt_sl.setText(String.valueOf((Integer.valueOf(txt_sl.getText()))+1));
+                }
+            }
+        });
+        jList1.addMouseListener( new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                if ( SwingUtilities.isRightMouseButton(e) ) {      
+                   jList1.setSelectedIndex(jList1.locationToIndex(e.getPoint()));
+
+                    JPopupMenu menu = new JPopupMenu();
+                    JMenuItem seeDetail = new JMenuItem("Xem hồ sơ");
+                    seeDetail.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                        detailInforNotEdit z = new detailInforNotEdit(jList1.getSelectedValue().toString().split(" - ")[0],bb,true);
+                        z.setAlwaysOnTop(true);
+                        z.setVisible(true);
+                        }
+                    });
+                    menu.add(seeDetail);
+                    menu.show(jList1, e.getPoint().x, e.getPoint().y);            
+                }
+            }
+        });
+        jList2.addMouseListener( new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                if ( SwingUtilities.isRightMouseButton(e) ) {      
+                   jList2.setSelectedIndex(jList2.locationToIndex(e.getPoint()));
+
+                    JPopupMenu menu = new JPopupMenu();
+                    JMenuItem seeDetail = new JMenuItem("Xem hồ sơ");
+                    seeDetail.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                        detailInforNotEdit z = new detailInforNotEdit(jList2.getSelectedValue().toString().split(" - ")[0],bb,true);
+                        z.setAlwaysOnTop(true);
+                        z.setVisible(true);
+                        }
+                    });
+                    menu.add(seeDetail);
+                    menu.show(jList2, e.getPoint().x, e.getPoint().y);            
                 }
             }
         });

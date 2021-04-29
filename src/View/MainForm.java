@@ -490,7 +490,7 @@ public class MainForm extends javax.swing.JFrame {
             lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu2.png")));
             MainPanel.removeAll();
             MainPanel.setLayout(new BorderLayout());
-            MainPanel.add(new phongbanPanel());
+            MainPanel.add(new phongbanPanel(thisForm));
             MainPanel.revalidate();
             MainPanel.repaint();
         }
@@ -505,7 +505,7 @@ public class MainForm extends javax.swing.JFrame {
             lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu3.png")));
             MainPanel.removeAll();
             MainPanel.setLayout(new BorderLayout());
-            MainPanel.add(new chucvuPanel());
+            MainPanel.add(new chucvuPanel(thisForm));
             MainPanel.revalidate();
             MainPanel.repaint();
         }
