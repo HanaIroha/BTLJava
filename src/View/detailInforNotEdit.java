@@ -84,7 +84,7 @@ public class detailInforNotEdit extends javax.swing.JDialog {
         if(acc.isGioiTinh())
             gioitinh_nam.setSelected(true);
         else
-            gioitinh_nu.setSelected(false);
+            gioitinh_nu.setSelected(true);
         for(PhongBanModel s:pb)
         {
             if(s.getMaPB().equals(acc.getMaPB()))

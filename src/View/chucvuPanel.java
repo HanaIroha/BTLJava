@@ -546,7 +546,7 @@ public class chucvuPanel extends javax.swing.JPanel {
                 ComboItem item = new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS());
                 if(!listSoSanh.contains(new ComboItemX(item))){
                     if(isFree.isSelected()){
-                        if(z.getMaPB()==null||z.getMaPB().equals(choose))
+                        if(z.getMaCV()==null||z.getMaCV().equals(choose))
                             ls2.addElement(new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS()));
                     }
                     else{

@@ -110,30 +110,44 @@ public class detailInfor extends javax.swing.JDialog {
         if(acc.isGioiTinh())
             gioitinh_nam.setSelected(true);
         else
-            gioitinh_nu.setSelected(false);
+            gioitinh_nu.setSelected(true);
         for(PhongBanModel s:pb)
         {
             txt_phongban.addItem(new ComboItem(s.getTenPB(),s.getMaPB()));
         }
         int i = 0;
-        for(PhongBanModel s:pb)
-        {
-            if(s.getMaPB().equals(acc.getMaPB()))
-                txt_phongban.setSelectedIndex(i);
-            i++;
+        if(acc.getMaPB()==null){
+            txt_phongban.setSelectedIndex(-1);
+        }
+        else{
+            for(PhongBanModel s:pb)
+            {
+                if(s.getMaPB().equals(acc.getMaPB()))
+                    txt_phongban.setSelectedIndex(i);
+                i++;
+            }
         }
         for(ChucVuModel s:cv)
             txt_chucvu.addItem(new ComboItem(s.getTenCV(),s.getMaCV()));
         i=0;
-        for(ChucVuModel s:cv)
-        {
-            if(s.getMaCV().equals(acc.getMaCV()))
-                txt_chucvu.setSelectedIndex(i);
-            i++;
+        if(acc.getMaCV()==null){
+            txt_chucvu.setSelectedIndex(-1);
+        }
+        else{
+            for(ChucVuModel s:cv)
+            {
+                if(s.getMaCV().equals(acc.getMaCV()))
+                    txt_chucvu.setSelectedIndex(i);
+                i++;
+            }
         }
         for(BacLuongModel s:bl)
             txt_bacluong.addItem(s.getBacLuong());
-        txt_bacluong.setSelectedItem(acc.getBacLuong());
+        if(acc.getBacLuong()==0)
+            txt_bacluong.setSelectedIndex(-1);
+        else{
+            txt_bacluong.setSelectedItem(acc.getBacLuong());
+        }
         try{
             ImageIcon imageIcon = new ImageIcon(new ImageIcon(acc.getAnh()).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
             lb_avt.setIcon(imageIcon);
