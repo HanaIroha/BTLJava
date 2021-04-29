@@ -103,7 +103,36 @@ public class phongbanPanel extends javax.swing.JPanel {
                         z.setVisible(true);
                         }
                     });
+                    JMenuItem editDetail = new JMenuItem("Sửa hồ sơ");
+                    editDetail.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                        detailInfor z = new detailInfor(jList1.getSelectedValue().toString().split(" - ")[0],bb,true);
+                        z.setAlwaysOnTop(true);
+                        z.setVisible(true);
+                        }
+                    });
+                    JMenuItem outAll = new JMenuItem("Bỏ toàn bộ");
+                    outAll.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            int slAll = ls1.getSize();
+                            int dem = 0;
+                            for(int i=0;i<slAll;i++){
+                                String s = ((ComboItem)ls1.getElementAt(0)).getValue();
+                                listOut.add(s);
+                                    if(listIn.contains(s))
+                                        listIn.remove(s);
+                                ls2.addElement(ls1.getElementAt(0));
+                                ls1.removeElementAt(0);
+                                dem++;
+                            }
+                            jList1.setModel(ls1);
+                            jList2.setModel(ls2);
+                            txt_sl.setText(String.valueOf((Integer.valueOf(txt_sl.getText()))-dem));
+                        }
+                    });
                     menu.add(seeDetail);
+                    menu.add(editDetail);
+                    menu.add(outAll);
                     menu.show(jList1, e.getPoint().x, e.getPoint().y);            
                 }
             }
@@ -122,7 +151,36 @@ public class phongbanPanel extends javax.swing.JPanel {
                         z.setVisible(true);
                         }
                     });
+                    JMenuItem editDetail = new JMenuItem("Sửa hồ sơ");
+                    editDetail.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                        detailInfor z = new detailInfor(jList2.getSelectedValue().toString().split(" - ")[0],bb,true);
+                        z.setAlwaysOnTop(true);
+                        z.setVisible(true);
+                        }
+                    });
+                    JMenuItem inAll = new JMenuItem("Thêm toàn bộ");
+                    inAll.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            int slAll = ls2.getSize();
+                            int dem = 0;
+                            for(int i=0;i<slAll;i++){
+                                String s = ((ComboItem)ls2.getElementAt(0)).getValue();
+                                listIn.add(s);
+                                    if(listOut.contains(s))
+                                        listOut.remove(s);
+                                ls1.addElement(ls2.getElementAt(0));
+                                ls2.removeElementAt(0);
+                                dem++;
+                            }
+                            jList1.setModel(ls1);
+                            jList2.setModel(ls2);
+                            txt_sl.setText(String.valueOf((Integer.valueOf(txt_sl.getText()))+dem));
+                        }
+                    });
                     menu.add(seeDetail);
+                    menu.add(editDetail);
+                    menu.add(inAll);
                     menu.show(jList2, e.getPoint().x, e.getPoint().y);            
                 }
             }
@@ -467,14 +525,12 @@ public class phongbanPanel extends javax.swing.JPanel {
             for(NhanSuPBCVModel z:listNS){
                 ComboItem item = new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS());
                 if(!listSoSanh.contains(new ComboItemX(item))){
-                    if(z.getMaPB()==null||!z.getMaPB().equals(choose)){
-                        if(isFree.isSelected()){
-                            if(z.getMaPB()==null)
-                                ls2.addElement(new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS()));
-                        }
-                        else{
+                    if(isFree.isSelected()){
+                        if(z.getMaPB()==null||z.getMaPB().equals(choose))
                             ls2.addElement(new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS()));
-                        }
+                    }
+                    else{
+                        ls2.addElement(new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS()));
                     }
                 }
             }

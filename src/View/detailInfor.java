@@ -66,6 +66,21 @@ public class detailInfor extends javax.swing.JDialog {
         prepare();
     }
     
+    public detailInfor(String MaNS, java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        btn_gioitinh.add(gioitinh_nam);
+        btn_gioitinh.add(gioitinh_nu);
+        acc = new NhanSu().getNhanSu(MaNS);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255, 0));
+        this.setBackground(new java.awt.Color(255, 255, 255, 0));
+        txt_chinhtri.setLineWrap(true);
+        txt_doanthe.setLineWrap(true);
+        prepare();
+    }
+    
     public void prepare(){
         jDateChooser1.setDateFormatString("yyyy-MM-dd");
         try {
