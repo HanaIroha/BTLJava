@@ -13,6 +13,7 @@ import Model.ComboItem;
 import Model.NhanSuPBCVModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -115,9 +116,12 @@ public class chucvuPanel extends javax.swing.JPanel {
         jSeparator4 = new javax.swing.JSeparator();
         txt_sl = new javax.swing.JTextField();
         isFree = new javax.swing.JCheckBox();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txt_luongcoban = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
         btn_save = new javax.swing.JButton();
         btn_cancel = new javax.swing.JButton();
         btn_add = new javax.swing.JButton();
@@ -169,7 +173,7 @@ public class chucvuPanel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tên chức vụ:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, -1, -1));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 390, -1));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 390, -1));
 
         txt_phucap.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_phucap.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
@@ -177,13 +181,13 @@ public class chucvuPanel extends javax.swing.JPanel {
         txt_phucap.setBorder(null);
         txt_phucap.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_phucap.setOpaque(false);
-        add(txt_phucap, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 390, -1));
+        add(txt_phucap, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 390, -1));
 
         jLabel3.setFont(new java.awt.Font("UVN Van", 0, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Phụ cấp:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, -1));
-        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 320, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 300, -1));
 
         txt_sl.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_sl.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
@@ -192,7 +196,7 @@ public class chucvuPanel extends javax.swing.JPanel {
         txt_sl.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_sl.setEnabled(false);
         txt_sl.setOpaque(false);
-        add(txt_sl, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 320, -1));
+        add(txt_sl, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 300, -1));
 
         isFree.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
         isFree.setForeground(new java.awt.Color(255, 255, 255));
@@ -204,22 +208,36 @@ public class chucvuPanel extends javax.swing.JPanel {
                 isFreeItemStateChanged(evt);
             }
         });
-        add(isFree, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 210, -1, -1));
+        add(isFree, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 250, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("UVN Van", 0, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Danh sách tất cả nhân sự:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, -1, -1));
+        jLabel5.setFont(new java.awt.Font("UVN Van", 0, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Số người đảm nhiệm:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("UVN Van", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Những người đang đảm nhiệm:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("UVN Van", 0, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Số lượng nhân sự:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
+        jLabel6.setFont(new java.awt.Font("UVN Van", 0, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Danh sách tất cả nhân sự:");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, -1, -1));
+
+        txt_luongcoban.setBackground(new java.awt.Color(255, 255, 255, 0));
+        txt_luongcoban.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
+        txt_luongcoban.setForeground(new java.awt.Color(255, 255, 255));
+        txt_luongcoban.setBorder(null);
+        txt_luongcoban.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txt_luongcoban.setOpaque(false);
+        add(txt_luongcoban, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 310, -1));
+
+        jLabel7.setFont(new java.awt.Font("UVN Van", 0, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Mức lương cơ bản:");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, -1));
+        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 310, -1));
 
         btn_save.setBackground(new java.awt.Color(24, 98, 151));
         btn_save.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
@@ -294,12 +312,12 @@ public class chucvuPanel extends javax.swing.JPanel {
         jList2.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
         jScrollPane2.setViewportView(jList2);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 350, 350));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 350, 310));
 
         jList1.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
         jScrollPane1.setViewportView(jList1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 350, 350));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 350, 310));
 
         background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/panelDefault.png"))); // NOI18N
@@ -335,7 +353,8 @@ public class chucvuPanel extends javax.swing.JPanel {
                 if(choose.equals(z.getMaCV())){
                     txt_macv.setText(z.getMaCV());
                     txt_tencv.setText(z.getTenCV());
-                    txt_phucap.setText(String.valueOf(z.getPhuCap()));
+                    txt_phucap.setText(String.valueOf(String.valueOf(new DecimalFormat("#0.00").format(z.getPhuCap()))));
+                    txt_luongcoban.setText(String.valueOf(new DecimalFormat("#0.00").format(z.getLuongCoBan())));
                     txt_sl.setText(String.valueOf(dem));
                }
         }
@@ -347,7 +366,8 @@ public class chucvuPanel extends javax.swing.JPanel {
             String maCV = txt_macv.getText();
             String tenCV = txt_tencv.getText();
             Double phuCap = Double.valueOf(txt_phucap.getText());
-            new ChucVu().suaCV(maCV, tenCV, phuCap);
+            Double luongCoBan = Double.valueOf(txt_luongcoban.getText());
+            new ChucVu().suaCV(maCV, tenCV, phuCap, luongCoBan);
             NhanSu nhansuDAO = new NhanSu();
             String mapb = ((ComboItem)txt_chucvu.getSelectedItem()).getValue();
             for(String z : listIn)
@@ -457,7 +477,8 @@ public class chucvuPanel extends javax.swing.JPanel {
             String maCV = txt_macv.getText();
             String tenCV = txt_tencv.getText();
             Double phuCap = Double.valueOf(txt_phucap.getText());
-            new ChucVu().themCV(maCV, tenCV, phuCap);
+            Double luongCoBan = Double.valueOf(txt_luongcoban.getText());
+            new ChucVu().themCV(maCV, tenCV, phuCap, luongCoBan);
             NhanSu a = new NhanSu();
             for(String z : listIn)
                 a.updateChucVu(z, maCV);
@@ -508,6 +529,7 @@ public class chucvuPanel extends javax.swing.JPanel {
         txt_macv.setText("");
         txt_tencv.setText("");
         txt_phucap.setText("");
+        txt_luongcoban.setText("");
         txt_sl.setText("0");
         ls1 = new DefaultListModel<ComboItem>();
         jList1.setModel(ls1);
@@ -538,6 +560,7 @@ public class chucvuPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JList<ComboItem> jList1;
     private javax.swing.JList<ComboItem> jList2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -546,7 +569,9 @@ public class chucvuPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JComboBox<ComboItem> txt_chucvu;
+    private javax.swing.JTextField txt_luongcoban;
     private javax.swing.JTextField txt_macv;
     private javax.swing.JTextField txt_phucap;
     private javax.swing.JTextField txt_sl;

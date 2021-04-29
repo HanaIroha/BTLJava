@@ -17,6 +17,7 @@ public class ChucVuMapper implements IMapper<ChucVuModel>{
             cv.setMaCV(rs.getString("MaCV"));
             cv.setTenCV(rs.getString("TenCV"));
             cv.setPhuCap(rs.getDouble("PhuCap"));
+            cv.setLuongCoBan(rs.getDouble("LuongCoBan"));
             return cv;
         } catch (SQLException ex) {
             return null;

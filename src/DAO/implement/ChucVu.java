@@ -31,15 +31,15 @@ public class ChucVu extends DataSource<ChucVuModel> implements IChucVu{
     }
 
     @Override
-    public boolean suaCV(String maCV, String tenCV, double phuCap) {
-        String sql = "Update dbo.ChucVu SET TenCV = ?, PhuCap=? WHERE MaCV=?";
-        return update(sql, tenCV, phuCap, maCV);
+    public boolean suaCV(String maCV, String tenCV, double phuCap, double LuongCoBan) {
+        String sql = "Update dbo.ChucVu SET TenCV = ?, PhuCap=?, LuongCoBan =? WHERE MaCV=?";
+        return update(sql, tenCV, phuCap, LuongCoBan, maCV);
     }
 
     @Override
-    public boolean themCV(String maCV, String tenCV, double phuCap) {
-        String sql = "Insert into dbo.ChucVu VALUES (?,?,?)";
-        return update(sql, maCV, tenCV, phuCap);
+    public boolean themCV(String maCV, String tenCV, double phuCap, double LuongCoBan) {
+        String sql = "Insert into dbo.ChucVu VALUES (?,?,?,?)";
+        return update(sql, maCV, tenCV, phuCap, LuongCoBan);
     }
     
 }

@@ -183,7 +183,7 @@ public class phongbanPanel extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Số điện thoại:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, -1));
-        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 310, -1));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 320, -1));
 
         txt_sl.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_sl.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
@@ -192,7 +192,7 @@ public class phongbanPanel extends javax.swing.JPanel {
         txt_sl.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_sl.setEnabled(false);
         txt_sl.setOpaque(false);
-        add(txt_sl, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 310, -1));
+        add(txt_sl, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 320, -1));
 
         isFree.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
         isFree.setForeground(new java.awt.Color(255, 255, 255));
@@ -218,7 +218,7 @@ public class phongbanPanel extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("UVN Van", 0, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Số người đảm nhiệm:");
+        jLabel5.setText("Số lượng nhân sự:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
 
         btn_save.setBackground(new java.awt.Color(24, 98, 151));
