@@ -517,10 +517,11 @@ public class MainForm extends javax.swing.JFrame {
             indexTab=4;
             resetTab();
             lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu4.png")));
-//            MainPanel.removeAll();
-//            MainPanel.setLayout(new BorderLayout());
-//            MainPanel.add(new hosoPanel(thisForm));
-//            MainPanel.revalidate();
+            MainPanel.removeAll();
+            MainPanel.setLayout(new BorderLayout());
+            MainPanel.add(new luongPanel(thisForm));
+            MainPanel.revalidate();
+            MainPanel.repaint();
         }
     }//GEN-LAST:event_btn_luongActionPerformed
 

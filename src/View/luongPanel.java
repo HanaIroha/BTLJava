@@ -14,8 +14,10 @@ public class luongPanel extends javax.swing.JPanel {
     /**
      * Creates new form luongPanel
      */
-    public luongPanel() {
+    java.awt.Frame bb;
+    public luongPanel(java.awt.Frame mainFrame) {
         initComponents();
+        bb=mainFrame;
     }
 
     /**
@@ -27,17 +29,69 @@ public class luongPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn_Search2 = new javax.swing.JButton();
+        btn_Search1 = new javax.swing.JButton();
+        btn_Search = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         background = new javax.swing.JLabel();
 
-        setLayout(new java.awt.BorderLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_Search2.setBackground(new java.awt.Color(24, 98, 151));
+        btn_Search2.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
+        btn_Search2.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Search2.setText("Xuất Excel");
+        btn_Search2.setBorder(null);
+        btn_Search2.setBorderPainted(false);
+        btn_Search2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        add(btn_Search2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 30, 140, 50));
+
+        btn_Search1.setBackground(new java.awt.Color(24, 98, 151));
+        btn_Search1.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
+        btn_Search1.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Search1.setText("Tính lương");
+        btn_Search1.setBorder(null);
+        btn_Search1.setBorderPainted(false);
+        btn_Search1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        add(btn_Search1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 30, 140, 50));
+
+        btn_Search.setBackground(new java.awt.Color(24, 98, 151));
+        btn_Search.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
+        btn_Search.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Search.setText("Chỉnh sửa tính lương");
+        btn_Search.setBorder(null);
+        btn_Search.setBorderPainted(false);
+        btn_Search.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        add(btn_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 100, 310, 50));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 850, 600));
 
         background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/panelDefault.png"))); // NOI18N
-        add(background, java.awt.BorderLayout.CENTER);
+        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1250, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JButton btn_Search;
+    private javax.swing.JButton btn_Search1;
+    private javax.swing.JButton btn_Search2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
