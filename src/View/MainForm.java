@@ -130,7 +130,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGap(0, 20, Short.MAX_VALUE)
         );
 
-        getContentPane().add(movePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1180, 20));
+        getContentPane().add(movePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 20));
 
         infoPanel.setBackground(new java.awt.Color(178, 234, 227));
 
@@ -153,7 +153,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(infoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 70, 250, 40));
+        getContentPane().add(infoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 60, 250, 40));
 
         btn_minimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/minimizeIco.png"))); // NOI18N
         btn_minimize.setBorder(null);
@@ -172,7 +172,7 @@ public class MainForm extends javax.swing.JFrame {
                 btn_minimizeActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 20, -1, -1));
+        getContentPane().add(btn_minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 10, -1, -1));
 
         btn_exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/exitIco.png"))); // NOI18N
         btn_exit.setBorder(null);
@@ -191,7 +191,7 @@ public class MainForm extends javax.swing.JFrame {
                 btn_exitActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 20, -1, -1));
+        getContentPane().add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 10, -1, -1));
 
         btn_taikhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/btn_user1.png"))); // NOI18N
         btn_taikhoan.setBorder(null);
@@ -216,7 +216,7 @@ public class MainForm extends javax.swing.JFrame {
                 btn_taikhoanActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_taikhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 30, -1, -1));
+        getContentPane().add(btn_taikhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, -1, -1));
 
         btn_luong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/btn_luong1.png"))); // NOI18N
         btn_luong.setBorder(null);
@@ -241,7 +241,7 @@ public class MainForm extends javax.swing.JFrame {
                 btn_luongActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_luong, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, -1, -1));
+        getContentPane().add(btn_luong, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, -1, -1));
 
         btn_lscongtac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/btn_lscongtac1.png"))); // NOI18N
         btn_lscongtac.setBorder(null);
@@ -266,7 +266,7 @@ public class MainForm extends javax.swing.JFrame {
                 btn_lscongtacActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_lscongtac, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
+        getContentPane().add(btn_lscongtac, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
 
         btn_hoso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/btn_hoso1.png"))); // NOI18N
         btn_hoso.setBorder(null);
@@ -291,7 +291,7 @@ public class MainForm extends javax.swing.JFrame {
                 btn_hosoActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_hoso, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
+        getContentPane().add(btn_hoso, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
         btn_phongban.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/btn_phongban1.png"))); // NOI18N
         btn_phongban.setBorder(null);
@@ -316,11 +316,11 @@ public class MainForm extends javax.swing.JFrame {
                 btn_phongbanActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_phongban, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
+        getContentPane().add(btn_phongban, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
 
         lb_menu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu.png"))); // NOI18N
-        getContentPane().add(lb_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1250, 130));
+        getContentPane().add(lb_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 130));
 
         MainPanel.setMinimumSize(new java.awt.Dimension(1250, 650));
         MainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -339,7 +339,7 @@ public class MainForm extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
         MainPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, -1));
 
-        getContentPane().add(MainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 1250, 650));
+        getContentPane().add(MainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1250, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

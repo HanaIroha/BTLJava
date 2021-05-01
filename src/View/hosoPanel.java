@@ -97,19 +97,7 @@ public class hosoPanel extends javax.swing.JPanel {
             TableNhanSuModel a =  new TableNhanSuModel(list.get(i));
             dsHoSo.add(a);
         }
-        table_ns.setModel(new HoSoTableModel(dsHoSo));
-        table_ns.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        table_ns.getColumnModel().getColumn(0).setPreferredWidth(60);
-        table_ns.getColumnModel().getColumn(1).setPreferredWidth(130);
-        table_ns.getColumnModel().getColumn(2).setPreferredWidth(100);
-        table_ns.getColumnModel().getColumn(3).setPreferredWidth(80);
-        table_ns.getColumnModel().getColumn(4).setPreferredWidth(110);
-        table_ns.getColumnModel().getColumn(5).setPreferredWidth(130);
-        table_ns.getColumnModel().getColumn(6).setPreferredWidth(90);
-        table_ns.getColumnModel().getColumn(7).setPreferredWidth(110);
-        table_ns.getColumnModel().getColumn(8).setPreferredWidth(138);
-        table_ns.getColumnModel().getColumn(9).setPreferredWidth(130);
-        table_ns.getColumnModel().getColumn(10).setPreferredWidth(130);
+        reloadPanel();
     }
     
     public void reloadPanel(){
@@ -320,19 +308,7 @@ public class hosoPanel extends javax.swing.JPanel {
             }
             isort[index]=true;
         }
-        table_ns.setModel(new HoSoTableModel(dsHoSo));
-        table_ns.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        table_ns.getColumnModel().getColumn(0).setPreferredWidth(60);
-        table_ns.getColumnModel().getColumn(1).setPreferredWidth(130);
-        table_ns.getColumnModel().getColumn(2).setPreferredWidth(100);
-        table_ns.getColumnModel().getColumn(3).setPreferredWidth(80);
-        table_ns.getColumnModel().getColumn(4).setPreferredWidth(110);
-        table_ns.getColumnModel().getColumn(5).setPreferredWidth(130);
-        table_ns.getColumnModel().getColumn(6).setPreferredWidth(90);
-        table_ns.getColumnModel().getColumn(7).setPreferredWidth(110);
-        table_ns.getColumnModel().getColumn(8).setPreferredWidth(138);
-        table_ns.getColumnModel().getColumn(9).setPreferredWidth(130);
-        table_ns.getColumnModel().getColumn(10).setPreferredWidth(130);
+        reloadPanel();
         table_ns.revalidate();
     }
     @SuppressWarnings("unchecked")
@@ -454,7 +430,7 @@ public class hosoPanel extends javax.swing.JPanel {
         table_ns.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(table_ns);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 97, 1230, 540));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 1230, 540));
 
         background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/panelDefault.png"))); // NOI18N
@@ -474,15 +450,15 @@ public class hosoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_reloadActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
-        if(JOptionPane.showConfirmDialog (null, "Hành động này sẽ xoá vĩnh viễn hồ sơ","Bạn chắc chứ?",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
-            int[] index = table_ns.getSelectedRows();
+        int[] index = table_ns.getSelectedRows();
+        if(JOptionPane.showConfirmDialog (null, "Hành động này sẽ xoá vĩnh viễn " + index.length + " hồ sơ","Bạn chắc chứ?",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
             int count=0;
             for(int a:index)
             {
                 if (new NhanSu().deleteNS((String) table_ns.getValueAt(a, 0)))
                     count++;
             }
-            JOptionPane.showMessageDialog(this,"Đã xoá "+count+" hồ sơ!");
+            JOptionPane.showMessageDialog(this,"Đã xoá thành công "+count+" hồ sơ!");
             LoadData();
         }
     }//GEN-LAST:event_btn_deleteActionPerformed

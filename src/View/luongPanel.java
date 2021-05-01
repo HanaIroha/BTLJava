@@ -45,7 +45,7 @@ public class luongPanel extends javax.swing.JPanel {
         btn_Search2.setBorder(null);
         btn_Search2.setBorderPainted(false);
         btn_Search2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btn_Search2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 30, 140, 50));
+        add(btn_Search2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 20, 140, 50));
 
         btn_Search1.setBackground(new java.awt.Color(24, 98, 151));
         btn_Search1.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
@@ -54,7 +54,7 @@ public class luongPanel extends javax.swing.JPanel {
         btn_Search1.setBorder(null);
         btn_Search1.setBorderPainted(false);
         btn_Search1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btn_Search1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 30, 140, 50));
+        add(btn_Search1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, 140, 50));
 
         btn_Search.setBackground(new java.awt.Color(24, 98, 151));
         btn_Search.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
@@ -63,7 +63,7 @@ public class luongPanel extends javax.swing.JPanel {
         btn_Search.setBorder(null);
         btn_Search.setBorderPainted(false);
         btn_Search.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btn_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 100, 310, 50));
+        add(btn_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 90, 310, 50));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -78,11 +78,11 @@ public class luongPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 850, 600));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 850, 600));
 
         background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/panelDefault.png"))); // NOI18N
-        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1250, -1));
+        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 650));
     }// </editor-fold>//GEN-END:initComponents
 
 
