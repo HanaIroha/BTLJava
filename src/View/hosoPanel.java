@@ -46,7 +46,7 @@ public class hosoPanel extends javax.swing.JPanel {
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);
             setOpaque(false);
-            setFont(new Font("UVN Van", Font.PLAIN, 16));
+            setFont(new Font("Times New Roman", Font.BOLD, 16));
             setForeground(new Color(255,255,255));
             setPreferredSize(new Dimension(1230, 35));
             return this;
@@ -331,7 +331,7 @@ public class hosoPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_Search.setBackground(new java.awt.Color(24, 98, 151));
-        btn_Search.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
+        btn_Search.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btn_Search.setForeground(new java.awt.Color(255, 255, 255));
         btn_Search.setText("Tìm kiếm");
         btn_Search.setBorder(null);
@@ -345,7 +345,7 @@ public class hosoPanel extends javax.swing.JPanel {
         add(btn_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, 100, 50));
 
         reload.setBackground(new java.awt.Color(24, 98, 151));
-        reload.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
+        reload.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         reload.setForeground(new java.awt.Color(255, 255, 255));
         reload.setText("Tải lại");
         reload.setBorder(null);
@@ -359,7 +359,7 @@ public class hosoPanel extends javax.swing.JPanel {
         add(reload, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 100, 50));
 
         btn_delete.setBackground(new java.awt.Color(24, 98, 151));
-        btn_delete.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
+        btn_delete.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btn_delete.setForeground(new java.awt.Color(255, 255, 255));
         btn_delete.setText("Xóa");
         btn_delete.setBorder(null);
@@ -373,7 +373,7 @@ public class hosoPanel extends javax.swing.JPanel {
         add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 20, 100, 50));
 
         btn_add.setBackground(new java.awt.Color(24, 98, 151));
-        btn_add.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
+        btn_add.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btn_add.setForeground(new java.awt.Color(255, 255, 255));
         btn_add.setText("Thêm");
         btn_add.setBorder(null);
@@ -387,13 +387,13 @@ public class hosoPanel extends javax.swing.JPanel {
         add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 20, 100, 50));
 
         txt_searchOption.setBackground(new java.awt.Color(255, 204, 204));
-        txt_searchOption.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_searchOption.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txt_searchOption.setOpaque(false);
         add(txt_searchOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 180, 30));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 170, -1));
 
         txt_searchkey.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_searchkey.setFont(new java.awt.Font("UVN Van", 0, 16)); // NOI18N
+        txt_searchkey.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         txt_searchkey.setForeground(new java.awt.Color(255, 255, 255));
         txt_searchkey.setText("Nhập từ khoá...");
         txt_searchkey.setBorder(null);
@@ -409,7 +409,7 @@ public class hosoPanel extends javax.swing.JPanel {
         });
         add(txt_searchkey, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, 170, -1));
 
-        table_ns.setFont(new java.awt.Font("UVN Tin Tuc", 0, 14)); // NOI18N
+        table_ns.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         table_ns.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

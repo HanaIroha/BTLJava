@@ -103,14 +103,14 @@ public class phongbanPanel extends javax.swing.JPanel {
                         z.setVisible(true);
                         }
                     });
-                    JMenuItem editDetail = new JMenuItem("Sửa hồ sơ");
-                    editDetail.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                        detailInfor z = new detailInfor(jList1.getSelectedValue().toString().split(" - ")[0],bb,true);
-                        z.setAlwaysOnTop(true);
-                        z.setVisible(true);
-                        }
-                    });
+//                    JMenuItem editDetail = new JMenuItem("Sửa hồ sơ");
+//                    editDetail.addActionListener(new ActionListener() {
+//                        public void actionPerformed(ActionEvent e) {
+//                        detailInfor z = new detailInfor(jList1.getSelectedValue().toString().split(" - ")[0],bb,true);
+//                        z.setAlwaysOnTop(true);
+//                        z.setVisible(true);
+//                        }
+//                    });
                     JMenuItem outAll = new JMenuItem("Bỏ toàn bộ");
                     outAll.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
@@ -131,7 +131,7 @@ public class phongbanPanel extends javax.swing.JPanel {
                         }
                     });
                     menu.add(seeDetail);
-                    menu.add(editDetail);
+//                    menu.add(editDetail);
                     menu.add(outAll);
                     menu.show(jList1, e.getPoint().x, e.getPoint().y);            
                 }
@@ -151,14 +151,14 @@ public class phongbanPanel extends javax.swing.JPanel {
                         z.setVisible(true);
                         }
                     });
-                    JMenuItem editDetail = new JMenuItem("Sửa hồ sơ");
-                    editDetail.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                        detailInfor z = new detailInfor(jList2.getSelectedValue().toString().split(" - ")[0],bb,true);
-                        z.setAlwaysOnTop(true);
-                        z.setVisible(true);
-                        }
-                    });
+//                    JMenuItem editDetail = new JMenuItem("Sửa hồ sơ");
+//                    editDetail.addActionListener(new ActionListener() {
+//                        public void actionPerformed(ActionEvent e) {
+//                        detailInfor z = new detailInfor(jList2.getSelectedValue().toString().split(" - ")[0],bb,true);
+//                        z.setAlwaysOnTop(true);
+//                        z.setVisible(true);
+//                        }
+//                    });
                     JMenuItem inAll = new JMenuItem("Thêm toàn bộ");
                     inAll.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
@@ -179,7 +179,7 @@ public class phongbanPanel extends javax.swing.JPanel {
                         }
                     });
                     menu.add(seeDetail);
-                    menu.add(editDetail);
+//                    menu.add(editDetail);
                     menu.add(inAll);
                     menu.show(jList2, e.getPoint().x, e.getPoint().y);            
                 }
@@ -235,7 +235,7 @@ public class phongbanPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_phongban.setBackground(new java.awt.Color(255, 204, 204));
-        txt_phongban.setFont(new java.awt.Font("UVN Van", 1, 24)); // NOI18N
+        txt_phongban.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         txt_phongban.setOpaque(false);
         txt_phongban.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -243,61 +243,61 @@ public class phongbanPanel extends javax.swing.JPanel {
             }
         });
         add(txt_phongban, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 50, 290, 50));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 340, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 330, -1));
 
         txt_mapb.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_mapb.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
+        txt_mapb.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         txt_mapb.setForeground(new java.awt.Color(255, 255, 255));
         txt_mapb.setBorder(null);
         txt_mapb.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_mapb.setEnabled(false);
         txt_mapb.setOpaque(false);
-        add(txt_mapb, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 340, -1));
+        add(txt_mapb, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 330, -1));
 
-        jLabel1.setFont(new java.awt.Font("UVN Van", 0, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Mã phòng ban:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, -1, -1));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 340, -1));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 320, -1));
 
         txt_tenpb.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_tenpb.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
+        txt_tenpb.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         txt_tenpb.setForeground(new java.awt.Color(255, 255, 255));
         txt_tenpb.setBorder(null);
         txt_tenpb.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_tenpb.setOpaque(false);
-        add(txt_tenpb, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 340, -1));
+        add(txt_tenpb, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 320, -1));
 
-        jLabel2.setFont(new java.awt.Font("UVN Van", 0, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tên phòng ban:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, -1, -1));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 350, -1));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 340, -1));
 
         txt_sdt.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_sdt.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
+        txt_sdt.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         txt_sdt.setForeground(new java.awt.Color(255, 255, 255));
         txt_sdt.setBorder(null);
         txt_sdt.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_sdt.setOpaque(false);
-        add(txt_sdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 350, -1));
+        add(txt_sdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 340, -1));
 
-        jLabel3.setFont(new java.awt.Font("UVN Van", 0, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Số điện thoại:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, -1));
-        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 320, -1));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 300, -1));
 
         txt_sl.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_sl.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
+        txt_sl.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         txt_sl.setForeground(new java.awt.Color(255, 255, 255));
         txt_sl.setBorder(null);
         txt_sl.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_sl.setEnabled(false);
         txt_sl.setOpaque(false);
-        add(txt_sl, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 320, -1));
+        add(txt_sl, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 300, -1));
 
-        isFree.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
+        isFree.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         isFree.setForeground(new java.awt.Color(255, 255, 255));
         isFree.setText("Chưa chỉ định");
         isFree.setBorder(null);
@@ -307,25 +307,25 @@ public class phongbanPanel extends javax.swing.JPanel {
                 isFreeItemStateChanged(evt);
             }
         });
-        add(isFree, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 210, -1, -1));
+        add(isFree, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 210, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("UVN Van", 0, 16)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Danh sách tất cả nhân sự:");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("UVN Van", 0, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Danh sách nhân sự của phòng:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("UVN Van", 0, 16)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Số lượng nhân sự:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
 
         btn_save.setBackground(new java.awt.Color(24, 98, 151));
-        btn_save.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
+        btn_save.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btn_save.setForeground(new java.awt.Color(255, 255, 255));
         btn_save.setText("Lưu");
         btn_save.setBorder(null);
@@ -339,7 +339,7 @@ public class phongbanPanel extends javax.swing.JPanel {
         add(btn_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 40, 100, 50));
 
         btn_cancel.setBackground(new java.awt.Color(24, 98, 151));
-        btn_cancel.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
+        btn_cancel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btn_cancel.setForeground(new java.awt.Color(255, 255, 255));
         btn_cancel.setText("Huỷ");
         btn_cancel.setBorder(null);
@@ -353,7 +353,7 @@ public class phongbanPanel extends javax.swing.JPanel {
         add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 110, 100, 50));
 
         btn_add.setBackground(new java.awt.Color(24, 98, 151));
-        btn_add.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
+        btn_add.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btn_add.setForeground(new java.awt.Color(255, 255, 255));
         btn_add.setText("Thêm");
         btn_add.setBorder(null);
@@ -367,7 +367,7 @@ public class phongbanPanel extends javax.swing.JPanel {
         add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 40, 100, 50));
 
         btn_edit.setBackground(new java.awt.Color(24, 98, 151));
-        btn_edit.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
+        btn_edit.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btn_edit.setForeground(new java.awt.Color(255, 255, 255));
         btn_edit.setText("Sửa");
         btn_edit.setBorder(null);
@@ -381,7 +381,7 @@ public class phongbanPanel extends javax.swing.JPanel {
         add(btn_edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 110, 100, 50));
 
         btn_delete.setBackground(new java.awt.Color(24, 98, 151));
-        btn_delete.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
+        btn_delete.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btn_delete.setForeground(new java.awt.Color(255, 255, 255));
         btn_delete.setText("Xoá");
         btn_delete.setBorder(null);
@@ -394,12 +394,12 @@ public class phongbanPanel extends javax.swing.JPanel {
         });
         add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 180, 100, 50));
 
-        jList2.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
+        jList2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jScrollPane2.setViewportView(jList2);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 350, 350));
 
-        jList1.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
+        jList1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jScrollPane1.setViewportView(jList1);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 350, 350));

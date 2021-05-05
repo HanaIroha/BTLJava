@@ -60,17 +60,16 @@ public class detailInforNotEdit extends javax.swing.JDialog {
     }
     
     public void prepare(){
-       try {
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            java.util.Date date = formatter.parse(acc.getNgaySinh());Date dateToday = new Date();
-            LocalDate d1 = LocalDate.parse(acc.getNgayThamGia(), DateTimeFormatter.ISO_LOCAL_DATE);
-            LocalDate d2 = LocalDate.parse((String)formatter.format(dateToday), DateTimeFormatter.ISO_LOCAL_DATE);
-            Duration diff = Duration.between(d1.atStartOfDay(), d2.atStartOfDay());
-            long diffDays = diff.toDays();
-            txt_namcongtac.setText(String.valueOf(diffDays/365) + " năm (" + acc.getNgayThamGia() +")");
-        } catch (ParseException ex) {
-            Logger.getLogger(detailInforNotEdit.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        txt_ngaysinh.setText(acc.getNgaySinh());
+        Date dateToday = new Date();
+        LocalDate d1 = LocalDate.parse(acc.getNgayThamGia(), DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDate d2 = LocalDate.parse((String)formatter.format(dateToday), DateTimeFormatter.ISO_LOCAL_DATE);
+        Duration diff = Duration.between(d1.atStartOfDay(), d2.atStartOfDay());
+        long diffDays = diff.toDays();
+        txt_namcongtac.setText(String.valueOf(diffDays/365) + " năm (" + acc.getNgayThamGia() +")");
+        
+        
         //add thong tin.
         txt_mans.setText(acc.getMaNS());
         txt_chinhtri.setText(acc.getChinhTri());
@@ -172,49 +171,49 @@ public class detailInforNotEdit extends javax.swing.JDialog {
 
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 310, 190, -1));
+        jPanel1.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 310, 240, -1));
 
         txt_bacluong.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_bacluong.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_bacluong.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         txt_bacluong.setForeground(new java.awt.Color(255, 255, 255));
         txt_bacluong.setBorder(null);
         txt_bacluong.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_bacluong.setEnabled(false);
         txt_bacluong.setOpaque(false);
-        jPanel1.add(txt_bacluong, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, 190, -1));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 180, -1));
+        jPanel1.add(txt_bacluong, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, 240, -1));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 230, -1));
 
         txt_ngaysinh.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_ngaysinh.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_ngaysinh.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         txt_ngaysinh.setForeground(new java.awt.Color(255, 255, 255));
         txt_ngaysinh.setBorder(null);
         txt_ngaysinh.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_ngaysinh.setEnabled(false);
         txt_ngaysinh.setOpaque(false);
-        jPanel1.add(txt_ngaysinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 180, -1));
-        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 160, 180, -1));
+        jPanel1.add(txt_ngaysinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 230, -1));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 160, 240, -1));
 
         txt_phongban.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_phongban.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_phongban.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         txt_phongban.setForeground(new java.awt.Color(255, 255, 255));
         txt_phongban.setBorder(null);
         txt_phongban.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_phongban.setEnabled(false);
         txt_phongban.setOpaque(false);
-        jPanel1.add(txt_phongban, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 180, -1));
-        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 190, 200, -1));
+        jPanel1.add(txt_phongban, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 140, 240, -1));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, 260, -1));
 
         txt_chucvu.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_chucvu.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_chucvu.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         txt_chucvu.setForeground(new java.awt.Color(255, 255, 255));
         txt_chucvu.setBorder(null);
         txt_chucvu.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_chucvu.setEnabled(false);
         txt_chucvu.setOpaque(false);
-        jPanel1.add(txt_chucvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, 200, -1));
+        jPanel1.add(txt_chucvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 170, 260, -1));
 
         btn_cancel.setBackground(new java.awt.Color(24, 98, 151));
-        btn_cancel.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
+        btn_cancel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btn_cancel.setForeground(new java.awt.Color(255, 255, 255));
         btn_cancel.setText("OK");
         btn_cancel.setBorder(null);
@@ -228,179 +227,181 @@ public class detailInforNotEdit extends javax.swing.JDialog {
         jPanel1.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 170, 50));
 
         lb_avt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(lb_avt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 180, 240));
+        jPanel1.add(lb_avt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 180, 240));
 
         txt_chuyennganh.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_chuyennganh.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_chuyennganh.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         txt_chuyennganh.setForeground(new java.awt.Color(255, 255, 255));
         txt_chuyennganh.setBorder(null);
         txt_chuyennganh.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_chuyennganh.setEnabled(false);
         txt_chuyennganh.setOpaque(false);
-        jPanel1.add(txt_chuyennganh, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 230, 170, -1));
+        jPanel1.add(txt_chuyennganh, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 230, 220, -1));
 
         txt_mans.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_mans.setFont(new java.awt.Font("UVN Van", 0, 14)); // NOI18N
+        txt_mans.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         txt_mans.setForeground(new java.awt.Color(255, 255, 255));
         txt_mans.setBorder(null);
         txt_mans.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_mans.setEnabled(false);
         txt_mans.setOpaque(false);
-        jPanel1.add(txt_mans, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 180, -1));
+        jPanel1.add(txt_mans, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 220, -1));
 
         txt_dantoc.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_dantoc.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_dantoc.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         txt_dantoc.setForeground(new java.awt.Color(255, 255, 255));
         txt_dantoc.setBorder(null);
         txt_dantoc.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_dantoc.setEnabled(false);
         txt_dantoc.setOpaque(false);
-        jPanel1.add(txt_dantoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 200, -1));
+        jPanel1.add(txt_dantoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 250, -1));
 
         txt_sdt.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_sdt.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_sdt.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         txt_sdt.setForeground(new java.awt.Color(255, 255, 255));
         txt_sdt.setBorder(null);
         txt_sdt.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_sdt.setEnabled(false);
         txt_sdt.setOpaque(false);
-        jPanel1.add(txt_sdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 170, -1));
+        jPanel1.add(txt_sdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 220, -1));
 
         txt_trinhdo.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_trinhdo.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_trinhdo.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         txt_trinhdo.setForeground(new java.awt.Color(255, 255, 255));
         txt_trinhdo.setBorder(null);
         txt_trinhdo.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_trinhdo.setEnabled(false);
         txt_trinhdo.setOpaque(false);
-        jPanel1.add(txt_trinhdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, 200, -1));
+        jPanel1.add(txt_trinhdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 260, -1));
 
         txt_quequan.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_quequan.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_quequan.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         txt_quequan.setForeground(new java.awt.Color(255, 255, 255));
         txt_quequan.setBorder(null);
         txt_quequan.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_quequan.setEnabled(false);
         txt_quequan.setOpaque(false);
-        jPanel1.add(txt_quequan, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, 180, -1));
+        jPanel1.add(txt_quequan, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 240, -1));
 
         txt_namcongtac.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_namcongtac.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_namcongtac.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         txt_namcongtac.setForeground(new java.awt.Color(255, 255, 255));
         txt_namcongtac.setBorder(null);
         txt_namcongtac.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_namcongtac.setEnabled(false);
         txt_namcongtac.setOpaque(false);
-        jPanel1.add(txt_namcongtac, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, 150, -1));
+        jPanel1.add(txt_namcongtac, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 260, 190, -1));
 
         txt_hoten.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_hoten.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        txt_hoten.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         txt_hoten.setForeground(new java.awt.Color(255, 255, 255));
         txt_hoten.setBorder(null);
         txt_hoten.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_hoten.setEnabled(false);
         txt_hoten.setOpaque(false);
-        jPanel1.add(txt_hoten, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 200, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 200, -1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 180, -1));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 200, -1));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, 170, -1));
-        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 220, 200, -1));
-        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 250, 170, -1));
-        jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 150, -1));
-        jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 170, -1));
+        jPanel1.add(txt_hoten, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 260, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 260, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 240, -1));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 250, -1));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 220, -1));
+        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 220, 260, -1));
+        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 220, -1));
+        jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 280, 190, -1));
+        jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 220, -1));
 
-        gioitinh_nu.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        gioitinh_nu.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         gioitinh_nu.setForeground(new java.awt.Color(255, 255, 255));
         gioitinh_nu.setText("Nữ");
+        gioitinh_nu.setEnabled(false);
         gioitinh_nu.setOpaque(false);
-        jPanel1.add(gioitinh_nu, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, -1, -1));
+        jPanel1.add(gioitinh_nu, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
 
-        gioitinh_nam.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        gioitinh_nam.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         gioitinh_nam.setForeground(new java.awt.Color(255, 255, 255));
         gioitinh_nam.setText("Nam");
+        gioitinh_nam.setEnabled(false);
         gioitinh_nam.setOpaque(false);
-        jPanel1.add(gioitinh_nam, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, -1, -1));
+        jPanel1.add(gioitinh_nam, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, -1, -1));
 
-        jLabel15.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Ngày Sinh:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, -1, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
 
-        jLabel16.setFont(new java.awt.Font("UVN Van", 0, 24)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 26)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("HỒ SƠ NHÂN SỰ");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 230, 40));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 210, 40));
 
-        jLabel1.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Họ tên:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Quê quán:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Giới tính:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Dân tộc:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Số điện thoại:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Trình độ:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Chuyên ngành:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 230, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Phòng ban:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 140, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Đoàn thể:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Mã nhân sự:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Chức vụ:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Bậc lương:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, -1, -1));
 
-        jLabel13.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Thời gian công tác:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 260, -1, -1));
 
-        jLabel14.setFont(new java.awt.Font("UVN Van", 1, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Chính trị:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, -1, -1));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, -1, -1));
 
         txt_chinhtri.setEditable(false);
         txt_chinhtri.setColumns(20);
@@ -408,7 +409,7 @@ public class detailInforNotEdit extends javax.swing.JDialog {
         txt_chinhtri.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txt_chinhtri);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 200, 120));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, 240, 120));
 
         txt_doanthe.setEditable(false);
         txt_doanthe.setColumns(20);
@@ -416,11 +417,11 @@ public class detailInforNotEdit extends javax.swing.JDialog {
         txt_doanthe.setWrapStyleWord(true);
         jScrollPane2.setViewportView(txt_doanthe);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, 200, 150));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 320, 250, 150));
 
         background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/detailInfor.png"))); // NOI18N
-        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 820, 500));
+        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 1000, 500));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
