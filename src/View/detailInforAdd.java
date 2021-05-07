@@ -80,7 +80,7 @@ public class detailInforAdd extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btn_save1 = new javax.swing.JButton();
+        btn_changeAvatar = new javax.swing.JButton();
         btn_add = new javax.swing.JButton();
         btn_cancel = new javax.swing.JButton();
         lb_avt = new javax.swing.JLabel();
@@ -133,19 +133,19 @@ public class detailInforAdd extends javax.swing.JDialog {
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_save1.setBackground(new java.awt.Color(24, 98, 151));
-        btn_save1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btn_save1.setForeground(new java.awt.Color(255, 255, 255));
-        btn_save1.setText("Thay Avatar");
-        btn_save1.setBorder(null);
-        btn_save1.setBorderPainted(false);
-        btn_save1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_save1.addActionListener(new java.awt.event.ActionListener() {
+        btn_changeAvatar.setBackground(new java.awt.Color(24, 98, 151));
+        btn_changeAvatar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_changeAvatar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_changeAvatar.setText("Thay Avatar");
+        btn_changeAvatar.setBorder(null);
+        btn_changeAvatar.setBorderPainted(false);
+        btn_changeAvatar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_changeAvatar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_save1ActionPerformed(evt);
+                btn_changeAvatarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_save1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 140, 40));
+        jPanel1.add(btn_changeAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 140, 40));
 
         btn_add.setBackground(new java.awt.Color(24, 98, 151));
         btn_add.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -440,7 +440,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btn_cancelActionPerformed
 
-    private void btn_save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save1ActionPerformed
+    private void btn_changeAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_changeAvatarActionPerformed
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(this);
         File f = chooser.getSelectedFile();
@@ -452,7 +452,7 @@ public class detailInforAdd extends javax.swing.JDialog {
             imageChange = true;
             filename = filenamez;
         }
-    }//GEN-LAST:event_btn_save1ActionPerformed
+    }//GEN-LAST:event_btn_changeAvatarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -501,7 +501,7 @@ public class detailInforAdd extends javax.swing.JDialog {
     private javax.swing.JLabel background;
     private javax.swing.JButton btn_add;
     private javax.swing.JButton btn_cancel;
-    private javax.swing.JButton btn_save1;
+    private javax.swing.JButton btn_changeAvatar;
     private javax.swing.JRadioButton gioitinh_nam;
     private javax.swing.JRadioButton gioitinh_nu;
     private com.toedter.calendar.JDateChooser jDateChooser1;

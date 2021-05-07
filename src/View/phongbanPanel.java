@@ -95,7 +95,7 @@ public class phongbanPanel extends javax.swing.JPanel {
                     seeDetail.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                         detailInforNotEdit z = new detailInforNotEdit(jList1.getSelectedValue().toString().split(" - ")[0],bb,true);
-                        z.setAlwaysOnTop(true);
+                        //z.setAlwaysOnTop(true);
                         z.setVisible(true);
                         }
                     });
@@ -143,7 +143,7 @@ public class phongbanPanel extends javax.swing.JPanel {
                     seeDetail.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                         detailInforNotEdit z = new detailInforNotEdit(jList2.getSelectedValue().toString().split(" - ")[0],bb,true);
-                        z.setAlwaysOnTop(true);
+                        //z.setAlwaysOnTop(true);
                         z.setVisible(true);
                         }
                     });

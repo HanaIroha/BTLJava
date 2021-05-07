@@ -71,7 +71,7 @@ public class hosoPanel extends javax.swing.JPanel {
                 if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
                     String a = (String)table_ns.getValueAt(table_ns.getSelectedRow(), 0);
                     detailInfor z = new detailInfor(aa,a,bb,true,tenUser);
-                    z.setAlwaysOnTop(true);
+                    //z.setAlwaysOnTop(true);
                     z.setVisible(true);
                 }
             }
@@ -441,7 +441,7 @@ public class hosoPanel extends javax.swing.JPanel {
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         detailInforAdd z = new detailInforAdd(aa,bb,true,tenUser);
-        z.setAlwaysOnTop(true);
+        //z.setAlwaysOnTop(true);
         z.setVisible(true);
     }//GEN-LAST:event_btn_addActionPerformed
 

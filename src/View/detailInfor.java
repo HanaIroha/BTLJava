@@ -17,7 +17,10 @@ import Model.ChucVuModel;
 import Model.ComboItem;
 import Model.NhanSuModel;
 import Model.PhongBanModel;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,12 +28,22 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRExporterParameter;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
 
 /**
  *
@@ -172,7 +185,8 @@ public class detailInfor extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btn_save1 = new javax.swing.JButton();
+        btn_print = new javax.swing.JButton();
+        btn_changeAvatar = new javax.swing.JButton();
         btn_save = new javax.swing.JButton();
         btn_cancel = new javax.swing.JButton();
         lb_avt = new javax.swing.JLabel();
@@ -227,19 +241,33 @@ public class detailInfor extends javax.swing.JDialog {
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_save1.setBackground(new java.awt.Color(24, 98, 151));
-        btn_save1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btn_save1.setForeground(new java.awt.Color(255, 255, 255));
-        btn_save1.setText("Thay Avatar");
-        btn_save1.setBorder(null);
-        btn_save1.setBorderPainted(false);
-        btn_save1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_save1.addActionListener(new java.awt.event.ActionListener() {
+        btn_print.setBackground(new java.awt.Color(24, 98, 151));
+        btn_print.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_print.setForeground(new java.awt.Color(255, 255, 255));
+        btn_print.setText("Xuất DOC");
+        btn_print.setBorder(null);
+        btn_print.setBorderPainted(false);
+        btn_print.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_print.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_save1ActionPerformed(evt);
+                btn_printActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_save1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 140, 40));
+        jPanel1.add(btn_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 500, 110, 50));
+
+        btn_changeAvatar.setBackground(new java.awt.Color(24, 98, 151));
+        btn_changeAvatar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_changeAvatar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_changeAvatar.setText("Thay Avatar");
+        btn_changeAvatar.setBorder(null);
+        btn_changeAvatar.setBorderPainted(false);
+        btn_changeAvatar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_changeAvatar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_changeAvatarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_changeAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 140, 40));
 
         btn_save.setBackground(new java.awt.Color(24, 98, 151));
         btn_save.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -544,7 +572,7 @@ public class detailInfor extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btn_cancelActionPerformed
 
-    private void btn_save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save1ActionPerformed
+    private void btn_changeAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_changeAvatarActionPerformed
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(this);
         File f = chooser.getSelectedFile();
@@ -556,7 +584,62 @@ public class detailInfor extends javax.swing.JDialog {
             imageChange = true;
             filename = filenamez;
         }
-    }//GEN-LAST:event_btn_save1ActionPerformed
+    }//GEN-LAST:event_btn_changeAvatarActionPerformed
+
+    private void btn_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_printActionPerformed
+        try{
+            JFileChooser chonChoLuu = new JFileChooser();
+            //chonChoLuu.setCurrentDirectory(new File(System.getProperty("user.dir")));
+            chonChoLuu.setSelectedFile(new File("unname.docx"));
+            int reponse = chonChoLuu.showSaveDialog(null);
+            if(reponse == JFileChooser.APPROVE_OPTION){
+                String savePath = chonChoLuu.getSelectedFile().getAbsolutePath();
+                if (chonChoLuu.getSelectedFile().getName().length()>5) 
+                {
+                    if(!savePath.substring(savePath.length() - 5).equals(".docx"))
+                        savePath =  savePath + ".docx";
+                }
+                else{
+                    savePath =  savePath + ".docx";
+                }
+                JasperReport jasperReport = JasperCompileManager.compileReport(System.getProperty("user.dir") + "\\ReportTemplates\\hoso.jrxml");
+                JRDataSource dataSource = new JREmptyDataSource();
+                HashMap parameters = new HashMap();
+                parameters.put("hoten",txt_hoten.getText());
+                parameters.put("quequan",txt_quequan.getText());
+                parameters.put("gioitinh",gioitinh_nam.isSelected()?"Nam":"Nữ");
+                parameters.put("dantoc",txt_dantoc.getText());
+                parameters.put("ngaysinh",((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText());
+                parameters.put("sodienthoai",txt_sdt.getText());
+                parameters.put("phongban",((ComboItem)txt_phongban.getSelectedItem()).getKey());
+                parameters.put("chucvu",((ComboItem)txt_chucvu.getSelectedItem()).getKey());
+                parameters.put("trinhdo",txt_trinhdo.getText());
+                parameters.put("chuyennganh",txt_chuyennganh.getText());
+                parameters.put("chinhtri",txt_chinhtri.getText());
+                parameters.put("doanthe",txt_doanthe.getText());
+                //lay anh
+                String imagePath = System.getProperty("user.dir") + "\\ReportTemplates\\avatar.jpg";
+                ImageIcon img = (ImageIcon)lb_avt.getIcon();
+                BufferedImage bi = new BufferedImage(img.getIconWidth(), img.getIconHeight(), BufferedImage.TYPE_INT_RGB);
+                Graphics g = bi.createGraphics();
+                img.paintIcon(null, g, 0,0);
+                g.dispose();
+                ImageIO.write(bi, "jpg", new File(imagePath));
+                parameters.put("image", imagePath);
+                //xuat file
+                JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+                JRDocxExporter exporter = new JRDocxExporter();
+                exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+                exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, savePath);
+                exporter.exportReport();
+                //JasperExportManager.exportReportToPdfFile(jasperPrint, "holy.pdf");
+                JOptionPane.showMessageDialog(this, "Xuất file thành công!");
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Thất bại! \n" + e.getMessage());
+        }
+    }//GEN-LAST:event_btn_printActionPerformed
 
     /**
      * @param args the command line arguments
@@ -603,8 +686,9 @@ public class detailInfor extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JButton btn_cancel;
+    private javax.swing.JButton btn_changeAvatar;
+    private javax.swing.JButton btn_print;
     private javax.swing.JButton btn_save;
-    private javax.swing.JButton btn_save1;
     private javax.swing.JRadioButton gioitinh_nam;
     private javax.swing.JRadioButton gioitinh_nu;
     private com.toedter.calendar.JDateChooser jDateChooser1;
