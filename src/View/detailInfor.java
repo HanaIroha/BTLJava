@@ -45,12 +45,13 @@ public class detailInfor extends javax.swing.JDialog {
     List<ChucVuModel> cv = new DAO.implement.ChucVu().getChucVu();
     List<PhongBanModel> pb = new DAO.implement.PhongBan().getPhongBan();
     String filename;
+    String tenUser;
     boolean imageChange = false;
     
     /**
      * Creates new form detailInfor
      */
-    public detailInfor(hosoPanel pF, String MaNS, java.awt.Frame parent, boolean modal) {
+    public detailInfor(hosoPanel pF, String MaNS, java.awt.Frame parent, boolean modal, String tenTK) {
         super(parent, modal);
         initComponents();
         btn_gioitinh.add(gioitinh_nam);
@@ -63,6 +64,7 @@ public class detailInfor extends javax.swing.JDialog {
         txt_chinhtri.setLineWrap(true);
         txt_doanthe.setLineWrap(true);
         previousPanel = pF;
+        tenUser = tenTK;
         prepare();
     }
     
@@ -107,6 +109,7 @@ public class detailInfor extends javax.swing.JDialog {
         txt_quequan.setText(acc.getQueQuan());
         txt_sdt.setText(acc.getSoDienThoai());
         txt_trinhdo.setText(acc.getTrinhDoHocVan());
+        lb_lastEdit.setText("Sửa đổi cuối bởi: " + acc.getThayDoiCuoi());
         if(acc.isGioiTinh())
             gioitinh_nam.setSelected(true);
         else
@@ -196,6 +199,7 @@ public class detailInfor extends javax.swing.JDialog {
         gioitinh_nam = new javax.swing.JRadioButton();
         jLabel15 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        lb_lastEdit = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -379,6 +383,11 @@ public class detailInfor extends javax.swing.JDialog {
         jDateChooser1.setOpaque(false);
         jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 230, -1));
 
+        lb_lastEdit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lb_lastEdit.setForeground(new java.awt.Color(255, 255, 255));
+        lb_lastEdit.setText("Sửa đổi cuối bởi:");
+        jPanel1.add(lb_lastEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, -1, -1));
+
         jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 26)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("HỒ SƠ NHÂN SỰ");
@@ -472,7 +481,6 @@ public class detailInfor extends javax.swing.JDialog {
 
         background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/detailInfor.png"))); // NOI18N
-        background.setPreferredSize(new java.awt.Dimension(1000, 500));
         jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 1000, 500));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -514,7 +522,8 @@ public class detailInfor extends javax.swing.JDialog {
                         txt_chinhtri.getText(),
                         txt_doanthe.getText(),
                         gioitinh_nam.isSelected()?true:false,
-                        person_image);
+                        person_image,
+                        tenUser);
                 if (isOK)
                 {
                     JOptionPane.showMessageDialog(this,"Sửa thành công");
@@ -579,7 +588,7 @@ public class detailInfor extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                detailInfor dialog = new detailInfor(new hosoPanel(new java.awt.Frame()), null, new javax.swing.JFrame(), true);
+                detailInfor dialog = new detailInfor(new hosoPanel(new java.awt.Frame(), null), null, new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -627,6 +636,7 @@ public class detailInfor extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel lb_avt;
+    private javax.swing.JLabel lb_lastEdit;
     private javax.swing.JComboBox<Integer> txt_bacluong;
     private javax.swing.JTextArea txt_chinhtri;
     private javax.swing.JComboBox<ComboItem> txt_chucvu;

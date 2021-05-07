@@ -20,7 +20,6 @@ import javax.swing.JList;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
-import javax.swing.JTable;
 import javax.swing.ListModel;
 import javax.swing.SwingUtilities;
 
@@ -40,21 +39,18 @@ public class phongbanPanel extends javax.swing.JPanel {
     ArrayList<String> listOut = new ArrayList<>();
     DefaultListModel<ComboItem> ls1;
     DefaultListModel<ComboItem> ls2;
-    public phongbanPanel(java.awt.Frame mainFrame) {
+    String tenUser;
+    public phongbanPanel(java.awt.Frame mainFrame, String tenTK) {
         initComponents();
         bb=mainFrame;
+        tenUser = tenTK;
         loadData();
     }
 
     public void loadData(){
         btn_save.setVisible(false);
         btn_cancel.setVisible(false);
-        ls = new ArrayList<>(new PhongBan().getPhongBan());
-        listNS = new ArrayList<>(new PhongBan().getListNS());
-        for(PhongBanModel z: ls)
-        {
-            txt_phongban.addItem(new ComboItem(z.getTenPB(),z.getMaPB()));
-        }
+        reLoad();
         jList1.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 JList list = (JList)evt.getSource();
@@ -454,17 +450,17 @@ public class phongbanPanel extends javax.swing.JPanel {
             NhanSu nhansuDAO = new NhanSu();
             String mapb = ((ComboItem)txt_phongban.getSelectedItem()).getValue();
             for(String z : listIn)
-                nhansuDAO.updatePhongBan(z, mapb);
+                nhansuDAO.updatePhongBan(z, mapb, tenUser);
             for(String z : listOut)
-                nhansuDAO.updatePhongBan(z, null);
+                nhansuDAO.updatePhongBan(z, null, tenUser);
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(background, e.getMessage());
         }
         finally{
-            JOptionPane.showMessageDialog(background, "Sửa thành công!");
             reLoad();
             txt_phongban.setSelectedIndex(choose);
+            JOptionPane.showMessageDialog(background, "Sửa thành công!");
         }
     }//GEN-LAST:event_btn_editActionPerformed
 
@@ -561,7 +557,7 @@ public class phongbanPanel extends javax.swing.JPanel {
             new PhongBan().themPB(maPB, tenPB, sdt);
             NhanSu a = new NhanSu();
             for(String z : listIn)
-                a.updatePhongBan(z, maPB);
+                a.updatePhongBan(z, maPB, tenUser);
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(background, e.getMessage());

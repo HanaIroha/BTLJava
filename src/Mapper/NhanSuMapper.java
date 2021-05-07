@@ -30,6 +30,7 @@ public class NhanSuMapper implements IMapper<NhanSuModel>{
             ns.setBacLuong(rs.getInt("BacLuong"));
             ns.setAnh(rs.getBytes("Anh"));
             ns.setNgayThamGia(rs.getString("NgayGiaNhap"));
+            ns.setThayDoiCuoi(rs.getString("SuaCuoi"));
             return ns;
         } catch (SQLException ex) {
             return null;

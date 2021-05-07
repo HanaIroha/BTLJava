@@ -12,8 +12,8 @@ public interface INhanSu {
     public NhanSuModel getNhanSu(String MaNS);
     public boolean updateAVT(String MaNS, byte[] anh);
     public boolean deleteNS(String MaNS);
-    public boolean updatePhongBan(String MaNS, String MaPB);
-    public boolean updateChucVu(String MaNS, String MaCV);
-    public boolean addNS(int BacLuong, String NgayThamGia, String maNS, String hoTen, String ngaySinh, String queQuan, String danToc, String soDienThoai, String trinhDoHocVan, String ChuyenNganh, String maPB, String maCV, String chinhTri, String doanThe, boolean gioiTinh, byte[] anh);
-    public boolean updateNS(int BacLuong, String maNS, String hoTen, String ngaySinh, String queQuan, String danToc, String soDienThoai, String trinhDoHocVan, String ChuyenNganh, String maPB, String maCV, String chinhTri, String doanThe, boolean gioiTinh, byte[] anh);
+    public boolean updatePhongBan(String MaNS, String MaPB, String ThayDoiCuoi);
+    public boolean updateChucVu(String MaNS, String MaCV, String ThayDoiCuoi);
+    public boolean addNS(int BacLuong, String NgayThamGia, String maNS, String hoTen, String ngaySinh, String queQuan, String danToc, String soDienThoai, String trinhDoHocVan, String ChuyenNganh, String maPB, String maCV, String chinhTri, String doanThe, boolean gioiTinh, byte[] anh, String thayDoiCuoi);
+    public boolean updateNS(int BacLuong, String maNS, String hoTen, String ngaySinh, String queQuan, String danToc, String soDienThoai, String trinhDoHocVan, String ChuyenNganh, String maPB, String maCV, String chinhTri, String doanThe, boolean gioiTinh, byte[] anh, String thayDoiCuoi);
 }

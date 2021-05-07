@@ -30,23 +30,26 @@ public class MainForm extends javax.swing.JFrame {
     public MainForm() {
         initComponents();
         thisForm = this;
-        movePanel.setBackground(new java.awt.Color(255, 255, 255, 0));
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        tab1 = new hosoPanel(thisForm);
+        taikhoan = new AccountModel(999, "iroha", "123", "Hana Iroha", null);
+        prepare();
     }
     
     public MainForm(AccountModel tk) {
         initComponents();
+        thisForm = this;
+        taikhoan = new AccountModel(tk);
+        prepare();
+    }
+    
+    private void prepare(){
         movePanel.setBackground(new java.awt.Color(255, 255, 255, 0));
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         this.setBackground(new java.awt.Color(255, 255, 255, 0));
-        taikhoan = new AccountModel(tk);
-        lb_name.setText("Xin chào "+tk.getTen()+"!");
-        lb_namesmall.setText(tk.getTen());
+        lb_name.setText("Xin chào "+taikhoan.getTen()+"!");
+        lb_namesmall.setText(taikhoan.getTen());
         try{
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon(tk.getAnh()).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
+            ImageIcon imageIcon = new ImageIcon(new ImageIcon(taikhoan.getAnh()).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
             BufferedImage master = new BufferedImage(
                 imageIcon.getIconWidth(),
                 imageIcon.getIconHeight(),
@@ -76,7 +79,7 @@ public class MainForm extends javax.swing.JFrame {
         catch(Exception e){
             
         }
-        tab1 = new hosoPanel(thisForm);
+        tab1 = new hosoPanel(thisForm,taikhoan.getTen());
     }
 
     /**
@@ -350,7 +353,7 @@ public class MainForm extends javax.swing.JFrame {
             indexTab=1;
             resetTab();
             lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu1.png")));
-            tab1.reloadPanel();
+            tab1.reloadTable();
             MainPanel.removeAll();
             MainPanel.setLayout(new BorderLayout());
             MainPanel.add(tab1);
@@ -490,7 +493,7 @@ public class MainForm extends javax.swing.JFrame {
             lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu2.png")));
             MainPanel.removeAll();
             MainPanel.setLayout(new BorderLayout());
-            MainPanel.add(new phongbanPanel(thisForm));
+            MainPanel.add(new phongbanPanel(thisForm, taikhoan.getTen()));
             MainPanel.revalidate();
             MainPanel.repaint();
         }
@@ -505,7 +508,7 @@ public class MainForm extends javax.swing.JFrame {
             lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu3.png")));
             MainPanel.removeAll();
             MainPanel.setLayout(new BorderLayout());
-            MainPanel.add(new chucvuPanel(thisForm));
+            MainPanel.add(new chucvuPanel(thisForm, taikhoan.getTen()));
             MainPanel.revalidate();
             MainPanel.repaint();
         }

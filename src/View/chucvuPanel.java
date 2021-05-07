@@ -41,21 +41,18 @@ public class chucvuPanel extends javax.swing.JPanel {
     ArrayList<String> listOut = new ArrayList<>();
     DefaultListModel<ComboItem> ls1;
     DefaultListModel<ComboItem> ls2;
-    public chucvuPanel(java.awt.Frame mainFrame) {
+    String tenUser;
+    public chucvuPanel(java.awt.Frame mainFrame, String tenTK) {
         initComponents();
         bb=mainFrame;
+        tenUser=tenTK;
         loadData();
     }
 
     public void loadData(){
         btn_save.setVisible(false);
         btn_cancel.setVisible(false);
-        ls = new ArrayList<>(new ChucVu().getChucVu());
-        listNS = new ArrayList<>(new PhongBan().getListNS());
-        for(ChucVuModel z: ls)
-        {
-            txt_chucvu.addItem(new ComboItem(z.getTenCV(),z.getMaCV()));
-        }
+        reLoad();
         jList1.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 JList list = (JList)evt.getSource();
@@ -474,17 +471,17 @@ public class chucvuPanel extends javax.swing.JPanel {
             NhanSu nhansuDAO = new NhanSu();
             String mapb = ((ComboItem)txt_chucvu.getSelectedItem()).getValue();
             for(String z : listIn)
-                nhansuDAO.updateChucVu(z, mapb);
+                nhansuDAO.updateChucVu(z, mapb, tenUser);
             for(String z : listOut)
-                nhansuDAO.updateChucVu(z, null);
+                nhansuDAO.updateChucVu(z, null, tenUser);
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(background, e.getMessage());
+            JOptionPane.showMessageDialog(background, "Lỗi: " + e.getMessage());
         }
         finally{
-            JOptionPane.showMessageDialog(background, "Sửa thành công!");
             reLoad();
             txt_chucvu.setSelectedIndex(choose);
+            JOptionPane.showMessageDialog(background, "Sửa thành công!");
         }
     }//GEN-LAST:event_btn_editActionPerformed
 
@@ -582,7 +579,7 @@ public class chucvuPanel extends javax.swing.JPanel {
             new ChucVu().themCV(maCV, tenCV, phuCap, luongCoBan);
             NhanSu a = new NhanSu();
             for(String z : listIn)
-                a.updateChucVu(z, maCV);
+                a.updateChucVu(z, maCV,tenUser);
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(background, e.getMessage());

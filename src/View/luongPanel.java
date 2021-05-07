@@ -39,7 +39,7 @@ public class luongPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_Search2.setBackground(new java.awt.Color(24, 98, 151));
-        btn_Search2.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
+        btn_Search2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btn_Search2.setForeground(new java.awt.Color(255, 255, 255));
         btn_Search2.setText("Xuất Excel");
         btn_Search2.setBorder(null);
@@ -48,7 +48,7 @@ public class luongPanel extends javax.swing.JPanel {
         add(btn_Search2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 20, 140, 50));
 
         btn_Search1.setBackground(new java.awt.Color(24, 98, 151));
-        btn_Search1.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
+        btn_Search1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btn_Search1.setForeground(new java.awt.Color(255, 255, 255));
         btn_Search1.setText("Tính lương");
         btn_Search1.setBorder(null);
@@ -57,7 +57,7 @@ public class luongPanel extends javax.swing.JPanel {
         add(btn_Search1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, 140, 50));
 
         btn_Search.setBackground(new java.awt.Color(24, 98, 151));
-        btn_Search.setFont(new java.awt.Font("UVN Van", 0, 18)); // NOI18N
+        btn_Search.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btn_Search.setForeground(new java.awt.Color(255, 255, 255));
         btn_Search.setText("Chỉnh sửa tính lương");
         btn_Search.setBorder(null);

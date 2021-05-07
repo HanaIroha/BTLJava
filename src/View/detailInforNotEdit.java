@@ -7,14 +7,10 @@ package View;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import DAO.implement.NhanSu;
 import Model.BacLuongModel;
 import Model.ChucVuModel;
-import Model.ComboItem;
 import Model.NhanSuModel;
 import Model.PhongBanModel;
 import java.awt.Image;

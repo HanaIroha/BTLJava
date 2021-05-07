@@ -7,7 +7,6 @@ package View;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.util.logging.Logger;
 import DAO.implement.NhanSu;
 import Model.BacLuongModel;
 import Model.ChucVuModel;
@@ -36,12 +35,13 @@ public class detailInforAdd extends javax.swing.JDialog {
     List<ChucVuModel> cv = new DAO.implement.ChucVu().getChucVu();
     List<PhongBanModel> pb = new DAO.implement.PhongBan().getPhongBan();
     String filename;
+    String tenUser;
     boolean imageChange = false;
     
     /**
      * Creates new form detailInfor
      */
-    public detailInforAdd(hosoPanel pF, java.awt.Frame parent, boolean modal) {
+    public detailInforAdd(hosoPanel pF, java.awt.Frame parent, boolean modal, String tenTK) {
         super(parent, modal);
         initComponents();
         btn_gioitinh.add(gioitinh_nam);
@@ -53,6 +53,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         txt_chinhtri.setLineWrap(true);
         txt_doanthe.setLineWrap(true);
         previousPanel = pF;
+        tenUser = tenTK;
         prepare();
     }
     
@@ -417,7 +418,8 @@ public class detailInforAdd extends javax.swing.JDialog {
                         txt_chinhtri.getText(),
                         txt_doanthe.getText(),
                         gioitinh_nam.isSelected()?true:false,
-                        person_image);
+                        person_image,
+                        tenUser);
                 if (isOK)
                 {
                     JOptionPane.showMessageDialog(this,"Thêm thành công!");
@@ -483,7 +485,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                detailInforAdd dialog = new detailInforAdd(new hosoPanel(new java.awt.Frame()), new javax.swing.JFrame(), true);
+                detailInforAdd dialog = new detailInforAdd(new hosoPanel(new java.awt.Frame(),null), new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -5,7 +5,7 @@ package Model;
  * @author Iroha
  */
 public class NhanSuModel {
-    private String maNS, hoTen, ngaySinh, queQuan, danToc, soDienThoai, trinhDoHocVan, ChuyenNganh, maPB, maCV, chinhTri, doanThe, NgayThamGia;
+    private String maNS, hoTen, ngaySinh, queQuan, danToc, soDienThoai, trinhDoHocVan, ChuyenNganh, maPB, maCV, chinhTri, doanThe, NgayThamGia, ThayDoiCuoi;
     private boolean gioiTinh;
     private byte[] anh;
     private int BacLuong;
@@ -13,7 +13,7 @@ public class NhanSuModel {
     public NhanSuModel() {
     }
 
-    public NhanSuModel(int BacLuong, String NgayThamGia, String maNS, String hoTen, String ngaySinh, String queQuan, String danToc, String soDienThoai, String trinhDoHocVan, String ChuyenNganh, String maPB, String maCV, String chinhTri, String doanThe, boolean gioiTinh, byte[] anh) {
+    public NhanSuModel(int BacLuong, String NgayThamGia, String maNS, String hoTen, String ngaySinh, String queQuan, String danToc, String soDienThoai, String trinhDoHocVan, String ChuyenNganh, String maPB, String maCV, String chinhTri, String doanThe, boolean gioiTinh, byte[] anh, String ThayDoiCuoi) {
         this.BacLuong = BacLuong;
         this.NgayThamGia = NgayThamGia;
         this.maNS = maNS;
@@ -30,6 +30,7 @@ public class NhanSuModel {
         this.doanThe = doanThe;
         this.gioiTinh = gioiTinh;
         this.anh = anh;
+        this.ThayDoiCuoi = ThayDoiCuoi;
     }
 
     public int getBacLuong() {
@@ -159,5 +160,15 @@ public class NhanSuModel {
     public void setAnh(byte[] anh) {
         this.anh = anh;
     }
+
+    public String getThayDoiCuoi() {
+        return ThayDoiCuoi;
+    }
+
+    public void setThayDoiCuoi(String ThayDoiCuoi) {
+        this.ThayDoiCuoi = ThayDoiCuoi;
+    }
+    
+    
     
 }

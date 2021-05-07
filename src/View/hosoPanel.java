@@ -27,12 +27,14 @@ public class hosoPanel extends javax.swing.JPanel {
     
     java.awt.Frame bb;
     hosoPanel aa;
+    String tenUser;
     ArrayList<TableNhanSuModel> dsHoSo = new ArrayList<>();;
     boolean isort[] = {true,true,true,true,true,true,true,true,true,true,true};
-    public hosoPanel(java.awt.Frame mainFrame) {
+    public hosoPanel(java.awt.Frame mainFrame, String tenTK) {
         initComponents();
         aa = this;
         bb = mainFrame;
+        tenUser=tenTK;
         prepare();
         
     }
@@ -68,7 +70,7 @@ public class hosoPanel extends javax.swing.JPanel {
                 int row = table.rowAtPoint(point);
                 if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
                     String a = (String)table_ns.getValueAt(table_ns.getSelectedRow(), 0);
-                    detailInfor z = new detailInfor(aa,a,bb,true);
+                    detailInfor z = new detailInfor(aa,a,bb,true,tenUser);
                     z.setAlwaysOnTop(true);
                     z.setVisible(true);
                 }
@@ -97,10 +99,10 @@ public class hosoPanel extends javax.swing.JPanel {
             TableNhanSuModel a =  new TableNhanSuModel(list.get(i));
             dsHoSo.add(a);
         }
-        reloadPanel();
+        reloadTable();
     }
     
-    public void reloadPanel(){
+    public void reloadTable(){
         table_ns.setModel(new HoSoTableModel(dsHoSo));
         table_ns.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         table_ns.getColumnModel().getColumn(0).setPreferredWidth(60);
@@ -308,7 +310,7 @@ public class hosoPanel extends javax.swing.JPanel {
             }
             isort[index]=true;
         }
-        reloadPanel();
+        reloadTable();
         table_ns.revalidate();
     }
     @SuppressWarnings("unchecked")
@@ -438,7 +440,7 @@ public class hosoPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
-        detailInforAdd z = new detailInforAdd(aa,bb,true);
+        detailInforAdd z = new detailInforAdd(aa,bb,true,tenUser);
         z.setAlwaysOnTop(true);
         z.setVisible(true);
     }//GEN-LAST:event_btn_addActionPerformed
