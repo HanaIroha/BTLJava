@@ -89,7 +89,6 @@ public class detailInfor extends javax.swing.JDialog {
         this.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_chinhtri.setLineWrap(true);
         txt_doanthe.setLineWrap(true);
-        jdate_ngaysinh.getDateEditor().setEnabled(true);
         congchuc_yes.addItemListener(new ItemListener(){
             @Override
             public void itemStateChanged(ItemEvent e) {

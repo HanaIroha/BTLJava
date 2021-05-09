@@ -140,6 +140,7 @@ public class MainForm extends javax.swing.JFrame {
         infoPanel.setBackground(new java.awt.Color(178, 234, 227));
 
         lb_namesmall.setFont(new java.awt.Font("UVN Van", 1, 24)); // NOI18N
+        lb_namesmall.setForeground(new java.awt.Color(0, 102, 255));
         lb_namesmall.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb_namesmall.setVerifyInputWhenFocusTarget(false);
 

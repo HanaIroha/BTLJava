@@ -63,11 +63,9 @@ public class detailInforAdd extends javax.swing.JDialog {
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     jdate_hopdong.getCalendarButton().setEnabled(false);
-                    jdate_hopdong.getDateEditor().setEnabled(false);
                 }
                 else if (e.getStateChange() == ItemEvent.DESELECTED) {
                     jdate_hopdong.getCalendarButton().setEnabled(true);
-                    jdate_hopdong.getDateEditor().setEnabled(true);
                 }
             }
             
@@ -296,12 +294,12 @@ public class detailInforAdd extends javax.swing.JDialog {
         jdate_ngaythamgia.setBackground(new java.awt.Color(255, 255, 255, 0));
         jdate_ngaythamgia.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jdate_ngaythamgia.setOpaque(false);
-        jPanel1.add(jdate_ngaythamgia, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, 220, -1));
+        jPanel1.add(jdate_ngaythamgia, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, 220, 30));
 
         jdate_ngaysinh.setBackground(new java.awt.Color(255, 255, 255, 0));
         jdate_ngaysinh.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jdate_ngaysinh.setOpaque(false);
-        jPanel1.add(jdate_ngaysinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 230, -1));
+        jPanel1.add(jdate_ngaysinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 230, 30));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 240, -1));
 
         txt_cancuoc.setBackground(new java.awt.Color(255, 255, 255, 0));
@@ -320,7 +318,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         jdate_hopdong.setBackground(new java.awt.Color(255, 255, 255, 0));
         jdate_hopdong.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jdate_hopdong.setOpaque(false);
-        jPanel1.add(jdate_hopdong, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 320, 220, 20));
+        jPanel1.add(jdate_hopdong, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 320, 220, 30));
 
         jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
