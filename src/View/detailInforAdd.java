@@ -78,6 +78,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         btn_congchuc.add(congchuc_no);
         jdate_ngaysinh.setDateFormatString("yyyy-MM-dd");
         jdate_hopdong.setDateFormatString("yyyy-MM-dd");
+        jdate_ngaythamgia.setDateFormatString("yyyy-MM-dd");
         for(PhongBanModel s:pb)
         {
             txt_phongban.addItem(new ComboItem(s.getTenPB(),s.getMaPB()));
@@ -476,7 +477,7 @@ public class detailInforAdd extends javax.swing.JDialog {
                         tenUser,
                         txt_cancuoc.getText(),
                         congchuc_yes.isSelected()?true:false,
-                        congchuc_yes.isSelected()?((JTextField)jdate_hopdong.getDateEditor().getUiComponent()).getText():null
+                        congchuc_no.isSelected()?((JTextField)jdate_hopdong.getDateEditor().getUiComponent()).getText():null
                 );
                 if (isOK)
                 {

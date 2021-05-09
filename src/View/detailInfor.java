@@ -680,6 +680,7 @@ public class detailInfor extends javax.swing.JDialog {
                 parameters.put("doanthe",txt_doanthe.getText());
                 parameters.put("loainhansu",congchuc_yes.isSelected()?"Công chức":"Hợp đồng");
                 parameters.put("hanhopdong", congchuc_no.isSelected()?((JTextField)jdate_hopdong.getDateEditor().getUiComponent()).getText():"Không có");
+                parameters.put("logo", System.getProperty("user.dir") + "\\ReportTemplates\\logo.jpg");
                 //lay anh
                 String imagePath = System.getProperty("user.dir") + "\\ReportTemplates\\avatar.jpg";
                 ImageIcon img = (ImageIcon)lb_avt.getIcon();

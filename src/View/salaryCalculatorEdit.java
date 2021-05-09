@@ -297,11 +297,11 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
 
     private void saveSetting(){
         JSONObject settingfile = new JSONObject();
-        settingfile.put("LuongCoBan", Double.valueOf(txt_luongcoban.getText()));
+        settingfile.put("LuongCoBan", Integer.valueOf(txt_luongcoban.getText()));
         settingfile.put("NamThamNien", Integer.valueOf(txt_namthamnien.getText()));
         settingfile.put("ThuongThamNien", Double.valueOf(txt_thuongthamnien.getText()));
         settingfile.put("ThuongThemThamNien", Double.valueOf(txt_thuongthamnienthem.getText()));
-        settingfile.put("BaoHiem",Double.valueOf(txt_baohiem.getText()));
+        settingfile.put("BaoHiem",Integer.valueOf(txt_baohiem.getText()));
         try (FileWriter file = new FileWriter(System.getProperty("user.dir") + "\\settings.json")) {
             file.write(settingfile.toString());
         } catch (IOException e) {

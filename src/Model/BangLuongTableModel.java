@@ -33,8 +33,8 @@ public class BangLuongTableModel extends AbstractTableModel{
     private Class classes[] = {String.class, String.class, String.class, String.class, String.class, String.class, String.class,String.class, String.class, String.class};
     ArrayList<NhanSuModel> ds = new ArrayList<>();
     ArrayList<BangLuongModel> dsBacLuong = new ArrayList<>();
-    int luongcoban;
-    double thuongthamnien, thuongthamnienthem, baohiem, namthamnien;
+    int luongcoban, baohiem;
+    double thuongthamnien, thuongthamnienthem, namthamnien;
 
     public BangLuongTableModel() {
     }
@@ -71,7 +71,7 @@ public class BangLuongTableModel extends AbstractTableModel{
             namthamnien = Double.valueOf(String.valueOf(jsonObject.get("NamThamNien")));
             thuongthamnien = Double.valueOf(String.valueOf(jsonObject.get("ThuongThamNien")));
             thuongthamnienthem = Double.valueOf(String.valueOf(jsonObject.get("ThuongThemThamNien")));
-            baohiem = Double.valueOf(String.valueOf(jsonObject.get("BaoHiem")));
+            baohiem = Integer.valueOf(String.valueOf(jsonObject.get("BaoHiem")));
             
         } catch (IOException e) {
             e.printStackTrace();
