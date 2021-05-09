@@ -4,7 +4,7 @@ import DAO.implement.NhanSu;
 import Model.ComboItem;
 import Model.HoSoTableModel;
 import Model.NhanSuModel;
-import Model.TableNhanSuModel;
+import Model.NhanSuHoSoModel;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -28,7 +28,7 @@ public class hosoPanel extends javax.swing.JPanel {
     java.awt.Frame bb;
     hosoPanel aa;
     String tenUser;
-    ArrayList<TableNhanSuModel> dsHoSo = new ArrayList<>();;
+    ArrayList<NhanSuHoSoModel> dsHoSo = new ArrayList<>();;
     boolean isort[] = {true,true,true,true,true,true,true,true,true,true,true};
     public hosoPanel(java.awt.Frame mainFrame, String tenTK) {
         initComponents();
@@ -96,7 +96,7 @@ public class hosoPanel extends javax.swing.JPanel {
         dsHoSo = new ArrayList<>();
         for(int i = 0; i< list.size();i++)
         {
-            TableNhanSuModel a =  new TableNhanSuModel(list.get(i));
+            NhanSuHoSoModel a =  new NhanSuHoSoModel(list.get(i));
             dsHoSo.add(a);
         }
         reloadTable();
@@ -123,89 +123,89 @@ public class hosoPanel extends javax.swing.JPanel {
         {
             switch(index){
             case 0:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o2.getMaNS().compareTo(o1.getMaNS());
                     }
                 });
                 break;
             case 1:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o2.getHoTen().compareTo(o1.getHoTen());
                     }
                 });
                 break;
             case 2:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o2.getNgaySinh().compareTo(o1.getNgaySinh());
                     }
                 });
                 break;
             case 3:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o2.getGioiTinh().compareTo(o1.getGioiTinh());
                     }
                 });
                 break;
             case 4:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o2.getSoDienThoai().compareTo(o1.getSoDienThoai());
                     }
                 });
                 break;
             case 5:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o2.getQueQuan().compareTo(o1.getQueQuan());
                     }
                 });
                 break;
             case 6:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o2.getDanToc().compareTo(o1.getDanToc());
                     }
                 });
                 break;
             case 7:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o2.getTrinhDoHocVan().compareTo(o1.getTrinhDoHocVan());
                     }
                 });
                 break;
             case 8:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o2.getChuyenNganh().compareTo(o1.getChuyenNganh());
                     }
                 });
                 break;
             case 9:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o2.getPhongBan().compareTo(o1.getPhongBan());
                     }
                 });
                 break;
             case 10:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o2.getChucVu().compareTo(o1.getChucVu());
                     }
                 });
@@ -218,89 +218,89 @@ public class hosoPanel extends javax.swing.JPanel {
         else{
             switch(index){
             case 0:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o1.getMaNS().compareTo(o2.getMaNS());
                     }
                 });
                 break;
             case 1:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o1.getHoTen().compareTo(o2.getHoTen());
                     }
                 });
                 break;
             case 2:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o1.getNgaySinh().compareTo(o2.getNgaySinh());
                     }
                 });
                 break;
             case 3:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o1.getGioiTinh().compareTo(o2.getGioiTinh());
                     }
                 });
                 break;
             case 4:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o1.getSoDienThoai().compareTo(o2.getSoDienThoai());
                     }
                 });
                 break;
             case 5:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o1.getQueQuan().compareTo(o2.getQueQuan());
                     }
                 });
                 break;
             case 6:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o1.getDanToc().compareTo(o2.getDanToc());
                     }
                 });
                 break;
             case 7:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o1.getTrinhDoHocVan().compareTo(o2.getTrinhDoHocVan());
                     }
                 });
                 break;
             case 8:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o1.getChuyenNganh().compareTo(o2.getChuyenNganh());
                     }
                 });
                 break;
             case 9:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o1.getPhongBan().compareTo(o2.getPhongBan());
                     }
                 });
                 break;
             case 10:
-                Collections.sort(dsHoSo, new Comparator<TableNhanSuModel>(){
+                Collections.sort(dsHoSo, new Comparator<NhanSuHoSoModel>(){
                     @Override
-                    public int compare(TableNhanSuModel o1, TableNhanSuModel o2) {
+                    public int compare(NhanSuHoSoModel o1, NhanSuHoSoModel o2) {
                        return o1.getChucVu().compareTo(o2.getChucVu());
                     }
                 });
@@ -412,17 +412,7 @@ public class hosoPanel extends javax.swing.JPanel {
         add(txt_searchkey, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, 170, -1));
 
         table_ns.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        table_ns.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        table_ns.setModel(new HoSoTableModel());
         table_ns.setFocusable(false);
         table_ns.setGridColor(new java.awt.Color(204, 204, 204));
         table_ns.setIntercellSpacing(new java.awt.Dimension(0, 0));
@@ -468,8 +458,8 @@ public class hosoPanel extends javax.swing.JPanel {
     private void btn_SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SearchActionPerformed
         String key = txt_searchkey.getText();
         int searchIndex = Integer.valueOf(((ComboItem)txt_searchOption.getSelectedItem()).getValue());
-        ArrayList<TableNhanSuModel> dsHoSoz = new ArrayList<>();
-        for(TableNhanSuModel z:dsHoSo)
+        ArrayList<NhanSuHoSoModel> dsHoSoz = new ArrayList<>();
+        for(NhanSuHoSoModel z:dsHoSo)
             switch(searchIndex){
                 case 0:
                     if(z.getMaNS().contains(key))

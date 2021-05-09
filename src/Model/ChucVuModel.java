@@ -6,16 +6,17 @@ package Model;
  */
 public class ChucVuModel {
     private String MaCV, tenCV;
-    private double PhuCap, LuongCoBan;
+    private double PhuCap;
+    private int BacLuong;
 
     public ChucVuModel() {
     }
 
-    public ChucVuModel(String MaCV, String tenCV, double PhuCap, double LuongCoBan) {
+    public ChucVuModel(String MaCV, String tenCV, double PhuCap, int BacLuong) {
         this.MaCV = MaCV;
         this.tenCV = tenCV;
         this.PhuCap = PhuCap;
-        this.LuongCoBan = LuongCoBan;
+        this.BacLuong = BacLuong;
     }
 
     public double getPhuCap() {
@@ -42,12 +43,13 @@ public class ChucVuModel {
         this.tenCV = tenCV;
     }
 
-    public double getLuongCoBan() {
-        return LuongCoBan;
+    public int getBacLuong() {
+        return BacLuong;
     }
 
-    public void setLuongCoBan(double LuongCoBan) {
-        this.LuongCoBan = LuongCoBan;
+    public void setBacLuong(int BacLuong) {
+        this.BacLuong = BacLuong;
     }
+    
     
 }

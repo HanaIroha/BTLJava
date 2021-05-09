@@ -31,15 +31,29 @@ public class ChucVu extends DataSource<ChucVuModel> implements IChucVu{
     }
 
     @Override
-    public boolean suaCV(String maCV, String tenCV, double phuCap, double LuongCoBan) {
-        String sql = "Update dbo.ChucVu SET TenCV = ?, PhuCap=?, LuongCoBan =? WHERE MaCV=?";
-        return update(sql, tenCV, phuCap, LuongCoBan, maCV);
+    public boolean suaCV(String maCV, String tenCV, double phuCap, int BacLuong) {
+        String sql = "Update dbo.ChucVu SET TenCV = ?, PhuCap=?, BacLuong =? WHERE MaCV=?";
+        return update(sql, tenCV, phuCap, BacLuong, maCV);
     }
 
     @Override
-    public boolean themCV(String maCV, String tenCV, double phuCap, double LuongCoBan) {
+    public boolean themCV(String maCV, String tenCV, double phuCap, int BacLuong) {
         String sql = "Insert into dbo.ChucVu VALUES (?,?,?,?)";
-        return update(sql, maCV, tenCV, phuCap, LuongCoBan);
+        return update(sql, maCV, tenCV, phuCap, BacLuong);
+    }
+
+    @Override
+    public double TimPhuCapChucVu(String MaCV) {
+        String sql = "Select * from dbo.ChucVu WHERE MaCV = ?";
+        List<ChucVuModel> result = excute(sql, new ChucVuMapper(), MaCV);
+        return result.isEmpty() ? null : result.get(0).getPhuCap();
+    }
+
+    @Override
+    public int TimBacLuongChucVu(String MaCV) {
+        String sql = "Select * from dbo.ChucVu WHERE MaCV = ?";
+        List<ChucVuModel> result = excute(sql, new ChucVuMapper(), MaCV);
+        return result.isEmpty() ? null : result.get(0).getBacLuong();
     }
     
 }

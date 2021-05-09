@@ -8,6 +8,7 @@ package View;
 import DAO.implement.ChucVu;
 import DAO.implement.NhanSu;
 import DAO.implement.PhongBan;
+import Model.BacLuongModel;
 import Model.ChucVuModel;
 import Model.ComboItem;
 import Model.NhanSuPBCVModel;
@@ -17,6 +18,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JMenuItem;
@@ -52,6 +54,9 @@ public class chucvuPanel extends javax.swing.JPanel {
     public void loadData(){
         btn_save.setVisible(false);
         btn_cancel.setVisible(false);
+        List<BacLuongModel> bl = new DAO.implement.BacLuong().getBacLuong();
+        for(BacLuongModel s:bl)
+            txt_bacluong.addItem(s.getBacLuong());
         reLoad();
         jList1.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
@@ -203,6 +208,7 @@ public class chucvuPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txt_bacluong = new javax.swing.JComboBox<>();
         txt_chucvu = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         txt_macv = new javax.swing.JTextField();
@@ -219,9 +225,7 @@ public class chucvuPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txt_luongcoban = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jSeparator5 = new javax.swing.JSeparator();
         btn_save = new javax.swing.JButton();
         btn_cancel = new javax.swing.JButton();
         btn_add = new javax.swing.JButton();
@@ -234,6 +238,11 @@ public class chucvuPanel extends javax.swing.JPanel {
         background = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txt_bacluong.setBackground(new java.awt.Color(255, 204, 204));
+        txt_bacluong.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        txt_bacluong.setOpaque(false);
+        add(txt_bacluong, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 120, -1));
 
         txt_chucvu.setBackground(new java.awt.Color(255, 204, 204));
         txt_chucvu.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -273,7 +282,7 @@ public class chucvuPanel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tên chức vụ:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, -1, -1));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 380, -1));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 380, -1));
 
         txt_phucap.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_phucap.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -281,12 +290,12 @@ public class chucvuPanel extends javax.swing.JPanel {
         txt_phucap.setBorder(null);
         txt_phucap.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_phucap.setOpaque(false);
-        add(txt_phucap, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 380, -1));
+        add(txt_phucap, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 380, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Phụ cấp:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, -1));
         add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 270, -1));
 
         txt_sl.setBackground(new java.awt.Color(255, 255, 255, 0));
@@ -325,19 +334,10 @@ public class chucvuPanel extends javax.swing.JPanel {
         jLabel6.setText("Danh sách tất cả nhân sự:");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, -1, -1));
 
-        txt_luongcoban.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_luongcoban.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        txt_luongcoban.setForeground(new java.awt.Color(255, 255, 255));
-        txt_luongcoban.setBorder(null);
-        txt_luongcoban.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        txt_luongcoban.setOpaque(false);
-        add(txt_luongcoban, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 290, -1));
-
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Mức lương cơ bản:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, -1));
-        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 290, -1));
+        jLabel7.setText("Bậc lương:");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
 
         btn_save.setBackground(new java.awt.Color(24, 98, 151));
         btn_save.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -454,7 +454,11 @@ public class chucvuPanel extends javax.swing.JPanel {
                     txt_macv.setText(z.getMaCV());
                     txt_tencv.setText(z.getTenCV());
                     txt_phucap.setText(String.valueOf(String.valueOf(new DecimalFormat("#0.00").format(z.getPhuCap()))));
-                    txt_luongcoban.setText(String.valueOf(new DecimalFormat("#0.00").format(z.getLuongCoBan())));
+                    if(z.getBacLuong()==0)
+                        txt_bacluong.setSelectedIndex(-1);
+                    else{
+                        txt_bacluong.setSelectedItem(z.getBacLuong());
+                    }
                     txt_sl.setText(String.valueOf(dem));
                }
         }
@@ -466,8 +470,8 @@ public class chucvuPanel extends javax.swing.JPanel {
             String maCV = txt_macv.getText();
             String tenCV = txt_tencv.getText();
             Double phuCap = Double.valueOf(txt_phucap.getText());
-            Double luongCoBan = Double.valueOf(txt_luongcoban.getText());
-            new ChucVu().suaCV(maCV, tenCV, phuCap, luongCoBan);
+            int BacLuong = (Integer)txt_bacluong.getSelectedItem();
+            new ChucVu().suaCV(maCV, tenCV, phuCap, BacLuong);
             NhanSu nhansuDAO = new NhanSu();
             String mapb = ((ComboItem)txt_chucvu.getSelectedItem()).getValue();
             for(String z : listIn)
@@ -575,8 +579,8 @@ public class chucvuPanel extends javax.swing.JPanel {
             String maCV = txt_macv.getText();
             String tenCV = txt_tencv.getText();
             Double phuCap = Double.valueOf(txt_phucap.getText());
-            Double luongCoBan = Double.valueOf(txt_luongcoban.getText());
-            new ChucVu().themCV(maCV, tenCV, phuCap, luongCoBan);
+            int BacLuong = (Integer)txt_bacluong.getSelectedItem();
+            new ChucVu().themCV(maCV, tenCV, phuCap, BacLuong);
             NhanSu a = new NhanSu();
             for(String z : listIn)
                 a.updateChucVu(z, maCV,tenUser);
@@ -627,7 +631,7 @@ public class chucvuPanel extends javax.swing.JPanel {
         txt_macv.setText("");
         txt_tencv.setText("");
         txt_phucap.setText("");
-        txt_luongcoban.setText("");
+        txt_bacluong.setSelectedIndex(-1);
         txt_sl.setText("0");
         ls1 = new DefaultListModel<ComboItem>();
         jList1.setModel(ls1);
@@ -667,9 +671,8 @@ public class chucvuPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JComboBox<Integer> txt_bacluong;
     private javax.swing.JComboBox<ComboItem> txt_chucvu;
-    private javax.swing.JTextField txt_luongcoban;
     private javax.swing.JTextField txt_macv;
     private javax.swing.JTextField txt_phucap;
     private javax.swing.JTextField txt_sl;

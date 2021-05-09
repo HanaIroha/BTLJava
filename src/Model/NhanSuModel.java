@@ -5,16 +5,15 @@ package Model;
  * @author Iroha
  */
 public class NhanSuModel {
-    private String maNS, hoTen, ngaySinh, queQuan, danToc, soDienThoai, trinhDoHocVan, ChuyenNganh, maPB, maCV, chinhTri, doanThe, NgayThamGia, ThayDoiCuoi;
-    private boolean gioiTinh;
+    private String maNS, hoTen, ngaySinh, queQuan, danToc, soDienThoai, trinhDoHocVan, ChuyenNganh, maPB, maCV, chinhTri, doanThe, NgayThamGia, ThayDoiCuoi, canCuoc, hanHopDong;
+    private boolean gioiTinh, congChuc;
     private byte[] anh;
-    private int BacLuong;
 
     public NhanSuModel() {
     }
 
-    public NhanSuModel(int BacLuong, String NgayThamGia, String maNS, String hoTen, String ngaySinh, String queQuan, String danToc, String soDienThoai, String trinhDoHocVan, String ChuyenNganh, String maPB, String maCV, String chinhTri, String doanThe, boolean gioiTinh, byte[] anh, String ThayDoiCuoi) {
-        this.BacLuong = BacLuong;
+    public NhanSuModel(String NgayThamGia, String maNS, String hoTen, String ngaySinh, String queQuan, String danToc, String soDienThoai, String trinhDoHocVan, String ChuyenNganh, String maPB, String maCV, String chinhTri, String doanThe, boolean gioiTinh, byte[] anh, String ThayDoiCuoi, String canCuoc, boolean congChuc, String hanHopDong) {
+        this.congChuc = congChuc;
         this.NgayThamGia = NgayThamGia;
         this.maNS = maNS;
         this.hoTen = hoTen;
@@ -31,10 +30,8 @@ public class NhanSuModel {
         this.gioiTinh = gioiTinh;
         this.anh = anh;
         this.ThayDoiCuoi = ThayDoiCuoi;
-    }
-
-    public int getBacLuong() {
-        return BacLuong;
+        this.canCuoc = canCuoc;
+        this.hanHopDong = hanHopDong;
     }
 
     public String getNgayThamGia() {
@@ -95,10 +92,6 @@ public class NhanSuModel {
 
     public byte[] getAnh() {
         return anh;
-    }
-
-    public void setBacLuong(int BacLuong) {
-        this.BacLuong = BacLuong;
     }
 
     public void setNgayThamGia(String NgayThamGia) {
@@ -168,7 +161,29 @@ public class NhanSuModel {
     public void setThayDoiCuoi(String ThayDoiCuoi) {
         this.ThayDoiCuoi = ThayDoiCuoi;
     }
-    
-    
+
+    public String getCanCuoc() {
+        return canCuoc;
+    }
+
+    public boolean isCongChuc() {
+        return congChuc;
+    }
+
+    public void setCanCuoc(String canCuoc) {
+        this.canCuoc = canCuoc;
+    }
+
+    public void setCongChuc(boolean congChuc) {
+        this.congChuc = congChuc;
+    }
+
+    public void setHanHopDong(String hanHopDong) {
+        this.hanHopDong = hanHopDong;
+    }
+
+    public String getHanHopDong() {
+        return hanHopDong;
+    }
     
 }

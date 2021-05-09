@@ -9,8 +9,10 @@ import java.util.List;
  */
 public interface IChucVu {
     public String TimTenChucVu(String MaCV);
+    public double TimPhuCapChucVu(String MaCV);
+    public int TimBacLuongChucVu(String MaCV);
     public List<ChucVuModel> getChucVu();
     public boolean xoaCV(String MaCV);
-    public boolean suaCV(String maCV, String tenCV, double phuCap, double LuongCoBan);
-    public boolean themCV(String maCV, String tenCV, double phuCap, double LuongCoBan);
+    public boolean suaCV(String maCV, String tenCV, double phuCap, int BacLuong);
+    public boolean themCV(String maCV, String tenCV, double phuCap, int BacLuong);
 }

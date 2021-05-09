@@ -14,4 +14,9 @@ import java.util.List;
  */
 public interface IBacLuong {
     public List<BacLuongModel> getBacLuong();
+    public double getHeSoLuong(int bacLuong);
+    public boolean CheckBacLuong(int bacLuong);
+    public boolean ThemBacLuong(int bacLuong, double heSoLuong);
+    public boolean XoaBacLuong(int bacLuong);
+    public boolean SuaBacLuong(int bacLuong, double heSoLuong);
 }

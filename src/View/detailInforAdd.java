@@ -13,6 +13,8 @@ import Model.ChucVuModel;
 import Model.ComboItem;
 import Model.PhongBanModel;
 import java.awt.Image;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,7 +33,7 @@ public class detailInforAdd extends javax.swing.JDialog {
 
     hosoPanel previousPanel;
     ButtonGroup btn_gioitinh = new ButtonGroup();
-    List<BacLuongModel> bl = new DAO.implement.BacLuong().getBacLuong();
+    ButtonGroup btn_congchuc = new ButtonGroup();
     List<ChucVuModel> cv = new DAO.implement.ChucVu().getChucVu();
     List<PhongBanModel> pb = new DAO.implement.PhongBan().getPhongBan();
     String filename;
@@ -44,29 +46,45 @@ public class detailInforAdd extends javax.swing.JDialog {
     public detailInforAdd(hosoPanel pF, java.awt.Frame parent, boolean modal, String tenTK) {
         super(parent, modal);
         initComponents();
-        btn_gioitinh.add(gioitinh_nam);
-        btn_gioitinh.add(gioitinh_nu);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255, 0));
-        this.setBackground(new java.awt.Color(255, 255, 255, 0));
-        txt_chinhtri.setLineWrap(true);
-        txt_doanthe.setLineWrap(true);
         previousPanel = pF;
         tenUser = tenTK;
         prepare();
     }
     
     public void prepare(){
-        jDateChooser1.setDateFormatString("yyyy-MM-dd");
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255, 0));
+        this.setBackground(new java.awt.Color(255, 255, 255, 0));
+        txt_chinhtri.setLineWrap(true);
+        txt_doanthe.setLineWrap(true);
+        congchuc_yes.addItemListener(new ItemListener(){
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    jdate_hopdong.getCalendarButton().setEnabled(false);
+                    jdate_hopdong.getDateEditor().setEnabled(false);
+                }
+                else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                    jdate_hopdong.getCalendarButton().setEnabled(true);
+                    jdate_hopdong.getDateEditor().setEnabled(true);
+                }
+            }
+            
+        });
+        btn_gioitinh.add(gioitinh_nam);
+        btn_gioitinh.add(gioitinh_nu);
+        btn_congchuc.add(congchuc_yes);
+        btn_congchuc.add(congchuc_no);
+        jdate_ngaysinh.setDateFormatString("yyyy-MM-dd");
+        jdate_hopdong.setDateFormatString("yyyy-MM-dd");
         for(PhongBanModel s:pb)
         {
             txt_phongban.addItem(new ComboItem(s.getTenPB(),s.getMaPB()));
         }
         for(ChucVuModel s:cv)
             txt_chucvu.addItem(new ComboItem(s.getTenCV(),s.getMaCV()));
-        for(BacLuongModel s:bl)
-            txt_bacluong.addItem(s.getBacLuong());
+        congchuc_yes.setSelected(true);
         gioitinh_nam.setSelected(true);
     }
 
@@ -93,7 +111,6 @@ public class detailInforAdd extends javax.swing.JDialog {
         txt_hoten = new javax.swing.JTextField();
         txt_phongban = new javax.swing.JComboBox<>();
         txt_chucvu = new javax.swing.JComboBox<>();
-        txt_bacluong = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
@@ -104,8 +121,16 @@ public class detailInforAdd extends javax.swing.JDialog {
         gioitinh_nu = new javax.swing.JRadioButton();
         gioitinh_nam = new javax.swing.JRadioButton();
         jLabel15 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jdate_ngaythamgia = new com.toedter.calendar.JDateChooser();
+        jdate_ngaysinh = new com.toedter.calendar.JDateChooser();
+        jSeparator3 = new javax.swing.JSeparator();
+        txt_cancuoc = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jdate_hopdong = new com.toedter.calendar.JDateChooser();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        congchuc_yes = new javax.swing.JRadioButton();
+        congchuc_no = new javax.swing.JRadioButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -118,7 +143,6 @@ public class detailInforAdd extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -200,7 +224,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         txt_dantoc.setBorder(null);
         txt_dantoc.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_dantoc.setOpaque(false);
-        jPanel1.add(txt_dantoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 250, -1));
+        jPanel1.add(txt_dantoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 250, -1));
 
         txt_sdt.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_sdt.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -208,7 +232,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         txt_sdt.setBorder(null);
         txt_sdt.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_sdt.setOpaque(false);
-        jPanel1.add(txt_sdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 220, -1));
+        jPanel1.add(txt_sdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 220, -1));
 
         txt_trinhdo.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_trinhdo.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -224,7 +248,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         txt_quequan.setBorder(null);
         txt_quequan.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_quequan.setOpaque(false);
-        jPanel1.add(txt_quequan, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 240, -1));
+        jPanel1.add(txt_quequan, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 240, -1));
 
         txt_hoten.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_hoten.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -243,15 +267,10 @@ public class detailInforAdd extends javax.swing.JDialog {
         txt_chucvu.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         txt_chucvu.setOpaque(false);
         jPanel1.add(txt_chucvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 170, 260, -1));
-
-        txt_bacluong.setBackground(new java.awt.Color(255, 204, 204));
-        txt_bacluong.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        txt_bacluong.setOpaque(false);
-        jPanel1.add(txt_bacluong, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 290, 60, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 260, -1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 240, -1));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 250, -1));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 220, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 240, -1));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 250, -1));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, 220, -1));
         jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 220, 260, -1));
         jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 220, -1));
         jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 220, -1));
@@ -260,28 +279,69 @@ public class detailInforAdd extends javax.swing.JDialog {
         gioitinh_nu.setForeground(new java.awt.Color(255, 255, 255));
         gioitinh_nu.setText("Nữ");
         gioitinh_nu.setOpaque(false);
-        jPanel1.add(gioitinh_nu, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
+        jPanel1.add(gioitinh_nu, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, -1, -1));
 
         gioitinh_nam.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         gioitinh_nam.setForeground(new java.awt.Color(255, 255, 255));
         gioitinh_nam.setText("Nam");
         gioitinh_nam.setOpaque(false);
-        jPanel1.add(gioitinh_nam, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, -1, -1));
+        jPanel1.add(gioitinh_nam, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Ngày Sinh:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
 
-        jDateChooser2.setBackground(new java.awt.Color(255, 255, 255, 0));
-        jDateChooser2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jDateChooser2.setOpaque(false);
-        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, 220, -1));
+        jdate_ngaythamgia.setBackground(new java.awt.Color(255, 255, 255, 0));
+        jdate_ngaythamgia.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jdate_ngaythamgia.setOpaque(false);
+        jPanel1.add(jdate_ngaythamgia, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, 220, -1));
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255, 0));
-        jDateChooser1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jDateChooser1.setOpaque(false);
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 230, -1));
+        jdate_ngaysinh.setBackground(new java.awt.Color(255, 255, 255, 0));
+        jdate_ngaysinh.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jdate_ngaysinh.setOpaque(false);
+        jPanel1.add(jdate_ngaysinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 230, -1));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 240, -1));
+
+        txt_cancuoc.setBackground(new java.awt.Color(255, 255, 255, 0));
+        txt_cancuoc.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        txt_cancuoc.setForeground(new java.awt.Color(255, 255, 255));
+        txt_cancuoc.setBorder(null);
+        txt_cancuoc.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txt_cancuoc.setOpaque(false);
+        jPanel1.add(txt_cancuoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 240, 20));
+
+        jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Số CCND:");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
+
+        jdate_hopdong.setBackground(new java.awt.Color(255, 255, 255, 0));
+        jdate_hopdong.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jdate_hopdong.setOpaque(false);
+        jPanel1.add(jdate_hopdong, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 320, 220, 20));
+
+        jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Hạn hợp đồng:");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Loại nhân sự:");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, -1, -1));
+
+        congchuc_yes.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        congchuc_yes.setForeground(new java.awt.Color(255, 255, 255));
+        congchuc_yes.setText("Công chức");
+        congchuc_yes.setOpaque(false);
+        jPanel1.add(congchuc_yes, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, -1, -1));
+
+        congchuc_no.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        congchuc_no.setForeground(new java.awt.Color(255, 255, 255));
+        congchuc_no.setText("Hợp đồng");
+        congchuc_no.setOpaque(false);
+        jPanel1.add(congchuc_no, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 290, -1, -1));
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 26)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -296,22 +356,22 @@ public class detailInforAdd extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Quê quán:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Giới tính:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Dân tộc:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Số điện thoại:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -331,7 +391,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Đoàn thể:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 350, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -343,11 +403,6 @@ public class detailInforAdd extends javax.swing.JDialog {
         jLabel11.setText("Chức vụ:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Bậc lương:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, -1, -1));
-
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Ngày tham gia:");
@@ -356,7 +411,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Chính trị:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, -1, -1));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, -1, -1));
 
         txt_chinhtri.setColumns(20);
         txt_chinhtri.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -364,7 +419,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         txt_chinhtri.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txt_chinhtri);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, 240, 120));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 240, 90));
 
         txt_doanthe.setColumns(20);
         txt_doanthe.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -372,7 +427,7 @@ public class detailInforAdd extends javax.swing.JDialog {
         txt_doanthe.setWrapStyleWord(true);
         jScrollPane2.setViewportView(txt_doanthe);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 320, 250, 150));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 350, 250, 120));
 
         background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/detailInfor.png"))); // NOI18N
@@ -403,11 +458,10 @@ public class detailInforAdd extends javax.swing.JDialog {
                 {
                     person_image=null;
                 }
-                isOK = new NhanSu().addNS((Integer)txt_bacluong.getSelectedItem(),
-                        ((JTextField)jDateChooser2.getDateEditor().getUiComponent()).getText(),
+                isOK = new NhanSu().addNS(((JTextField)jdate_ngaythamgia.getDateEditor().getUiComponent()).getText(),
                         txt_mans.getText(),
                         txt_hoten.getText(),
-                        ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText(),
+                        ((JTextField)jdate_ngaysinh.getDateEditor().getUiComponent()).getText(),
                         txt_quequan.getText(),
                         txt_dantoc.getText(),
                         txt_sdt.getText(),
@@ -419,7 +473,11 @@ public class detailInforAdd extends javax.swing.JDialog {
                         txt_doanthe.getText(),
                         gioitinh_nam.isSelected()?true:false,
                         person_image,
-                        tenUser);
+                        tenUser,
+                        txt_cancuoc.getText(),
+                        congchuc_yes.isSelected()?true:false,
+                        congchuc_yes.isSelected()?((JTextField)jdate_hopdong.getDateEditor().getUiComponent()).getText():null
+                );
                 if (isOK)
                 {
                     JOptionPane.showMessageDialog(this,"Thêm thành công!");
@@ -502,10 +560,10 @@ public class detailInforAdd extends javax.swing.JDialog {
     private javax.swing.JButton btn_add;
     private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_changeAvatar;
+    private javax.swing.JRadioButton congchuc_no;
+    private javax.swing.JRadioButton congchuc_yes;
     private javax.swing.JRadioButton gioitinh_nam;
     private javax.swing.JRadioButton gioitinh_nu;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -514,6 +572,8 @@ public class detailInforAdd extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -528,12 +588,16 @@ public class detailInforAdd extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private com.toedter.calendar.JDateChooser jdate_hopdong;
+    private com.toedter.calendar.JDateChooser jdate_ngaysinh;
+    private com.toedter.calendar.JDateChooser jdate_ngaythamgia;
     private javax.swing.JLabel lb_avt;
-    private javax.swing.JComboBox<Integer> txt_bacluong;
+    private javax.swing.JTextField txt_cancuoc;
     private javax.swing.JTextArea txt_chinhtri;
     private javax.swing.JComboBox<ComboItem> txt_chucvu;
     private javax.swing.JTextField txt_chuyennganh;

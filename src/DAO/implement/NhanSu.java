@@ -2,6 +2,7 @@ package DAO.implement;
 
 import DAO.INhanSu;
 import Mapper.NhanSuMapper;
+import Mapper.NhanSuMapperNoAvatar;
 import Model.NhanSuModel;
 import java.util.List;
 
@@ -13,14 +14,14 @@ public class NhanSu extends DataSource<NhanSuModel> implements INhanSu{
 
     @Override
     public List<NhanSuModel> getListNhanSu() {
-        String sql = "Select * from dbo.NhanSu";
-        return excute(sql, new NhanSuMapper());
+        String sql = "Select MaNS, HoTen, NgaySinh, QueQuan, GioiTinh, DanToc, SoDienThoai, TrinhDoHocVan, ChuyenNganh, MaPB, MaCV, ChinhTri, DoanThe, NgayGiaNhap, SuaCuoi, CanCuoc, LoaiCongChuc, HanHopDong from dbo.NhanSu";
+        return excute(sql, new NhanSuMapperNoAvatar());
     }
 
     @Override
-    public boolean updateNS(int BacLuong, String maNS, String hoTen, String ngaySinh, String queQuan, String danToc, String soDienThoai, String trinhDoHocVan, String ChuyenNganh, String maPB, String maCV, String chinhTri, String doanThe, boolean gioiTinh, byte[] anh, String thayDoiCuoi) {
-        String sql = "UPDATE dbo.NhanSu SET HoTen=?, NgaySinh=?, QueQuan=?, GioiTinh=?, DanToc=?, SoDienThoai=?, TrinhDoHocVan=?, ChuyenNganh=?, MaPB=?, MaCV = ?, ChinhTri=?, DoanThe=?, BacLuong=?, Anh=?, SuaCuoi=? WHERE MaNS=?";
-        return update(sql, hoTen, ngaySinh, queQuan, gioiTinh, danToc, soDienThoai, trinhDoHocVan, ChuyenNganh, maPB, maCV, chinhTri, doanThe, BacLuong, anh, thayDoiCuoi, maNS);
+    public boolean updateNS(String maNS, String hoTen, String ngaySinh, String queQuan, String danToc, String soDienThoai, String trinhDoHocVan, String ChuyenNganh, String maPB, String maCV, String chinhTri, String doanThe, boolean gioiTinh, byte[] anh, String thayDoiCuoi, String canCuoc, boolean congChuc, String hanHopDong) {
+        String sql = "UPDATE dbo.NhanSu SET HoTen=?, NgaySinh=?, QueQuan=?, GioiTinh=?, DanToc=?, SoDienThoai=?, TrinhDoHocVan=?, ChuyenNganh=?, MaPB=?, MaCV = ?, ChinhTri=?, DoanThe=?, CanCuoc=?, Anh=?, SuaCuoi=?, LoaiCongChuc=?, HanHopDong=? WHERE MaNS=?";
+        return update(sql, hoTen, ngaySinh, queQuan, gioiTinh, danToc, soDienThoai, trinhDoHocVan, ChuyenNganh, maPB, maCV, chinhTri, doanThe, canCuoc, anh, thayDoiCuoi, congChuc, hanHopDong, maNS);
     }
 
     @Override
@@ -37,9 +38,9 @@ public class NhanSu extends DataSource<NhanSuModel> implements INhanSu{
     }
 
     @Override
-    public boolean addNS(int BacLuong, String NgayThamGia, String maNS, String hoTen, String ngaySinh, String queQuan, String danToc, String soDienThoai, String trinhDoHocVan, String ChuyenNganh, String maPB, String maCV, String chinhTri, String doanThe, boolean gioiTinh, byte[] anh, String thayDoiCuoi) {
-        String sql = "INSERT INTO dbo.NhanSu VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        return insert(sql, maNS, hoTen, ngaySinh, queQuan, gioiTinh, danToc, soDienThoai, trinhDoHocVan, ChuyenNganh, maPB, maCV, chinhTri, doanThe, BacLuong, anh, NgayThamGia, thayDoiCuoi);
+    public boolean addNS(String NgayThamGia, String maNS, String hoTen, String ngaySinh, String queQuan, String danToc, String soDienThoai, String trinhDoHocVan, String ChuyenNganh, String maPB, String maCV, String chinhTri, String doanThe, boolean gioiTinh, byte[] anh, String thayDoiCuoi, String canCuoc, boolean congChuc, String hanHopDong) {
+        String sql = "INSERT INTO dbo.NhanSu VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        return insert(sql, maNS, hoTen, ngaySinh, queQuan, gioiTinh, danToc, soDienThoai, trinhDoHocVan, ChuyenNganh, maPB, maCV, chinhTri, doanThe, anh, NgayThamGia, thayDoiCuoi, canCuoc, congChuc, hanHopDong);
     }
 
     @Override

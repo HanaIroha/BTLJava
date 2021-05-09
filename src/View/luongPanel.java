@@ -5,6 +5,18 @@
  */
 package View;
 
+import DAO.implement.NhanSu;
+import Model.BangLuongTableModel;
+import Model.NhanSuModel;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+
 /**
  *
  * @author Iroha
@@ -18,8 +30,31 @@ public class luongPanel extends javax.swing.JPanel {
     public luongPanel(java.awt.Frame mainFrame) {
         initComponents();
         bb=mainFrame;
+        prepare();
     }
+    
+    private void prepare(){
+        table_bangluong.getTableHeader().setDefaultRenderer(new luongPanel.HeaderColor());
+        table_bangluong.getTableHeader().setBackground(new Color(82,147,255));
+        table_bangluong.getTableHeader().setBackground(new Color(32, 136, 203));
+    }
+    
+    public class HeaderColor extends DefaultTableCellRenderer {
 
+        public HeaderColor() {
+            setOpaque(true);
+        }
+
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);
+            setOpaque(false);
+            setFont(new Font("Times New Roman", Font.BOLD, 16));
+            setForeground(new Color(255,255,255));
+            setPreferredSize(new Dimension(1230, 35));
+            return this;
+        }
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,10 +65,10 @@ public class luongPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         btn_Search2 = new javax.swing.JButton();
-        btn_Search1 = new javax.swing.JButton();
-        btn_Search = new javax.swing.JButton();
+        btn_calculate = new javax.swing.JButton();
+        btn_setting = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table_bangluong = new javax.swing.JTable();
         background = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -47,51 +82,72 @@ public class luongPanel extends javax.swing.JPanel {
         btn_Search2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(btn_Search2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 20, 140, 50));
 
-        btn_Search1.setBackground(new java.awt.Color(24, 98, 151));
-        btn_Search1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btn_Search1.setForeground(new java.awt.Color(255, 255, 255));
-        btn_Search1.setText("Tính lương");
-        btn_Search1.setBorder(null);
-        btn_Search1.setBorderPainted(false);
-        btn_Search1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btn_Search1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, 140, 50));
-
-        btn_Search.setBackground(new java.awt.Color(24, 98, 151));
-        btn_Search.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btn_Search.setForeground(new java.awt.Color(255, 255, 255));
-        btn_Search.setText("Chỉnh sửa tính lương");
-        btn_Search.setBorder(null);
-        btn_Search.setBorderPainted(false);
-        btn_Search.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btn_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 90, 310, 50));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        btn_calculate.setBackground(new java.awt.Color(24, 98, 151));
+        btn_calculate.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_calculate.setForeground(new java.awt.Color(255, 255, 255));
+        btn_calculate.setText("Tính lương");
+        btn_calculate.setBorder(null);
+        btn_calculate.setBorderPainted(false);
+        btn_calculate.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_calculate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_calculateActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        });
+        add(btn_calculate, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, 140, 50));
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 850, 600));
+        btn_setting.setBackground(new java.awt.Color(24, 98, 151));
+        btn_setting.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_setting.setForeground(new java.awt.Color(255, 255, 255));
+        btn_setting.setText("Chỉnh sửa tính lương");
+        btn_setting.setBorder(null);
+        btn_setting.setBorderPainted(false);
+        btn_setting.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_setting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_settingActionPerformed(evt);
+            }
+        });
+        add(btn_setting, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 310, 50));
+
+        table_bangluong.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        table_bangluong.setModel(new BangLuongTableModel());
+        table_bangluong.setFocusable(false);
+        table_bangluong.setGridColor(new java.awt.Color(204, 204, 204));
+        table_bangluong.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        table_bangluong.setRowHeight(25);
+        table_bangluong.setSelectionBackground(new java.awt.Color(255, 102, 102));
+        table_bangluong.setShowVerticalLines(false);
+        table_bangluong.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(table_bangluong);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 1230, 540));
 
         background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/panelDefault.png"))); // NOI18N
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 650));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_settingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_settingActionPerformed
+        salaryCalculatorEdit editluong = new salaryCalculatorEdit(bb, true);
+        editluong.setVisible(true);
+    }//GEN-LAST:event_btn_settingActionPerformed
+
+    private void btn_calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calculateActionPerformed
+        LoadLuongTable();
+    }//GEN-LAST:event_btn_calculateActionPerformed
+    
+    private void LoadLuongTable(){
+        List<NhanSuModel> ls = new NhanSu().getListNhanSu();
+        table_bangluong.setModel(new BangLuongTableModel(ls));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
-    private javax.swing.JButton btn_Search;
-    private javax.swing.JButton btn_Search1;
     private javax.swing.JButton btn_Search2;
+    private javax.swing.JButton btn_calculate;
+    private javax.swing.JButton btn_setting;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table_bangluong;
     // End of variables declaration//GEN-END:variables
 }

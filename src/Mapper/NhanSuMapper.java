@@ -27,10 +27,12 @@ public class NhanSuMapper implements IMapper<NhanSuModel>{
             ns.setMaCV(rs.getString("MaCV"));
             ns.setChinhTri(rs.getString("ChinhTri"));
             ns.setDoanThe(rs.getString("DoanThe"));
-            ns.setBacLuong(rs.getInt("BacLuong"));
             ns.setAnh(rs.getBytes("Anh"));
             ns.setNgayThamGia(rs.getString("NgayGiaNhap"));
             ns.setThayDoiCuoi(rs.getString("SuaCuoi"));
+            ns.setCanCuoc(rs.getString("CanCuoc"));
+            ns.setCongChuc(rs.getBoolean("LoaiCongChuc"));
+            ns.setHanHopDong(rs.getString("HanHopDong"));
             return ns;
         } catch (SQLException ex) {
             return null;

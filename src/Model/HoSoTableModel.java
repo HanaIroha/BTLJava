@@ -12,20 +12,20 @@ import javax.swing.table.AbstractTableModel;
  */
 public class HoSoTableModel extends AbstractTableModel{
 
-    private String name[] = {"Mã", "Họ tên", "Ngày sinh", "Giới tính", "Số điện thoại", "Quê quán", "Dân tộc", "Học vấn", "Chuyên ngành", "Phòng ban", "Chức vụ"};
+    private String name[] = {"Mã", "Họ tên", "Ngày sinh", "Giới tính", "Số điện thoại", "Quê quán", "Dân tộc", "Trình độ", "Chuyên ngành", "Phòng ban", "Chức vụ"};
     private Class classes[] = {String.class, String.class, String.class, String.class, String.class, String.class ,String.class, String.class, String.class, String.class, String.class};
     
-    ArrayList<TableNhanSuModel> dsHoSo = new ArrayList<>();
+    ArrayList<NhanSuHoSoModel> dsHoSo = new ArrayList<>();
     
     public HoSoTableModel(List<NhanSuModel> list) {
         for(int i = 0; i< list.size();i++)
         {
-            TableNhanSuModel a =  new TableNhanSuModel(list.get(i));
+            NhanSuHoSoModel a =  new NhanSuHoSoModel(list.get(i));
             this.dsHoSo.set(i, a);
         }
     }
     
-    public HoSoTableModel(ArrayList<TableNhanSuModel> ls){
+    public HoSoTableModel(ArrayList<NhanSuHoSoModel> ls){
         this.dsHoSo = ls;
     }
     
