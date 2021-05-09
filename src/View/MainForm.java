@@ -49,32 +49,34 @@ public class MainForm extends javax.swing.JFrame {
         lb_name.setText("Xin chào "+taikhoan.getTen()+"!");
         lb_namesmall.setText(taikhoan.getTen());
         try{
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon(taikhoan.getAnh()).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
-            BufferedImage master = new BufferedImage(
-                imageIcon.getIconWidth(),
-                imageIcon.getIconHeight(),
-                BufferedImage.TYPE_INT_RGB);
-                Graphics g = master.createGraphics();
-            imageIcon.paintIcon(null, g, 0,0);
-            g.dispose();
-            int diameter = Math.min(master.getWidth(), master.getHeight());
-            BufferedImage mask = new BufferedImage(master.getWidth(), master.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            if(taikhoan.getAnh()!=null){
+                ImageIcon imageIcon = new ImageIcon(new ImageIcon(taikhoan.getAnh()).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
+                BufferedImage master = new BufferedImage(
+                    imageIcon.getIconWidth(),
+                    imageIcon.getIconHeight(),
+                    BufferedImage.TYPE_INT_RGB);
+                    Graphics g = master.createGraphics();
+                imageIcon.paintIcon(null, g, 0,0);
+                g.dispose();
+                int diameter = Math.min(master.getWidth(), master.getHeight());
+                BufferedImage mask = new BufferedImage(master.getWidth(), master.getHeight(), BufferedImage.TYPE_INT_ARGB);
 
-            Graphics2D g2d = mask.createGraphics();
-            applyQualityRenderingHints(g2d);
-            g2d.fillOval(0, 0, diameter - 1, diameter - 1);
-            g2d.dispose();
+                Graphics2D g2d = mask.createGraphics();
+                applyQualityRenderingHints(g2d);
+                g2d.fillOval(0, 0, diameter - 1, diameter - 1);
+                g2d.dispose();
 
-            BufferedImage masked = new BufferedImage(diameter, diameter, BufferedImage.TYPE_INT_ARGB);
-            g2d = masked.createGraphics();
-            applyQualityRenderingHints(g2d);
-            int x = (diameter - master.getWidth()) / 2;
-            int y = (diameter - master.getHeight()) / 2;
-            g2d.drawImage(master, x, y, null);
-            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.DST_IN));
-            g2d.drawImage(mask, 0, 0, null);
-            g2d.dispose();
-            lb_avt.setIcon(new ImageIcon(masked));
+                BufferedImage masked = new BufferedImage(diameter, diameter, BufferedImage.TYPE_INT_ARGB);
+                g2d = masked.createGraphics();
+                applyQualityRenderingHints(g2d);
+                int x = (diameter - master.getWidth()) / 2;
+                int y = (diameter - master.getHeight()) / 2;
+                g2d.drawImage(master, x, y, null);
+                g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.DST_IN));
+                g2d.drawImage(mask, 0, 0, null);
+                g2d.dispose();
+                lb_avt.setIcon(new ImageIcon(masked));
+            }
         }
         catch(Exception e){
             
@@ -534,10 +536,13 @@ public class MainForm extends javax.swing.JFrame {
             indexTab=5;
             resetTab();
             lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu5.png")));
-//            MainPanel.removeAll();
-//            MainPanel.setLayout(new BorderLayout());
-//            MainPanel.add(new hosoPanel(thisForm));
-//            MainPanel.revalidate();
+            MainPanel.removeAll();
+            MainPanel.setLayout(new BorderLayout());
+            if(taikhoan.getUsername().equals("iroha"))
+                MainPanel.add(new taikhoanAdminPanel(thisForm, taikhoan));
+            else
+                MainPanel.add(new taikhoanPanel(thisForm, taikhoan));
+            MainPanel.revalidate();
         }
     }//GEN-LAST:event_btn_taikhoanActionPerformed
     private void resetTab(){

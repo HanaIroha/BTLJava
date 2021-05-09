@@ -254,17 +254,6 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
         jPanel1.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 500, 170, 50));
 
         table_luong.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        table_luong.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
         table_luong.setCellSelectionEnabled(true);
         table_luong.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         table_luong.setFocusable(false);
@@ -381,7 +370,7 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_updateluongActionPerformed
 
     private void table_luongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_luongMouseClicked
-        int row = table_luong. rowAtPoint(evt.getPoint());
+        int row = table_luong.rowAtPoint(evt.getPoint());
         if(row>=0)
         {
             txt_bac.setText(table_luong.getValueAt(row, 0).toString());
