@@ -12,10 +12,26 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Toolkit;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporterParameter;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
 
 /**
  *
@@ -55,6 +71,108 @@ public class luongPanel extends javax.swing.JPanel {
         }
 
     }
+    
+    public class InforLuong{
+        private String mans, hoten, namcongtac, chucvu, luongcoban, hesoluong, thuongthamnien, phucap, baohiem, thuclinh;
+
+        public InforLuong() {
+        }
+
+        public InforLuong(String mans, String hoten, String namcongtac, String chucvu, String luongcoban, String hesoluong, String thuongthamnien, String phucap, String baohiem, String thuclinh) {
+            this.mans = mans;
+            this.hoten = hoten;
+            this.namcongtac = namcongtac;
+            this.chucvu = chucvu;
+            this.luongcoban = luongcoban;
+            this.hesoluong = hesoluong;
+            this.thuongthamnien = thuongthamnien;
+            this.phucap = phucap;
+            this.baohiem = baohiem;
+            this.thuclinh = thuclinh;
+        }
+
+        public String getMans() {
+            return mans;
+        }
+
+        public void setMans(String mans) {
+            this.mans = mans;
+        }
+
+        public String getHoten() {
+            return hoten;
+        }
+
+        public void setHoten(String hoten) {
+            this.hoten = hoten;
+        }
+
+        public String getNamcongtac() {
+            return namcongtac;
+        }
+
+        public void setNamcongtac(String namcongtac) {
+            this.namcongtac = namcongtac;
+        }
+
+        public String getChucvu() {
+            return chucvu;
+        }
+
+        public void setChucvu(String chucvu) {
+            this.chucvu = chucvu;
+        }
+
+        public String getLuongcoban() {
+            return luongcoban;
+        }
+
+        public void setLuongcoban(String luongcoban) {
+            this.luongcoban = luongcoban;
+        }
+
+        public String getHesoluong() {
+            return hesoluong;
+        }
+
+        public void setHesoluong(String hesoluong) {
+            this.hesoluong = hesoluong;
+        }
+
+        public String getThuongthamnien() {
+            return thuongthamnien;
+        }
+
+        public void setThuongthamnien(String thuongthamnien) {
+            this.thuongthamnien = thuongthamnien;
+        }
+
+        public String getPhucap() {
+            return phucap;
+        }
+
+        public void setPhucap(String phucap) {
+            this.phucap = phucap;
+        }
+
+        public String getBaohiem() {
+            return baohiem;
+        }
+
+        public void setBaohiem(String baohiem) {
+            this.baohiem = baohiem;
+        }
+
+        public String getThuclinh() {
+            return thuclinh;
+        }
+
+        public void setThuclinh(String thuclinh) {
+            this.thuclinh = thuclinh;
+        }
+        
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,7 +182,7 @@ public class luongPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_Search2 = new javax.swing.JButton();
+        btn_print = new javax.swing.JButton();
         btn_calculate = new javax.swing.JButton();
         btn_setting = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -73,14 +191,19 @@ public class luongPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_Search2.setBackground(new java.awt.Color(24, 98, 151));
-        btn_Search2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btn_Search2.setForeground(new java.awt.Color(255, 255, 255));
-        btn_Search2.setText("Xuất Excel");
-        btn_Search2.setBorder(null);
-        btn_Search2.setBorderPainted(false);
-        btn_Search2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btn_Search2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 20, 140, 50));
+        btn_print.setBackground(new java.awt.Color(24, 98, 151));
+        btn_print.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_print.setForeground(new java.awt.Color(255, 255, 255));
+        btn_print.setText("Xuất DOC");
+        btn_print.setBorder(null);
+        btn_print.setBorderPainted(false);
+        btn_print.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_printActionPerformed(evt);
+            }
+        });
+        add(btn_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 20, 140, 50));
 
         btn_calculate.setBackground(new java.awt.Color(24, 98, 151));
         btn_calculate.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -136,6 +259,59 @@ public class luongPanel extends javax.swing.JPanel {
     private void btn_calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calculateActionPerformed
         LoadLuongTable();
     }//GEN-LAST:event_btn_calculateActionPerformed
+
+    private void btn_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_printActionPerformed
+        try{
+            JFileChooser chonChoLuu = new JFileChooser();
+            //chonChoLuu.setCurrentDirectory(new File(System.getProperty("user.dir")));
+            chonChoLuu.setSelectedFile(new File("unname.docx"));
+            int reponse = chonChoLuu.showSaveDialog(null);
+            if(reponse == JFileChooser.APPROVE_OPTION){
+                String savePath = chonChoLuu.getSelectedFile().getAbsolutePath();
+                if (chonChoLuu.getSelectedFile().getName().length()>5) 
+                {
+                    if(!savePath.substring(savePath.length() - 5).equals(".docx"))
+                        savePath =  savePath + ".docx";
+                }
+                else{
+                    savePath =  savePath + ".docx";
+                }
+                List<InforLuong> ls = new ArrayList<>();
+                for(int i=0; i<table_bangluong.getRowCount(); i++){
+                    InforLuong a = new InforLuong();
+                    a.setMans(table_bangluong.getValueAt(i, 0).toString());
+                    a.setHoten(table_bangluong.getValueAt(i, 1).toString());
+                    a.setNamcongtac(table_bangluong.getValueAt(i, 2).toString());
+                    a.setChucvu(table_bangluong.getValueAt(i, 3).toString());
+                    a.setLuongcoban(table_bangluong.getValueAt(i, 4).toString());
+                    a.setHesoluong(table_bangluong.getValueAt(i, 5).toString());
+                    a.setThuongthamnien(table_bangluong.getValueAt(i, 6).toString());
+                    a.setPhucap(table_bangluong.getValueAt(i, 7).toString());
+                    a.setBaohiem(table_bangluong.getValueAt(i, 8).toString());
+                    a.setThuclinh(table_bangluong.getValueAt(i, 9).toString());
+                    ls.add(a);
+                }
+                JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(ls);
+                Map<String, Object> parameters = new HashMap<String, Object>();
+                parameters.put("DataSource", itemsJRBean);
+                JasperPrint jasperPrint = JasperFillManager.fillReport(System.getProperty("user.dir") + "\\ReportTemplates\\bangluong.jasper", parameters, new JREmptyDataSource());
+    //            OutputStream outputStream = new FileOutputStream(new File(System.getProperty("user.dir") + "\\ReportTemplates\\test.pdf"));
+    //            JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
+                JRDocxExporter exporter = new JRDocxExporter();
+                exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+                exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, savePath);
+                exporter.exportReport();
+                JOptionPane.showMessageDialog(this, "Xuất file thành công!");
+            }
+        }
+        catch (JRException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Xuất file thất bại!");
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Xuất file thất bại!");
+        }
+    }//GEN-LAST:event_btn_printActionPerformed
     
     private void LoadLuongTable(){
         List<NhanSuModel> ls = new NhanSu().getListNhanSu();
@@ -144,8 +320,8 @@ public class luongPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
-    private javax.swing.JButton btn_Search2;
     private javax.swing.JButton btn_calculate;
+    private javax.swing.JButton btn_print;
     private javax.swing.JButton btn_setting;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table_bangluong;
