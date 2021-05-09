@@ -126,23 +126,23 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
 
         txt_luongcoban.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txt_luongcoban.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jPanel1.add(txt_luongcoban, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 170, 320, -1));
+        jPanel1.add(txt_luongcoban, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 120, 320, -1));
 
         txt_namthamnien.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txt_namthamnien.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jPanel1.add(txt_namthamnien, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 210, 170, -1));
+        jPanel1.add(txt_namthamnien, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 160, 170, -1));
 
         txt_thuongthamnien.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txt_thuongthamnien.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jPanel1.add(txt_thuongthamnien, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 250, 150, -1));
+        jPanel1.add(txt_thuongthamnien, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 200, 150, -1));
 
         txt_thuongthamnienthem.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txt_thuongthamnienthem.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jPanel1.add(txt_thuongthamnienthem, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 290, 150, -1));
+        jPanel1.add(txt_thuongthamnienthem, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 240, 150, -1));
 
         txt_baohiem.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txt_baohiem.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jPanel1.add(txt_baohiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 330, 300, -1));
+        jPanel1.add(txt_baohiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 280, 300, -1));
 
         txt_bac.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txt_bac.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -161,27 +161,27 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Lương cơ bản:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Số năm bắt đầu hưởng thâm niêm:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 210, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Phần trăm thưởng thâm niên cơ bản:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Phần năm thâm niên thêm từng năm:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Số tiền bảo hiểm:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 330, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, -1, -1));
 
         btn_updateluong.setBackground(new java.awt.Color(24, 98, 151));
         btn_updateluong.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
