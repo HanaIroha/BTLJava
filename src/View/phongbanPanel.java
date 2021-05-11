@@ -451,7 +451,7 @@ public class phongbanPanel extends javax.swing.JPanel {
                 txt_sdt.requestFocus();
                 throw new Exception("Số điện thoại không được để trống!");
             }
-            if(txt_sdt.getText().matches("[0-9]+")){
+            if(!txt_sdt.getText().matches("[0-9]+")){
                 txt_sdt.requestFocus();
                 throw new Exception("Số điện thoại chỉ bao gồm số!");
             }

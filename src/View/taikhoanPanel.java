@@ -219,6 +219,8 @@ public class taikhoanPanel extends javax.swing.JPanel {
             if(new Account().loginAccount(acc.getUsername(),String.valueOf(txt_matkhaucu.getPassword()))==null)
                 throw new Exception("Mật khẩu cũ sai");
             new Account().updatePassword(acc.getUsername(), String.valueOf(txt_matkhaumoi.getPassword()));
+            txt_matkhaucu.setText("");
+            txt_matkhaumoi.setText("");
             JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công!");
         }
         catch(Exception e){

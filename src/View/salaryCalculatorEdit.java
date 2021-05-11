@@ -297,7 +297,7 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
                 txt_luongcoban.requestFocus();
                 throw new Exception("Lương cơ bản không được để trống!");
             }
-            if(txt_luongcoban.getText().matches("[0-9]+")){
+            if(!txt_luongcoban.getText().matches("[0-9]+")){
                 txt_luongcoban.requestFocus();
                 throw new Exception("Lương cơ bản chỉ gồm số!");
             }
@@ -305,7 +305,7 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
                 txt_namthamnien.requestFocus();
                 throw new Exception("Năm bắt đầu hưởng thâm niên không được để trống!");
             }
-            if(txt_namthamnien.getText().matches("[0-9]+")){
+            if(!txt_namthamnien.getText().matches("[0-9]+")){
                 txt_namthamnien.requestFocus();
                 throw new Exception("Năm bắt đầu hưởng thâm niên phải là số!");
             }
@@ -313,7 +313,7 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
                 txt_thuongthamnien.requestFocus();
                 throw new Exception("Phần thăm thưởng thâm niên không được để trống!");
             }
-            if(txt_thuongthamnien.getText().matches("[0-9\\.]+")){
+            if(!txt_thuongthamnien.getText().matches("[0-9\\.]+")){
                 txt_thuongthamnien.requestFocus();
                 throw new Exception("Phần trăm thưởng thêm niên thâm niên phải là số!");
             }
@@ -321,7 +321,7 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
                 txt_thuongthamnienthem.requestFocus();
                 throw new Exception("Phần thăm thưởng thâm niên thêm từng năm không được để trống!");
             }
-            if(txt_thuongthamnienthem.getText().matches("[0-9\\.]+")){
+            if(!txt_thuongthamnienthem.getText().matches("[0-9\\.]+")){
                 txt_thuongthamnienthem.requestFocus();
                 throw new Exception("Phần trăm thưởng thâm niên thêm từng năm niên thâm niên phải là số!");
             }
@@ -329,7 +329,7 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
                 txt_baohiem.requestFocus();
                 throw new Exception("Chi phí bảo hiểm không được để trống!");
             }
-            if(txt_baohiem.getText().matches("[0-9]+")){
+            if(!txt_baohiem.getText().matches("[0-9]+")){
                 txt_baohiem.requestFocus();
                 throw new Exception("Chi phí bảo hiểm phải là số!");
             }
@@ -394,7 +394,7 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
                 txt_heso.requestFocus();
                 throw new Exception("Hệ số lương không được để trống!");
             }
-            if(txt_bac.getText().matches("[0-9]+")){
+            if(!txt_bac.getText().matches("[0-9]+")){
                 txt_bac.requestFocus();
                 throw new Exception("Bậc lương phải là số!");
             }
@@ -403,7 +403,7 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
                 throw new Exception("Hệ số lương phải là số!");
             }
             int bl = Integer.valueOf(txt_bac.getText());
-            if(!new BacLuong().CheckBacLuong(bl)){
+            if(new BacLuong().CheckBacLuong(bl)){
                 throw new Exception("Bậc lương này đã tồn tại!");
             }
             Double hsl = Double.valueOf(txt_heso.getText());
@@ -422,7 +422,7 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
                 txt_bac.requestFocus();
                 throw new Exception("Bậc lương không được để trống!");
             }
-            if(txt_bac.getText().matches("[0-9]+")){
+            if(!txt_bac.getText().matches("[0-9]+")){
                 txt_bac.requestFocus();
                 throw new Exception("Bậc lương phải là số!");
             }
@@ -449,7 +449,7 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
                 txt_heso.requestFocus();
                 throw new Exception("Hệ số lương không được để trống!");
             }
-            if(txt_bac.getText().matches("[0-9]+")){
+            if(!txt_bac.getText().matches("[0-9]+")){
                 txt_bac.requestFocus();
                 throw new Exception("Bậc lương phải là số!");
             }

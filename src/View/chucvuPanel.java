@@ -603,6 +603,9 @@ public class chucvuPanel extends javax.swing.JPanel {
                 txt_phucap.requestFocus();
                 throw new Exception("Phụ cấp phải là số!");
             }
+            if(txt_bacluong.getSelectedIndex()==-1){
+                throw new Exception("Vui lòng chọn bậc lương!");
+            }
             if(new ChucVu().TimTenChucVu(txt_macv.getText())!=null){
                 txt_macv.requestFocus();
                 throw new Exception("Mã chức vụ này đã tồn tại!");

@@ -49,6 +49,17 @@ public class luongPanel extends javax.swing.JPanel {
         table_bangluong.getTableHeader().setDefaultRenderer(new luongPanel.HeaderColor());
         table_bangluong.getTableHeader().setBackground(new Color(82,147,255));
         table_bangluong.getTableHeader().setBackground(new Color(32, 136, 203));
+        table_bangluong.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        table_bangluong.getColumnModel().getColumn(0).setPreferredWidth(100);
+        table_bangluong.getColumnModel().getColumn(1).setPreferredWidth(150);
+        table_bangluong.getColumnModel().getColumn(2).setPreferredWidth(110);
+        table_bangluong.getColumnModel().getColumn(3).setPreferredWidth(158);
+        table_bangluong.getColumnModel().getColumn(4).setPreferredWidth(130);
+        table_bangluong.getColumnModel().getColumn(5).setPreferredWidth(100);
+        table_bangluong.getColumnModel().getColumn(6).setPreferredWidth(150);
+        table_bangluong.getColumnModel().getColumn(7).setPreferredWidth(90);
+        table_bangluong.getColumnModel().getColumn(8).setPreferredWidth(90);
+        table_bangluong.getColumnModel().getColumn(9).setPreferredWidth(130);
     }
     
     public class HeaderColor extends DefaultTableCellRenderer {
