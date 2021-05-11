@@ -77,10 +77,10 @@ public class detailInforAdd extends javax.swing.JDialog {
         jdate_ngaysinh.setDateFormatString("yyyy-MM-dd");
         jdate_hopdong.setDateFormatString("yyyy-MM-dd");
         jdate_ngaythamgia.setDateFormatString("yyyy-MM-dd");
+        txt_phongban.addItem(new ComboItem("Không có",""));
         for(PhongBanModel s:pb)
-        {
             txt_phongban.addItem(new ComboItem(s.getTenPB(),s.getMaPB()));
-        }
+        txt_chucvu.addItem(new ComboItem("Không có",""));
         for(ChucVuModel s:cv)
             txt_chucvu.addItem(new ComboItem(s.getTenCV(),s.getMaCV()));
         congchuc_yes.setSelected(true);
@@ -441,56 +441,103 @@ public class detailInforAdd extends javax.swing.JDialog {
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         try{
-                boolean isOK;
-                byte[] person_image;
-                if(imageChange){
-                    File image = new File(filename);
-                    FileInputStream fis = new FileInputStream(image);
-                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                    byte[] buf = new byte[1024];
-                    for(int readNum; (readNum=fis.read(buf))!=-1;){
-                        bos.write(buf,0,readNum);
-                }
-                person_image=bos.toByteArray();
-                }
-                else
-                {
-                    person_image=null;
-                }
-                isOK = new NhanSu().addNS(((JTextField)jdate_ngaythamgia.getDateEditor().getUiComponent()).getText(),
-                        txt_mans.getText(),
-                        txt_hoten.getText(),
-                        ((JTextField)jdate_ngaysinh.getDateEditor().getUiComponent()).getText(),
-                        txt_quequan.getText(),
-                        txt_dantoc.getText(),
-                        txt_sdt.getText(),
-                        txt_trinhdo.getText(),
-                        txt_chuyennganh.getText(),
-                        ((ComboItem)txt_phongban.getSelectedItem()).getValue(),
-                        ((ComboItem)txt_chucvu.getSelectedItem()).getValue(),
-                        txt_chinhtri.getText(),
-                        txt_doanthe.getText(),
-                        gioitinh_nam.isSelected()?true:false,
-                        person_image,
-                        tenUser,
-                        txt_cancuoc.getText(),
-                        congchuc_yes.isSelected()?true:false,
-                        congchuc_no.isSelected()?((JTextField)jdate_hopdong.getDateEditor().getUiComponent()).getText():null
-                );
-                if (isOK)
-                {
-                    JOptionPane.showMessageDialog(this,"Thêm thành công!");
-                    this.dispose();
-                    previousPanel.LoadData();
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(this,"Thêm thất bại!");
-                }
+            if(txt_mans.getText().equals("")){
+                txt_mans.requestFocus();
+                throw new Exception("Mã nhân sự không được để trống!");
             }
-            catch(Exception e){
-                
+            if(txt_hoten.getText().equals("")){
+                txt_hoten.requestFocus();
+                throw new Exception("Họ tên không được để trống!");
             }
+            if(txt_cancuoc.getText().equals("")){
+                txt_cancuoc.requestFocus();
+                throw new Exception("Số căn cước không được để trống!");
+            }
+            if(!txt_cancuoc.getText().matches("[0-9]+")){
+                txt_cancuoc.requestFocus();
+                throw new Exception("Số căn cước chỉ bao gồm số!");
+            }
+            if(jdate_ngaysinh.getDate()==null)
+                throw new Exception("Ngày sinh không được để trống!");
+            if(txt_quequan.getText().equals("")){
+                txt_quequan.requestFocus();
+                throw new Exception("Quê quán không được để trống!");
+            }
+            if(txt_dantoc.getText().equals("")){
+                txt_dantoc.requestFocus();
+                throw new Exception("Dân tộc không được để trống!");
+            }
+            if(txt_sdt.getText().equals("")){
+                txt_sdt.requestFocus();
+                throw new Exception("Số điện thoại không được để trống!");
+            }
+            if(!txt_sdt.getText().matches("[0-9]+")){
+                txt_sdt.requestFocus();
+                throw new Exception("Số điện thoại chỉ bao gồm số!");
+            }
+            if(txt_trinhdo.getText().equals("")){
+                txt_trinhdo.requestFocus();
+                throw new Exception("Trình độ không được để trống!");
+            }
+            if(txt_chuyennganh.getText().equals("")){
+                txt_chuyennganh.requestFocus();
+                throw new Exception("Chuyên ngành không được để trống!");
+            }
+            if(jdate_ngaythamgia.getDate()==null)
+                throw new Exception("Ngày tham gia không được để trống!");
+            if(congchuc_no.isSelected())
+                if(jdate_hopdong.getDate()==null)
+                throw new Exception("Hạn hợp đồng không được để trống!");
+            if(lb_avt.getIcon()==null){
+                throw new Exception("Hình đại diện không được để trống!");
+            }
+            if(new NhanSu().getNhanSu(txt_mans.getText())!=null){
+                txt_mans.requestFocus();
+                throw new Exception("Mã nhân sự này đã tồn tại!");
+            }
+            
+            boolean isOK;
+            byte[] person_image;
+            if(imageChange){
+                File image = new File(filename);
+                FileInputStream fis = new FileInputStream(image);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                byte[] buf = new byte[1024];
+                for(int readNum; (readNum=fis.read(buf))!=-1;){
+                    bos.write(buf,0,readNum);
+            }
+            person_image=bos.toByteArray();
+            }
+            else
+            {
+                person_image=null;
+            }
+            new NhanSu().addNS(((JTextField)jdate_ngaythamgia.getDateEditor().getUiComponent()).getText(),
+                    txt_mans.getText(),
+                    txt_hoten.getText(),
+                    ((JTextField)jdate_ngaysinh.getDateEditor().getUiComponent()).getText(),
+                    txt_quequan.getText(),
+                    txt_dantoc.getText(),
+                    txt_sdt.getText(),
+                    txt_trinhdo.getText(),
+                    txt_chuyennganh.getText(),
+                    ((ComboItem)txt_phongban.getSelectedItem()).getValue(),
+                    ((ComboItem)txt_chucvu.getSelectedItem()).getValue(),
+                    txt_chinhtri.getText(),
+                    txt_doanthe.getText(),
+                    gioitinh_nam.isSelected()?true:false,
+                    person_image,
+                    tenUser,
+                    txt_cancuoc.getText(),
+                    congchuc_yes.isSelected()?true:false,
+                    congchuc_no.isSelected()?((JTextField)jdate_hopdong.getDateEditor().getUiComponent()).getText():"1900-01-01");
+            JOptionPane.showMessageDialog(this,"Thêm thành công!");
+            previousPanel.LoadData();
+            this.dispose();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Thêm thất bại!", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_addActionPerformed
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed

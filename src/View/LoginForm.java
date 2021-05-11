@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -219,46 +220,51 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_usernameFocusLost
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        if(txt_username.getText().equals("")||txt_username.getText().equals("Nhập tài khoản..."))
-        {
-            lb_status.setText("Vui lòng nhập tài khoản");
-            txt_username.requestFocus();
-        }
-        else if(String.valueOf(txt_password.getPassword()).equals(""))
-        {
-            lb_status.setText("Vui lòng nhập mật khẩu");
-            txt_password.requestFocus();
-        }
-        else
-        {
-            Account accDAO = new Account();
-            AccountModel acc = accDAO.loginAccount(txt_username.getText(), String.valueOf(txt_password.getPassword()));
-            if (acc == null){
-                lb_status.setText("Sai tài khoản hoặc mật khẩu!");
+        try{
+            if(txt_username.getText().equals("")||txt_username.getText().equals("Nhập tài khoản..."))
+            {
+                lb_status.setText("Vui lòng nhập tài khoản");
+                txt_username.requestFocus();
             }
-            else{
-                MainForm f = new MainForm(acc);
-                f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                f.setLocationRelativeTo(null);
-                f.setResizable(false);
-                f.setVisible(true);
-                this.dispose();
-            } 
-//            try{
-//                NhanSu accDAO = new NhanSu();
-//                File image = new File("avt.png");
-//                FileInputStream fis = new FileInputStream(image);
-//                ByteArrayOutputStream bos = new ByteArrayOutputStream();
-//                byte[] buf = new byte[1024];
-//                for(int readNum; (readNum=fis.read(buf))!=-1;){
-//                    bos.write(buf,0,readNum);
-//                }
-//                byte[] person_image=bos.toByteArray();
-//                System.out.println(accDAO.upadteAVT("NS01", person_image));
-//            }
-//            catch(Exception e){
-//                
-//            }
+            else if(String.valueOf(txt_password.getPassword()).equals(""))
+            {
+                lb_status.setText("Vui lòng nhập mật khẩu");
+                txt_password.requestFocus();
+            }
+            else
+            {
+                Account accDAO = new Account();
+                AccountModel acc = accDAO.loginAccount(txt_username.getText(), String.valueOf(txt_password.getPassword()));
+                if (acc == null){
+                    lb_status.setText("Sai tài khoản hoặc mật khẩu!");
+                }
+                else{
+                    MainForm f = new MainForm(acc);
+                    f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    f.setLocationRelativeTo(null);
+                    f.setResizable(false);
+                    f.setVisible(true);
+                    this.dispose();
+                } 
+    //            try{
+    //                NhanSu accDAO = new NhanSu();
+    //                File image = new File("avt.png");
+    //                FileInputStream fis = new FileInputStream(image);
+    //                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    //                byte[] buf = new byte[1024];
+    //                for(int readNum; (readNum=fis.read(buf))!=-1;){
+    //                    bos.write(buf,0,readNum);
+    //                }
+    //                byte[] person_image=bos.toByteArray();
+    //                System.out.println(accDAO.upadteAVT("NS01", person_image));
+    //            }
+    //            catch(Exception e){
+    //                
+    //            }
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_loginActionPerformed
 

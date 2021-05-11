@@ -85,11 +85,13 @@ public class detailInforNotEdit extends javax.swing.JDialog {
             txt_loainhansu.setText("Hợp đồng");
             txt_hanhopdong.setText(acc.getHanHopDong());
         }
+        txt_phongban.setText("Không có");
         for(PhongBanModel s:pb)
         {
             if(s.getMaPB().equals(acc.getMaPB()))
                 txt_phongban.setText(s.getTenPB());
         }
+        txt_chucvu.setText("Không có");
         for(ChucVuModel s:cv)
         {
             if(s.getMaCV().equals(acc.getMaCV()))

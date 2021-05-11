@@ -25,8 +25,8 @@ public class NhanSuHoSoModel {
         this.ChuyenNganh = a.getChuyenNganh()==null?"":a.getHoTen();
         String pb = new PhongBan().TimTenPB(a.getMaPB());
         String cv = new ChucVu().TimTenChucVu(a.getMaCV());
-        this.PhongBan = pb==null?"":pb;
-        this.ChucVu = cv==null?"":cv;
+        this.PhongBan = pb==null?"Không có":pb;
+        this.ChucVu = cv==null?"Không có":cv;
     }
 
     public String getMaNS() {

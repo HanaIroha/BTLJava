@@ -16,6 +16,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import DAO.implement.BacLuong;
 import Model.BacLuongTableModel;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -130,7 +131,7 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
 
         txt_namthamnien.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txt_namthamnien.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jPanel1.add(txt_namthamnien, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 160, 170, -1));
+        jPanel1.add(txt_namthamnien, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 160, 190, -1));
 
         txt_thuongthamnien.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txt_thuongthamnien.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -138,7 +139,7 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
 
         txt_thuongthamnienthem.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txt_thuongthamnienthem.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jPanel1.add(txt_thuongthamnienthem, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 240, 150, -1));
+        jPanel1.add(txt_thuongthamnienthem, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 240, 90, -1));
 
         txt_baohiem.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txt_baohiem.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -165,7 +166,7 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Số năm bắt đầu hưởng thâm niêm:");
+        jLabel2.setText("Năm bắt đầu hưởng thâm niêm:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -175,12 +176,12 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Phần năm thâm niên thêm từng năm:");
+        jLabel4.setText("Phần năm thưởng thâm niên thêm từng năm:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Số tiền bảo hiểm:");
+        jLabel5.setText("Chi phí bảo hiểm:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, -1, -1));
 
         btn_updateluong.setBackground(new java.awt.Color(24, 98, 151));
@@ -291,8 +292,53 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
-        saveSetting();
-        this.dispose();
+        try{
+            if(txt_luongcoban.getText().equals("")){
+                txt_luongcoban.requestFocus();
+                throw new Exception("Lương cơ bản không được để trống!");
+            }
+            if(txt_luongcoban.getText().matches("[0-9]+")){
+                txt_luongcoban.requestFocus();
+                throw new Exception("Lương cơ bản chỉ gồm số!");
+            }
+            if(txt_namthamnien.getText().equals("")){
+                txt_namthamnien.requestFocus();
+                throw new Exception("Năm bắt đầu hưởng thâm niên không được để trống!");
+            }
+            if(txt_namthamnien.getText().matches("[0-9]+")){
+                txt_namthamnien.requestFocus();
+                throw new Exception("Năm bắt đầu hưởng thâm niên phải là số!");
+            }
+            if(txt_thuongthamnien.getText().equals("")){
+                txt_thuongthamnien.requestFocus();
+                throw new Exception("Phần thăm thưởng thâm niên không được để trống!");
+            }
+            if(txt_thuongthamnien.getText().matches("[0-9\\.]+")){
+                txt_thuongthamnien.requestFocus();
+                throw new Exception("Phần trăm thưởng thêm niên thâm niên phải là số!");
+            }
+            if(txt_thuongthamnienthem.getText().equals("")){
+                txt_thuongthamnienthem.requestFocus();
+                throw new Exception("Phần thăm thưởng thâm niên thêm từng năm không được để trống!");
+            }
+            if(txt_thuongthamnienthem.getText().matches("[0-9\\.]+")){
+                txt_thuongthamnienthem.requestFocus();
+                throw new Exception("Phần trăm thưởng thâm niên thêm từng năm niên thâm niên phải là số!");
+            }
+            if(txt_baohiem.getText().equals("")){
+                txt_baohiem.requestFocus();
+                throw new Exception("Chi phí bảo hiểm không được để trống!");
+            }
+            if(txt_baohiem.getText().matches("[0-9]+")){
+                txt_baohiem.requestFocus();
+                throw new Exception("Chi phí bảo hiểm phải là số!");
+            }
+            saveSetting();
+            this.dispose();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Lưu thất bại!", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_saveActionPerformed
 
     private void saveSetting(){
@@ -311,61 +357,117 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
     
     private void getSetting(){
         JSONParser parser = new JSONParser();
+        if(new File(System.getProperty("user.dir") + "\\settings.json").exists()){
+            try (Reader reader = new FileReader(System.getProperty("user.dir") + "\\settings.json")) {
 
-        try (Reader reader = new FileReader(System.getProperty("user.dir") + "\\settings.json")) {
+                JSONObject jsonObject = (JSONObject) parser.parse(reader);
 
-            JSONObject jsonObject = (JSONObject) parser.parse(reader);
+                txt_luongcoban.setText(String.valueOf(jsonObject.get("LuongCoBan")));
+                txt_namthamnien.setText(String.valueOf(jsonObject.get("NamThamNien")));
+                txt_thuongthamnien.setText(String.valueOf(jsonObject.get("ThuongThamNien")));
+                txt_thuongthamnienthem.setText(String.valueOf(jsonObject.get("ThuongThemThamNien")));
+                txt_baohiem.setText(String.valueOf(jsonObject.get("BaoHiem")));
 
-            txt_luongcoban.setText(String.valueOf(jsonObject.get("LuongCoBan")));
-            txt_namthamnien.setText(String.valueOf(jsonObject.get("NamThamNien")));
-            txt_thuongthamnien.setText(String.valueOf(jsonObject.get("ThuongThamNien")));
-            txt_thuongthamnienthem.setText(String.valueOf(jsonObject.get("ThuongThemThamNien")));
-            txt_baohiem.setText(String.valueOf(jsonObject.get("BaoHiem")));
-            
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException ex) {
-            Logger.getLogger(salaryCalculatorEdit.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ParseException ex) {
+                Logger.getLogger(salaryCalculatorEdit.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else{
+            txt_luongcoban.setText("0");
+            txt_namthamnien.setText("0");
+            txt_thuongthamnien.setText("0");
+            txt_thuongthamnienthem.setText("0");
+            txt_baohiem.setText("0");
         }
     }
     
     private void btn_addluongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addluongActionPerformed
-        int bl = Integer.valueOf(txt_bac.getText());
-        if(!new BacLuong().CheckBacLuong(bl)){
+        try{
+            if(txt_bac.getText().equals("")){
+                txt_bac.requestFocus();
+                throw new Exception("Bậc lương không được để trống!");
+            }
+            if(txt_heso.getText().equals("")){
+                txt_heso.requestFocus();
+                throw new Exception("Hệ số lương không được để trống!");
+            }
+            if(txt_bac.getText().matches("[0-9]+")){
+                txt_bac.requestFocus();
+                throw new Exception("Bậc lương phải là số!");
+            }
+            if(!txt_heso.getText().matches("[0-9\\.]+")){
+                txt_heso.requestFocus();
+                throw new Exception("Hệ số lương phải là số!");
+            }
+            int bl = Integer.valueOf(txt_bac.getText());
+            if(!new BacLuong().CheckBacLuong(bl)){
+                throw new Exception("Bậc lương này đã tồn tại!");
+            }
             Double hsl = Double.valueOf(txt_heso.getText());
-            if(new BacLuong().ThemBacLuong(bl, hsl))
-                JOptionPane.showMessageDialog(this, "Thêm thành công!");
+            new BacLuong().ThemBacLuong(bl, hsl);
             loadTableData();
+            JOptionPane.showMessageDialog(this, "Thêm thành công!");
         }
-        else{
-            JOptionPane.showMessageDialog(this, "Bậc lương này đã tồn tại!");
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Thêm thất bại", JOptionPane.ERROR_MESSAGE);
         }
-        
     }//GEN-LAST:event_btn_addluongActionPerformed
 
     private void btn_deleteluongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteluongActionPerformed
-        int bl = Integer.valueOf(txt_bac.getText());
-        if(new BacLuong().CheckBacLuong(bl)){
-            if(new BacLuong().XoaBacLuong(bl))
-                JOptionPane.showMessageDialog(this, "Xoá thành công!");
+        try{
+            if(txt_bac.getText().equals("")){
+                txt_bac.requestFocus();
+                throw new Exception("Bậc lương không được để trống!");
+            }
+            if(txt_bac.getText().matches("[0-9]+")){
+                txt_bac.requestFocus();
+                throw new Exception("Bậc lương phải là số!");
+            }
+            int bl = Integer.valueOf(txt_bac.getText());
+            if(!new BacLuong().CheckBacLuong(bl)){
+                throw new Exception("Bậc lương không tồn tại\nVui lòng chọn bậc lương để xoá!");
+            }
+            new BacLuong().XoaBacLuong(bl);
             loadTableData();
+            JOptionPane.showMessageDialog(this, "Xoá thành công!");
         }
-        else{
-            JOptionPane.showMessageDialog(this, "Bậc lương này không tồn tại!");
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Xoá thất bại", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_deleteluongActionPerformed
 
     private void btn_updateluongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateluongActionPerformed
-        int bl = Integer.valueOf(txt_bac.getText());
-        if(new BacLuong().CheckBacLuong(bl)){
+        try{
+            if(txt_bac.getText().equals("")){
+                txt_bac.requestFocus();
+                throw new Exception("Bậc lương không được để trống!");
+            }
+            if(txt_heso.getText().equals("")){
+                txt_heso.requestFocus();
+                throw new Exception("Hệ số lương không được để trống!");
+            }
+            if(txt_bac.getText().matches("[0-9]+")){
+                txt_bac.requestFocus();
+                throw new Exception("Bậc lương phải là số!");
+            }
+            if(!txt_heso.getText().matches("[0-9\\.]+")){
+                txt_heso.requestFocus();
+                throw new Exception("Hệ số lương phải là số!");
+            }
+            int bl = Integer.valueOf(txt_bac.getText());
+            if(!new BacLuong().CheckBacLuong(bl)){
+                throw new Exception("Vui lòng chọn bậc lương để sửa!");
+            }
             Double hsl = Double.valueOf(txt_heso.getText());
-            if(new BacLuong().SuaBacLuong(bl, hsl))
-                JOptionPane.showMessageDialog(this, "Sửa thành công!");
+            new BacLuong().SuaBacLuong(bl, hsl);
             loadTableData();
+            JOptionPane.showMessageDialog(this, "Sửa thành công!");
         }
-        else{
-            JOptionPane.showMessageDialog(this, "Bậc lương này không tồn tại!");
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Sửa thất bại!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_updateluongActionPerformed
 

@@ -150,7 +150,7 @@ public class DataSource<T> implements IDataSource<T>{
                     statement.setInt(j, (Integer) parameter);
                 }
                 if(parameter == null){
-                    statement.setNull(j, Types.NULL);
+                    statement.setNull(j, java.sql.Types.NULL);
                 }
                 if(parameter instanceof Boolean){
                     statement.setBoolean(j, (Boolean) parameter);
@@ -163,9 +163,6 @@ public class DataSource<T> implements IDataSource<T>{
                 }
                 if(parameter instanceof Double){
                     statement.setDouble(j, (Double) parameter);
-                }
-                if(parameter == null){
-                    statement.setNull(j, java.sql.Types.NULL);
                 }
             }
         }catch (SQLException ex){

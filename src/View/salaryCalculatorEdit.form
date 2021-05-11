@@ -76,7 +76,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="810" y="160" width="170" height="-1"/>
+              <AbsoluteConstraints x="790" y="160" width="190" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -102,7 +102,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="830" y="240" width="150" height="-1"/>
+              <AbsoluteConstraints x="890" y="240" width="90" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -188,7 +188,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="S&#x1ed1; n&#x103;m b&#x1eaf;t &#x111;&#x1ea7;u h&#x1b0;&#x1edf;ng th&#xe2;m ni&#xea;m:"/>
+            <Property name="text" type="java.lang.String" value="N&#x103;m b&#x1eaf;t &#x111;&#x1ea7;u h&#x1b0;&#x1edf;ng th&#xe2;m ni&#xea;m:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -220,7 +220,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ph&#x1ea7;n n&#x103;m th&#xe2;m ni&#xea;n th&#xea;m t&#x1eeb;ng n&#x103;m:"/>
+            <Property name="text" type="java.lang.String" value="Ph&#x1ea7;n n&#x103;m th&#x1b0;&#x1edf;ng th&#xe2;m ni&#xea;n th&#xea;m t&#x1eeb;ng n&#x103;m:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -236,7 +236,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="S&#x1ed1; ti&#x1ec1;n b&#x1ea3;o hi&#x1ec3;m:"/>
+            <Property name="text" type="java.lang.String" value="Chi ph&#xed; b&#x1ea3;o hi&#x1ec3;m:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

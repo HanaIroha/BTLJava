@@ -10,6 +10,7 @@ import DAO.implement.ChucVu;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -17,6 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
@@ -35,6 +37,8 @@ public class BangLuongTableModel extends AbstractTableModel{
     ArrayList<BangLuongModel> dsBacLuong = new ArrayList<>();
     int luongcoban, baohiem;
     double thuongthamnien, thuongthamnienthem, namthamnien;
+    int rowCount=0;
+    NumberFormat nf = NumberFormat.getInstance(Locale.US);
 
     public BangLuongTableModel() {
     }
@@ -52,11 +56,14 @@ public class BangLuongTableModel extends AbstractTableModel{
             a.setHoTen(s.getHoTen());
             a.setNamCongTac(TinhNamCongTac(s.getNgayThamGia()));
             a.setChucVu(new ChucVu().TimTenChucVu(s.getMaCV()));
-            a.setHeSoLuong(new BacLuong().getHeSoLuong(new ChucVu().TimBacLuongChucVu(s.getMaCV())));
-            a.setThuongThamNien(TinhLuongThamNien(a.getNamCongTac(), a.getHeSoLuong()));
-            a.setPhuCap(new ChucVu().TimPhuCapChucVu(s.getMaCV()));
-            a.setThucLinh(luongcoban*a.getHeSoLuong()+a.getThuongThamNien()+a.getPhuCap()-baohiem);
-            dsBacLuong.add(a);
+            if(a.getChucVu()!=null){
+                rowCount++;
+                a.setHeSoLuong(new BacLuong().getHeSoLuong(new ChucVu().TimBacLuongChucVu(s.getMaCV())));
+                a.setThuongThamNien(TinhLuongThamNien(a.getNamCongTac(), a.getHeSoLuong()));
+                a.setPhuCap(new ChucVu().TimPhuCapChucVu(s.getMaCV()));
+                a.setThucLinh(luongcoban*a.getHeSoLuong()+a.getThuongThamNien()+a.getPhuCap()-baohiem);
+                dsBacLuong.add(a);
+            }
         }
     }
     
@@ -81,7 +88,7 @@ public class BangLuongTableModel extends AbstractTableModel{
     }
     @Override
     public int getRowCount() {
-        return ds.size();
+        return rowCount;
     }
 
     @Override
@@ -103,7 +110,7 @@ public class BangLuongTableModel extends AbstractTableModel{
         double thuong = 0;
         int nam = (int)(ngay - namthamnien);
         if(nam>0){
-            thuong += (luongcoban*hsl)*(thuongthamnien+nam*thuongthamnienthem);
+            thuong += (luongcoban*hsl)*((thuongthamnien+nam*thuongthamnienthem)/100);
         }
         return thuong;
             
@@ -114,14 +121,14 @@ public class BangLuongTableModel extends AbstractTableModel{
         switch(columnIndex){
             case 0: return dsBacLuong.get(rowIndex).getMaNS();
             case 1: return dsBacLuong.get(rowIndex).getHoTen();
-            case 2: return String.valueOf(dsBacLuong.get(rowIndex).getNamCongTac());
+            case 2: return String.valueOf(nf.format(dsBacLuong.get(rowIndex).getNamCongTac()));
             case 3: return dsBacLuong.get(rowIndex).getChucVu();
-            case 4: return String.valueOf(luongcoban);
-            case 5: return String.valueOf(dsBacLuong.get(rowIndex).getHeSoLuong());
-            case 6: return String.valueOf(dsBacLuong.get(rowIndex).getThuongThamNien());
-            case 7: return String.valueOf(dsBacLuong.get(rowIndex).getPhuCap());
-            case 8: return String.valueOf(baohiem);
-            case 9: return String.valueOf(dsBacLuong.get(rowIndex).getThucLinh());
+            case 4: return String.valueOf(nf.format(luongcoban));
+            case 5: return String.valueOf(nf.format(dsBacLuong.get(rowIndex).getHeSoLuong()));
+            case 6: return String.valueOf(nf.format(dsBacLuong.get(rowIndex).getThuongThamNien()));
+            case 7: return String.valueOf(nf.format(dsBacLuong.get(rowIndex).getPhuCap()));
+            case 8: return String.valueOf(nf.format(baohiem));
+            case 9: return String.valueOf(nf.format(dsBacLuong.get(rowIndex).getThucLinh()));
             default: return null;
         }
     }

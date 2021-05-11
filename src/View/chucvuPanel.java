@@ -453,7 +453,7 @@ public class chucvuPanel extends javax.swing.JPanel {
                 if(choose.equals(z.getMaCV())){
                     txt_macv.setText(z.getMaCV());
                     txt_tencv.setText(z.getTenCV());
-                    txt_phucap.setText(String.valueOf(String.valueOf(new DecimalFormat("#0.00").format(z.getPhuCap()))));
+                    txt_phucap.setText(String.valueOf(String.valueOf(new DecimalFormat("#0").format(z.getPhuCap()))));
                     if(z.getBacLuong()==0)
                         txt_bacluong.setSelectedIndex(-1);
                     else{
@@ -467,6 +467,19 @@ public class chucvuPanel extends javax.swing.JPanel {
     private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
         int choose = txt_chucvu.getSelectedIndex();
         try{
+            if(txt_tencv.getText().equals("")){
+                txt_tencv.requestFocus();
+                throw new Exception("Tên chức vụ không được để trống!");
+            }
+            if(txt_phucap.getText().equals("")){
+                txt_phucap.requestFocus();
+                throw new Exception("Phụ cấp không được để trống!");
+            }
+            if(!txt_phucap.getText().matches("[0-9\\.]+")){
+                txt_phucap.requestFocus();
+                throw new Exception("Phụ cấp chỉ được để số!");
+            }
+            
             String maCV = txt_macv.getText();
             String tenCV = txt_tencv.getText();
             Double phuCap = Double.valueOf(txt_phucap.getText());
@@ -478,14 +491,12 @@ public class chucvuPanel extends javax.swing.JPanel {
                 nhansuDAO.updateChucVu(z, mapb, tenUser);
             for(String z : listOut)
                 nhansuDAO.updateChucVu(z, null, tenUser);
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(background, "Lỗi: " + e.getMessage());
-        }
-        finally{
             reLoad();
             txt_chucvu.setSelectedIndex(choose);
             JOptionPane.showMessageDialog(background, "Sửa thành công!");
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(background, e.getMessage(), "Sửa thất bại!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_editActionPerformed
 
@@ -576,6 +587,27 @@ public class chucvuPanel extends javax.swing.JPanel {
 
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
         try{
+            if(txt_macv.getText().equals("")){
+                txt_macv.requestFocus();
+                throw new Exception("Mã chức vụ không được để trống!");
+            }
+            if(txt_tencv.getText().equals("")){
+                txt_tencv.requestFocus();
+                throw new Exception("Tên chức vụ không được để trống!");
+            }
+            if(txt_phucap.getText().equals("")){
+                txt_phucap.requestFocus();
+                throw new Exception("Phụ cấp không được để trống!");
+            }
+            if(!txt_phucap.getText().matches("[0-9\\.]+")){
+                txt_phucap.requestFocus();
+                throw new Exception("Phụ cấp phải là số!");
+            }
+            if(new ChucVu().TimTenChucVu(txt_macv.getText())!=null){
+                txt_macv.requestFocus();
+                throw new Exception("Mã chức vụ này đã tồn tại!");
+            }
+            
             String maCV = txt_macv.getText();
             String tenCV = txt_tencv.getText();
             Double phuCap = Double.valueOf(txt_phucap.getText());
@@ -584,12 +616,6 @@ public class chucvuPanel extends javax.swing.JPanel {
             NhanSu a = new NhanSu();
             for(String z : listIn)
                 a.updateChucVu(z, maCV,tenUser);
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(background, e.getMessage());
-        }
-        finally{
-            JOptionPane.showMessageDialog(background, "Thêm thành công!");
             reLoad();
             txt_chucvu.setEnabled(true);
             txt_chucvu.setSelectedIndex(0);
@@ -599,6 +625,10 @@ public class chucvuPanel extends javax.swing.JPanel {
             btn_delete.setEnabled(true);
             btn_add.setEnabled(true);
             txt_macv.setEnabled(false);
+            JOptionPane.showMessageDialog(background, "Thêm thành công!");
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(background, e.getMessage(), "Thêm thất bại!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_saveActionPerformed
 
@@ -614,7 +644,7 @@ public class chucvuPanel extends javax.swing.JPanel {
                 }
             }
             catch(Exception e){
-                JOptionPane.showMessageDialog(background, e.getMessage());
+                JOptionPane.showMessageDialog(background, e.getMessage(), "Xoá thất bại!", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btn_deleteActionPerformed

@@ -59,6 +59,10 @@ public class taikhoanAdminPanel extends javax.swing.JPanel {
         btn_save.setVisible(false);
         btn_cancel.setVisible(false);
         btn_changeAvatar.setVisible(false);
+        loadInfor();
+    }
+    
+    private void loadInfor(){
         try{
             txt_tentaikhoan.setText(acc.getUsername());
             txt_ten.setText(acc.getTen());
@@ -105,6 +109,7 @@ public class taikhoanAdminPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn_changepass1 = new javax.swing.JButton();
         btn_changeAvatar = new javax.swing.JButton();
         btn_cancel = new javax.swing.JButton();
         btn_save = new javax.swing.JButton();
@@ -131,6 +136,20 @@ public class taikhoanAdminPanel extends javax.swing.JPanel {
         background = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_changepass1.setBackground(new java.awt.Color(24, 98, 151));
+        btn_changepass1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_changepass1.setForeground(new java.awt.Color(255, 255, 255));
+        btn_changepass1.setText("Đăng xuất");
+        btn_changepass1.setBorder(null);
+        btn_changepass1.setBorderPainted(false);
+        btn_changepass1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_changepass1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_changepass1ActionPerformed(evt);
+            }
+        });
+        add(btn_changepass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 270, 100, 40));
 
         btn_changeAvatar.setBackground(new java.awt.Color(24, 98, 151));
         btn_changeAvatar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -343,13 +362,11 @@ public class taikhoanAdminPanel extends javax.swing.JPanel {
                 throw new Exception("Mật khẩu mới không được để trống!");
             if(new Account().loginAccount(acc.getUsername(),String.valueOf(txt_matkhaucu.getPassword()))==null)
                 throw new Exception("Mật khẩu cũ sai");
-            if(new Account().updatePassword(acc.getUsername(), String.valueOf(txt_matkhaumoi.getPassword())))
-                JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công!");
-            else
-                JOptionPane.showMessageDialog(this, "Đổi mật khẩu thất bại!");
+            new Account().updatePassword(acc.getUsername(), String.valueOf(txt_matkhaumoi.getPassword()));
+            JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công!");
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Đổi mật khẩu thất bại!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_changepassActionPerformed
 
@@ -397,21 +414,40 @@ public class taikhoanAdminPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_table_taikhoanMouseClicked
 
     private void btn_manangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_manangeActionPerformed
-        btn_changepass.setEnabled(false);
-        jScrollPane1.setVisible(true);
-        btn_add.setVisible(true);
-        btn_edit.setVisible(true);
-        btn_delete.setVisible(true);
-        btn_changeAvatar.setVisible(true);
-        txt_matkhaucu.setEnabled(false);
-        txt_matkhaumoi.setEnabled(false);
-        txt_ten.setEnabled(true);
-        lb_avt.setIcon(null);
-        txt_tentaikhoan.setText("");
-        txt_ten.setText("");
-        txt_matkhaucu.setText("");
-        txt_matkhaumoi.setText("");
-        loadDataTable();
+        if(btn_manange.getText().equals("Quản lý tài khoản")){
+            btn_changepass.setEnabled(false);
+            jScrollPane1.setVisible(true);
+            btn_add.setVisible(true);
+            btn_edit.setVisible(true);
+            btn_delete.setVisible(true);
+            btn_changeAvatar.setVisible(true);
+            txt_matkhaucu.setEnabled(false);
+            txt_matkhaumoi.setEnabled(false);
+            txt_ten.setEnabled(true);
+            lb_avt.setIcon(null);
+            txt_tentaikhoan.setText("");
+            txt_ten.setText("");
+            txt_matkhaucu.setText("");
+            txt_matkhaumoi.setText("");
+            btn_manange.setText("Trở về");
+            loadDataTable();
+        }
+        else{
+            btn_changepass.setEnabled(true);
+            jScrollPane1.setVisible(false);
+            btn_add.setVisible(false);
+            btn_edit.setVisible(false);
+            btn_delete.setVisible(false);
+            btn_changeAvatar.setVisible(false);
+            txt_matkhaucu.setEnabled(true);
+            txt_matkhaumoi.setEnabled(true);
+            txt_ten.setEnabled(false);
+            txt_matkhaucu.setText("");
+            txt_matkhaumoi.setText("");
+            lb_avt.setIcon(null);
+            loadInfor();
+            btn_manange.setText("Quản lý tài khoản");
+        }
     }//GEN-LAST:event_btn_manangeActionPerformed
 
     private void loadDataTable(){
@@ -456,54 +492,55 @@ public class taikhoanAdminPanel extends javax.swing.JPanel {
 
     private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
         try{
-            byte[] person_image;
-                if(imageChange){
-                    File image = new File(filename);
-                    FileInputStream fis = new FileInputStream(image);
-                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                    byte[] buf = new byte[1024];
-                    for(int readNum; (readNum=fis.read(buf))!=-1;){
-                        bos.write(buf,0,readNum);
-                }
-                person_image=bos.toByteArray();
-                }
-                else{
-                    person_image=new Account().getAvatar(txt_tentaikhoan.getText());
-                }
-            if(new Account().updateAccount(txt_tentaikhoan.getText(), txt_ten.getText(),person_image)){
-                JOptionPane.showMessageDialog(this, "Cập nhập thành công!");
-                imageChange = false;
-                loadDataTable();
+            if(txt_ten.getText().equals("")){
+                txt_ten.requestFocus();
+                throw new Exception("Tên không được để trống!");
             }
-            else
-                throw new Exception("Cập nhập thất bại");
+            if(lb_avt.getIcon()==null){
+                throw new Exception("Ảnh đại diện không được để trống");
+            }
+            byte[] person_image;
+            if(imageChange){
+                File image = new File(filename);
+                FileInputStream fis = new FileInputStream(image);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                byte[] buf = new byte[1024];
+                for(int readNum; (readNum=fis.read(buf))!=-1;){
+                    bos.write(buf,0,readNum);
+            }
+            person_image=bos.toByteArray();
+            }
+            else{
+                person_image=new Account().getAvatar(txt_tentaikhoan.getText());
+            }
+            new Account().updateAccount(txt_tentaikhoan.getText(), txt_ten.getText(),person_image);
+            imageChange = false;
+            loadDataTable();
+            JOptionPane.showMessageDialog(this, "Sửa thông tin thành công!");
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Sửa thông tin thất bại!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_editActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         try{
-            if(new Account().deleteAccount(txt_tentaikhoan.getText())){
-                JOptionPane.showMessageDialog(this, "Xoá thành công");
-                imageChange=false;
-                lb_avt.setIcon(null);
-                txt_tentaikhoan.setText("");
-                txt_ten.setText("");
-                txt_matkhaucu.setText("");
-                txt_matkhaumoi.setText("");
-                loadDataTable();
-            }
-            else
-                throw new Exception("Xoá thất bại!");
+            new Account().deleteAccount(txt_tentaikhoan.getText());
+            imageChange=false;
+            lb_avt.setIcon(null);
+            txt_tentaikhoan.setText("");
+            txt_ten.setText("");
+            txt_matkhaucu.setText("");
+            txt_matkhaumoi.setText("");
+            loadDataTable();
+            JOptionPane.showMessageDialog(this, "Xoá thành công");
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Xoá thất bại!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_deleteActionPerformed
 
-    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
+    private void resetAdd(){
         imageChange = false;
         btn_cancel.setVisible(false);
         btn_save.setVisible(false);
@@ -519,6 +556,10 @@ public class taikhoanAdminPanel extends javax.swing.JPanel {
         txt_matkhaucu.setText("");
         txt_matkhaumoi.setText("");
         lb_avt.setIcon(null);
+    }
+    
+    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
+        resetAdd();
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
@@ -527,83 +568,77 @@ public class taikhoanAdminPanel extends javax.swing.JPanel {
                 throw new Exception("Tài khoản này đã tồn tại!");
             if(String.valueOf(txt_matkhaumoi.getPassword()).equals(""))
                 throw new Exception("Mật khẩu mới không được để trống!");
+            if(lb_avt.getIcon()==null){
+                throw new Exception("Ảnh đại diện không được để trống");
+            }
             byte[] person_image;
-            if(imageChange){
-                    File image = new File(filename);
-                    FileInputStream fis = new FileInputStream(image);
-                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                    byte[] buf = new byte[1024];
-                    for(int readNum; (readNum=fis.read(buf))!=-1;){
-                        bos.write(buf,0,readNum);
-                }
-                person_image=bos.toByteArray();
-                }
-            else{
-                person_image=null;
+            File image = new File(filename);
+            FileInputStream fis = new FileInputStream(image);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            byte[] buf = new byte[1024];
+            for(int readNum; (readNum=fis.read(buf))!=-1;){
+                bos.write(buf,0,readNum);
             }
-            if(new Account().createAccount(txt_tentaikhoan.getText(), txt_ten.getText(), String.valueOf(txt_matkhaumoi.getPassword()), person_image)){
-                JOptionPane.showMessageDialog(this, "Thêm tài khoản thành công!");
-                imageChange = false;
-                btn_cancel.setVisible(false);
-                btn_save.setVisible(false);
-                btn_changepass.setEnabled(true);
-                btn_manange.setEnabled(true);
-                btn_add.setEnabled(true);
-                btn_edit.setEnabled(true);
-                btn_delete.setEnabled(true);
-                txt_matkhaumoi.setEnabled(false);
-                txt_tentaikhoan.setEnabled(false);
-                txt_tentaikhoan.setText("");
-                txt_ten.setText("");
-                txt_matkhaucu.setText("");
-                txt_matkhaumoi.setText("");
-                lb_avt.setIcon(null);
-                loadDataTable();
-            }
+            person_image=bos.toByteArray();
+            new Account().createAccount(txt_tentaikhoan.getText(), txt_ten.getText(), String.valueOf(txt_matkhaumoi.getPassword()), person_image);
+            resetAdd();
+            loadDataTable();
+            JOptionPane.showMessageDialog(this, "Thêm tài khoản thành công!");
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Thêm tài khoản thất bại!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_saveActionPerformed
 
     private void btn_changeAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_changeAvatarActionPerformed
-        JFileChooser chooser = new JFileChooser();
-        chooser.showOpenDialog(this);
-        File f = chooser.getSelectedFile();
-        String filenamez = f.getAbsolutePath();
-        if(filenamez!=null)
-        {
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon(filenamez).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
-            lb_avt.setIcon(imageIcon);
-//            BufferedImage master = new BufferedImage(
-//                imageIcon.getIconWidth(),
-//                imageIcon.getIconHeight(),
-//                BufferedImage.TYPE_INT_RGB);
-//                Graphics g = master.createGraphics();
-//            imageIcon.paintIcon(null, g, 0,0);
-//            g.dispose();
-//            int diameter = Math.min(master.getWidth(), master.getHeight());
-//            BufferedImage mask = new BufferedImage(master.getWidth(), master.getHeight(), BufferedImage.TYPE_INT_ARGB);
-//
-//            Graphics2D g2d = mask.createGraphics();
-//            applyQualityRenderingHints(g2d);
-//            g2d.fillOval(0, 0, diameter - 1, diameter - 1);
-//            g2d.dispose();
-//
-//            BufferedImage masked = new BufferedImage(diameter, diameter, BufferedImage.TYPE_INT_ARGB);
-//            g2d = masked.createGraphics();
-//            applyQualityRenderingHints(g2d);
-//            int x = (diameter - master.getWidth()) / 2;
-//            int y = (diameter - master.getHeight()) / 2;
-//            g2d.drawImage(master, x, y, null);
-//            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.DST_IN));
-//            g2d.drawImage(mask, 0, 0, null);
-//            g2d.dispose();
-//            lb_avt.setIcon(new ImageIcon(masked));
-            imageChange = true;
-            filename = filenamez;
+        try{
+            JFileChooser chooser = new JFileChooser();
+            chooser.showOpenDialog(this);
+            File f = chooser.getSelectedFile();
+            if(f!=null)
+            {
+                String filenamez = f.getAbsolutePath();
+                ImageIcon imageIcon = new ImageIcon(new ImageIcon(filenamez).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
+                lb_avt.setIcon(imageIcon);
+    //            BufferedImage master = new BufferedImage(
+    //                imageIcon.getIconWidth(),
+    //                imageIcon.getIconHeight(),
+    //                BufferedImage.TYPE_INT_RGB);
+    //                Graphics g = master.createGraphics();
+    //            imageIcon.paintIcon(null, g, 0,0);
+    //            g.dispose();
+    //            int diameter = Math.min(master.getWidth(), master.getHeight());
+    //            BufferedImage mask = new BufferedImage(master.getWidth(), master.getHeight(), BufferedImage.TYPE_INT_ARGB);
+    //
+    //            Graphics2D g2d = mask.createGraphics();
+    //            applyQualityRenderingHints(g2d);
+    //            g2d.fillOval(0, 0, diameter - 1, diameter - 1);
+    //            g2d.dispose();
+    //
+    //            BufferedImage masked = new BufferedImage(diameter, diameter, BufferedImage.TYPE_INT_ARGB);
+    //            g2d = masked.createGraphics();
+    //            applyQualityRenderingHints(g2d);
+    //            int x = (diameter - master.getWidth()) / 2;
+    //            int y = (diameter - master.getHeight()) / 2;
+    //            g2d.drawImage(master, x, y, null);
+    //            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.DST_IN));
+    //            g2d.drawImage(mask, 0, 0, null);
+    //            g2d.dispose();
+    //            lb_avt.setIcon(new ImageIcon(masked));
+                imageChange = true;
+                filename = filenamez;
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_changeAvatarActionPerformed
+
+    private void btn_changepass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_changepass1ActionPerformed
+        LoginForm f = new LoginForm();
+        bb.dispose();
+        f.setVisible(true);
+    }//GEN-LAST:event_btn_changepass1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -612,6 +647,7 @@ public class taikhoanAdminPanel extends javax.swing.JPanel {
     private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_changeAvatar;
     private javax.swing.JButton btn_changepass;
+    private javax.swing.JButton btn_changepass1;
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_edit;
     private javax.swing.JButton btn_manange;

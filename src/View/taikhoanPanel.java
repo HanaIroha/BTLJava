@@ -81,6 +81,7 @@ public class taikhoanPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn_logout = new javax.swing.JButton();
         btn_changepass = new javax.swing.JButton();
         txt_matkhaucu = new javax.swing.JPasswordField();
         txt_matkhaumoi = new javax.swing.JPasswordField();
@@ -99,6 +100,20 @@ public class taikhoanPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btn_logout.setBackground(new java.awt.Color(24, 98, 151));
+        btn_logout.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_logout.setForeground(new java.awt.Color(255, 255, 255));
+        btn_logout.setText("Đăng xuất");
+        btn_logout.setBorder(null);
+        btn_logout.setBorderPainted(false);
+        btn_logout.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_logoutActionPerformed(evt);
+            }
+        });
+        add(btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 360, 140, 40));
+
         btn_changepass.setBackground(new java.awt.Color(24, 98, 151));
         btn_changepass.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btn_changepass.setForeground(new java.awt.Color(255, 255, 255));
@@ -111,7 +126,7 @@ public class taikhoanPanel extends javax.swing.JPanel {
                 btn_changepassActionPerformed(evt);
             }
         });
-        add(btn_changepass, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 360, 140, 40));
+        add(btn_changepass, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 360, 140, 40));
 
         txt_matkhaucu.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_matkhaucu.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
@@ -203,20 +218,25 @@ public class taikhoanPanel extends javax.swing.JPanel {
                 throw new Exception("Mật khẩu mới không được để trống!");
             if(new Account().loginAccount(acc.getUsername(),String.valueOf(txt_matkhaucu.getPassword()))==null)
                 throw new Exception("Mật khẩu cũ sai");
-            if(new Account().updatePassword(acc.getUsername(), String.valueOf(txt_matkhaumoi.getPassword())))
-                JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công!");
-            else
-                JOptionPane.showMessageDialog(this, "Đổi mật khẩu thất bại!");
+            new Account().updatePassword(acc.getUsername(), String.valueOf(txt_matkhaumoi.getPassword()));
+            JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công!");
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Đổi mật khẩu thất bại!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_changepassActionPerformed
+
+    private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
+        LoginForm f = new LoginForm();
+        bb.dispose();
+        f.setVisible(true);
+    }//GEN-LAST:event_btn_logoutActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JButton btn_changepass;
+    private javax.swing.JButton btn_logout;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

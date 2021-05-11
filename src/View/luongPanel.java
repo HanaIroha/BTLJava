@@ -272,46 +272,85 @@ public class luongPanel extends javax.swing.JPanel {
                 else{
                     savePath =  savePath + ".docx";
                 }
-                List<InforLuong> ls = new ArrayList<>();
-                for(int i=0; i<table_bangluong.getRowCount(); i++){
-                    InforLuong a = new InforLuong();
-                    a.setMans(table_bangluong.getValueAt(i, 0).toString());
-                    a.setHoten(table_bangluong.getValueAt(i, 1).toString());
-                    a.setNamcongtac(table_bangluong.getValueAt(i, 2).toString());
-                    a.setChucvu(table_bangluong.getValueAt(i, 3).toString());
-                    a.setLuongcoban(table_bangluong.getValueAt(i, 4).toString());
-                    a.setHesoluong(table_bangluong.getValueAt(i, 5).toString());
-                    a.setThuongthamnien(table_bangluong.getValueAt(i, 6).toString());
-                    a.setPhucap(table_bangluong.getValueAt(i, 7).toString());
-                    a.setBaohiem(table_bangluong.getValueAt(i, 8).toString());
-                    a.setThuclinh(table_bangluong.getValueAt(i, 9).toString());
-                    ls.add(a);
+                if(new File(savePath).exists()){
+                    if(JOptionPane.showConfirmDialog (null, "Đã tồn tại file này, bạn có muốn ghi đè?","Bạn chắc chứ?",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+                        List<InforLuong> ls = new ArrayList<>();
+                        for(int i=0; i<table_bangluong.getRowCount(); i++){
+                            InforLuong a = new InforLuong();
+                            a.setMans(table_bangluong.getValueAt(i, 0).toString());
+                            a.setHoten(table_bangluong.getValueAt(i, 1).toString());
+                            a.setNamcongtac(table_bangluong.getValueAt(i, 2).toString());
+                            a.setChucvu(table_bangluong.getValueAt(i, 3).toString());
+                            a.setLuongcoban(table_bangluong.getValueAt(i, 4).toString());
+                            a.setHesoluong(table_bangluong.getValueAt(i, 5).toString());
+                            a.setThuongthamnien(table_bangluong.getValueAt(i, 6).toString());
+                            a.setPhucap(table_bangluong.getValueAt(i, 7).toString());
+                            a.setBaohiem(table_bangluong.getValueAt(i, 8).toString());
+                            a.setThuclinh(table_bangluong.getValueAt(i, 9).toString());
+                            ls.add(a);
+                        }
+                        JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(ls);
+                        Map<String, Object> parameters = new HashMap<String, Object>();
+                        parameters.put("DataSource", itemsJRBean);
+                        JasperPrint jasperPrint = JasperFillManager.fillReport(System.getProperty("user.dir") + "\\ReportTemplates\\bangluong.jasper", parameters, new JREmptyDataSource());
+            //            OutputStream outputStream = new FileOutputStream(new File(System.getProperty("user.dir") + "\\ReportTemplates\\test.pdf"));
+            //            JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
+                        JRDocxExporter exporter = new JRDocxExporter();
+                        exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+                        exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, savePath);
+                        exporter.exportReport();
+                        JOptionPane.showMessageDialog(this, "Xuất file thành công!");
+                    }
                 }
-                JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(ls);
-                Map<String, Object> parameters = new HashMap<String, Object>();
-                parameters.put("DataSource", itemsJRBean);
-                JasperPrint jasperPrint = JasperFillManager.fillReport(System.getProperty("user.dir") + "\\ReportTemplates\\bangluong.jasper", parameters, new JREmptyDataSource());
-    //            OutputStream outputStream = new FileOutputStream(new File(System.getProperty("user.dir") + "\\ReportTemplates\\test.pdf"));
-    //            JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
-                JRDocxExporter exporter = new JRDocxExporter();
-                exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
-                exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, savePath);
-                exporter.exportReport();
-                JOptionPane.showMessageDialog(this, "Xuất file thành công!");
+                else{
+                    List<InforLuong> ls = new ArrayList<>();
+                    for(int i=0; i<table_bangluong.getRowCount(); i++){
+                        InforLuong a = new InforLuong();
+                        a.setMans(table_bangluong.getValueAt(i, 0).toString());
+                        a.setHoten(table_bangluong.getValueAt(i, 1).toString());
+                        a.setNamcongtac(table_bangluong.getValueAt(i, 2).toString());
+                        a.setChucvu(table_bangluong.getValueAt(i, 3).toString());
+                        a.setLuongcoban(table_bangluong.getValueAt(i, 4).toString());
+                        a.setHesoluong(table_bangluong.getValueAt(i, 5).toString());
+                        a.setThuongthamnien(table_bangluong.getValueAt(i, 6).toString());
+                        a.setPhucap(table_bangluong.getValueAt(i, 7).toString());
+                        a.setBaohiem(table_bangluong.getValueAt(i, 8).toString());
+                        a.setThuclinh(table_bangluong.getValueAt(i, 9).toString());
+                        ls.add(a);
+                    }
+                    JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(ls);
+                    Map<String, Object> parameters = new HashMap<String, Object>();
+                    parameters.put("DataSource", itemsJRBean);
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(System.getProperty("user.dir") + "\\ReportTemplates\\bangluong.jasper", parameters, new JREmptyDataSource());
+        //            OutputStream outputStream = new FileOutputStream(new File(System.getProperty("user.dir") + "\\ReportTemplates\\test.pdf"));
+        //            JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
+                    JRDocxExporter exporter = new JRDocxExporter();
+                    exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+                    exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, savePath);
+                    exporter.exportReport();
+                    JOptionPane.showMessageDialog(this, "Xuất file thành công!");
+                }
             }
         }
-        catch (JRException ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Xuất file thất bại!");
-        }
         catch (Exception e){
-            JOptionPane.showMessageDialog(this, "Xuất file thất bại!");
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Xuất file thất bại!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_printActionPerformed
     
     private void LoadLuongTable(){
         List<NhanSuModel> ls = new NhanSu().getListNhanSu();
         table_bangluong.setModel(new BangLuongTableModel(ls));
+        table_bangluong.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        table_bangluong.getColumnModel().getColumn(0).setPreferredWidth(100);
+        table_bangluong.getColumnModel().getColumn(1).setPreferredWidth(150);
+        table_bangluong.getColumnModel().getColumn(2).setPreferredWidth(110);
+        table_bangluong.getColumnModel().getColumn(3).setPreferredWidth(158);
+        table_bangluong.getColumnModel().getColumn(4).setPreferredWidth(130);
+        table_bangluong.getColumnModel().getColumn(5).setPreferredWidth(100);
+        table_bangluong.getColumnModel().getColumn(6).setPreferredWidth(150);
+        table_bangluong.getColumnModel().getColumn(7).setPreferredWidth(90);
+        table_bangluong.getColumnModel().getColumn(8).setPreferredWidth(90);
+        table_bangluong.getColumnModel().getColumn(9).setPreferredWidth(130);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -11,6 +11,7 @@ import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -370,7 +371,8 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_minimizeActionPerformed
 
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
-        System.exit(0);
+        if(JOptionPane.showConfirmDialog(this, "Bạn chắc chắn thoát chứ?", "Thông báo", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+            System.exit(0);
     }//GEN-LAST:event_btn_exitActionPerformed
 
     private void movePanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_movePanelMousePressed

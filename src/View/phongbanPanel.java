@@ -443,6 +443,18 @@ public class phongbanPanel extends javax.swing.JPanel {
     private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
         int choose = txt_phongban.getSelectedIndex();
         try{
+            if(txt_tenpb.getText().equals("")){
+                txt_tenpb.requestFocus();
+                throw new Exception("Tên phòng ban không được để trống!");
+            }
+            if(txt_sdt.getText().equals("")){
+                txt_sdt.requestFocus();
+                throw new Exception("Số điện thoại không được để trống!");
+            }
+            if(txt_sdt.getText().matches("[0-9]+")){
+                txt_sdt.requestFocus();
+                throw new Exception("Số điện thoại chỉ bao gồm số!");
+            }
             String maPB = txt_mapb.getText();
             String tenPB = txt_tenpb.getText();
             String sdt = txt_sdt.getText();
@@ -453,14 +465,12 @@ public class phongbanPanel extends javax.swing.JPanel {
                 nhansuDAO.updatePhongBan(z, mapb, tenUser);
             for(String z : listOut)
                 nhansuDAO.updatePhongBan(z, null, tenUser);
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(background, e.getMessage());
-        }
-        finally{
             reLoad();
             txt_phongban.setSelectedIndex(choose);
             JOptionPane.showMessageDialog(background, "Sửa thành công!");
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(background, e.getMessage(), "Sửa thất bại!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_editActionPerformed
 
@@ -551,6 +561,27 @@ public class phongbanPanel extends javax.swing.JPanel {
 
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
         try{
+            if(txt_mapb.getText().equals("")){
+                txt_mapb.requestFocus();
+                throw new Exception("Mã phòng ban không được để trống!");
+            }
+            if(txt_tenpb.getText().equals("")){
+                txt_tenpb.requestFocus();
+                throw new Exception("Tên phòng ban không được để trống!");
+            }
+            if(txt_sdt.getText().equals("")){
+                txt_sdt.requestFocus();
+                throw new Exception("Số điện thoại không được để trống!");
+            }
+            if(txt_sdt.getText().matches("[0-9]+")){
+                txt_sdt.requestFocus();
+                throw new Exception("Số điện thoại chỉ bao gồm số!");
+            }
+            if(new PhongBan().TimTenPB(txt_mapb.getText())!=null){
+                txt_mapb.requestFocus();
+                throw new Exception("Mã phòng ban này đã tồn tại!");
+            }
+            
             String maPB = txt_mapb.getText();
             String tenPB = txt_tenpb.getText();
             String sdt = txt_sdt.getText();
@@ -558,12 +589,6 @@ public class phongbanPanel extends javax.swing.JPanel {
             NhanSu a = new NhanSu();
             for(String z : listIn)
                 a.updatePhongBan(z, maPB, tenUser);
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(background, e.getMessage());
-        }
-        finally{
-            JOptionPane.showMessageDialog(background, "Thêm thành công!");
             reLoad();
             txt_phongban.setEnabled(true);
             txt_phongban.setSelectedIndex(0);
@@ -573,6 +598,10 @@ public class phongbanPanel extends javax.swing.JPanel {
             btn_delete.setEnabled(true);
             btn_add.setEnabled(true);
             txt_mapb.setEnabled(false);
+            JOptionPane.showMessageDialog(background, "Thêm thành công!");
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(background, e.getMessage(), "Thêm thất bại!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_saveActionPerformed
 
@@ -588,7 +617,7 @@ public class phongbanPanel extends javax.swing.JPanel {
                 }
             }
             catch(Exception e){
-                JOptionPane.showMessageDialog(background, e.getMessage());
+                JOptionPane.showMessageDialog(background, e.getMessage(), "Xoá thất bại!", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btn_deleteActionPerformed

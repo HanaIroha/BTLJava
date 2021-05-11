@@ -126,6 +126,10 @@ public class detailInfor extends javax.swing.JDialog {
         if(acc.isCongChuc())
         {
             congchuc_yes.setSelected(true);
+        }
+        else
+        {
+            congchuc_no.setSelected(true);
             try {
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 java.util.Date date = formatter.parse(acc.getHanHopDong());
@@ -134,17 +138,14 @@ public class detailInfor extends javax.swing.JDialog {
                 Logger.getLogger(detailInfor.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        else
-        {
-            congchuc_no.setSelected(true);
-        }
+        txt_phongban.addItem(new ComboItem("Không có",""));
         for(PhongBanModel s:pb)
         {
             txt_phongban.addItem(new ComboItem(s.getTenPB(),s.getMaPB()));
         }
-        int i = 0;
+        int i = 1;
         if(acc.getMaPB()==null){
-            txt_phongban.setSelectedIndex(-1);
+            txt_phongban.setSelectedIndex(0);
         }
         else{
             for(PhongBanModel s:pb)
@@ -154,11 +155,12 @@ public class detailInfor extends javax.swing.JDialog {
                 i++;
             }
         }
+        txt_chucvu.addItem(new ComboItem("Không có",""));
         for(ChucVuModel s:cv)
             txt_chucvu.addItem(new ComboItem(s.getTenCV(),s.getMaCV()));
-        i=0;
+        i=1;
         if(acc.getMaCV()==null){
-            txt_chucvu.setSelectedIndex(-1);
+            txt_chucvu.setSelectedIndex(0);
         }
         else{
             for(ChucVuModel s:cv)
@@ -577,55 +579,91 @@ public class detailInfor extends javax.swing.JDialog {
 
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
         try{
-                boolean isOK;
-                byte[] person_image;
-                if(imageChange){
-                    File image = new File(filename);
-                    FileInputStream fis = new FileInputStream(image);
-                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                    byte[] buf = new byte[1024];
-                    for(int readNum; (readNum=fis.read(buf))!=-1;){
-                        bos.write(buf,0,readNum);
-                }
-                person_image=bos.toByteArray();
-                }
-                else
-                {
-                    person_image=acc.getAnh();
-                }
-                isOK = new NhanSu().updateNS(txt_mans.getText(),
-                        txt_hoten.getText(),
-                        ((JTextField)jdate_ngaysinh.getDateEditor().getUiComponent()).getText(),
-                        txt_quequan.getText(),
-                        txt_dantoc.getText(),
-                        txt_sdt.getText(),
-                        txt_trinhdo.getText(),
-                        txt_chuyennganh.getText(),
-                        ((ComboItem)txt_phongban.getSelectedItem()).getValue(),
-                        ((ComboItem)txt_chucvu.getSelectedItem()).getValue(),
-                        txt_chinhtri.getText(),
-                        txt_doanthe.getText(),
-                        gioitinh_nam.isSelected()?true:false,
-                        person_image,
-                        tenUser,
-                        txt_cancuoc.getText(),
-                        congchuc_yes.isSelected()?true:false,
-                        congchuc_no.isSelected()?((JTextField)jdate_hopdong.getDateEditor().getUiComponent()).getText():null
-                );
-                if (isOK)
-                {
-                    JOptionPane.showMessageDialog(this,"Sửa thành công");
-                    this.dispose();
-                    previousPanel.LoadData();
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(this,"Sửa thất bại!");
-                }
+            if(txt_hoten.getText().equals("")){
+                txt_hoten.requestFocus();
+                throw new Exception("Họ tên không được để trống!");
             }
-            catch(Exception e){
-                
+            if(txt_cancuoc.getText().equals("")){
+                txt_cancuoc.requestFocus();
+                throw new Exception("Số căn cước không được để trống!");
             }
+            if(!txt_cancuoc.getText().matches("[0-9]+")){
+                txt_cancuoc.requestFocus();
+                throw new Exception("Số căn cước chỉ bao gồm số!");
+            }
+            if(jdate_ngaysinh.getDate()==null)
+                throw new Exception("Ngày sinh không được để trống!");
+            if(txt_quequan.getText().equals("")){
+                txt_quequan.requestFocus();
+                throw new Exception("Quê quán không được để trống!");
+            }
+            if(txt_dantoc.getText().equals("")){
+                txt_dantoc.requestFocus();
+                throw new Exception("Dân tộc không được để trống!");
+            }
+            if(txt_sdt.getText().equals("")){
+                txt_sdt.requestFocus();
+                throw new Exception("Số điện thoại không được để trống!");
+            }
+            if(!txt_sdt.getText().matches("[0-9]+")){
+                txt_sdt.requestFocus();
+                throw new Exception("Số điện thoại chỉ bao gồm số!");
+            }
+            if(txt_trinhdo.getText().equals("")){
+                txt_trinhdo.requestFocus();
+                throw new Exception("Trình độ không được để trống!");
+            }
+            if(txt_chuyennganh.getText().equals("")){
+                txt_chuyennganh.requestFocus();
+                throw new Exception("Chuyên ngành không được để trống!");
+            }
+            if(congchuc_no.isSelected())
+                if(jdate_hopdong.getDate()==null)
+                throw new Exception("Hạn hợp đồng không được để trống!");
+            if(lb_avt.getIcon()==null){
+                throw new Exception("Hình đại diện không được để trống!");
+            }
+            boolean isOK;
+            byte[] person_image;
+            if(imageChange){
+                File image = new File(filename);
+                FileInputStream fis = new FileInputStream(image);
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                byte[] buf = new byte[1024];
+                for(int readNum; (readNum=fis.read(buf))!=-1;){
+                    bos.write(buf,0,readNum);
+            }
+            person_image=bos.toByteArray();
+            }
+            else
+            {
+                person_image=acc.getAnh();
+            }
+            new NhanSu().updateNS(txt_mans.getText(),
+                    txt_hoten.getText(),
+                    ((JTextField)jdate_ngaysinh.getDateEditor().getUiComponent()).getText(),
+                    txt_quequan.getText(),
+                    txt_dantoc.getText(),
+                    txt_sdt.getText(),
+                    txt_trinhdo.getText(),
+                    txt_chuyennganh.getText(),
+                    ((ComboItem)txt_phongban.getSelectedItem()).getValue(),
+                    ((ComboItem)txt_chucvu.getSelectedItem()).getValue(),
+                    txt_chinhtri.getText(),
+                    txt_doanthe.getText(),
+                    gioitinh_nam.isSelected()?true:false,
+                    person_image,
+                    tenUser,
+                    txt_cancuoc.getText(),
+                    congchuc_yes.isSelected()?true:false,
+                    congchuc_no.isSelected()?((JTextField)jdate_hopdong.getDateEditor().getUiComponent()).getText():"1900-01-01");
+            JOptionPane.showMessageDialog(this,"Sửa thành công");
+            previousPanel.LoadData();
+            this.dispose();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Sửa thất bại!", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_saveActionPerformed
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
@@ -633,16 +671,21 @@ public class detailInfor extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void btn_changeAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_changeAvatarActionPerformed
-        JFileChooser chooser = new JFileChooser();
-        chooser.showOpenDialog(this);
-        File f = chooser.getSelectedFile();
-        String filenamez = f.getAbsolutePath();
-        if(filenamez!=null)
-        {
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon(filenamez).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
-            lb_avt.setIcon(imageIcon);
-            imageChange = true;
-            filename = filenamez;
+        try{
+            JFileChooser chooser = new JFileChooser();
+            chooser.showOpenDialog(this);
+            File f = chooser.getSelectedFile();
+            if(f!=null)
+            {
+                String filenamez = f.getAbsolutePath();
+                ImageIcon imageIcon = new ImageIcon(new ImageIcon(filenamez).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
+                lb_avt.setIcon(imageIcon);
+                imageChange = true;
+                filename = filenamez;
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_changeAvatarActionPerformed
 
@@ -662,45 +705,86 @@ public class detailInfor extends javax.swing.JDialog {
                 else{
                     savePath =  savePath + ".docx";
                 }
-                JasperReport jasperReport = JasperCompileManager.compileReport(System.getProperty("user.dir") + "\\ReportTemplates\\hoso.jrxml");
-                JRDataSource dataSource = new JREmptyDataSource();
-                HashMap parameters = new HashMap();
-                parameters.put("hoten",txt_hoten.getText());
-                parameters.put("quequan",txt_quequan.getText());
-                parameters.put("gioitinh",gioitinh_nam.isSelected()?"Nam":"Nữ");
-                parameters.put("dantoc",txt_dantoc.getText());
-                parameters.put("ngaysinh",((JTextField)jdate_ngaysinh.getDateEditor().getUiComponent()).getText());
-                parameters.put("sodienthoai",txt_sdt.getText());
-                parameters.put("phongban",((ComboItem)txt_phongban.getSelectedItem()).getKey());
-                parameters.put("chucvu",((ComboItem)txt_chucvu.getSelectedItem()).getKey());
-                parameters.put("trinhdo",txt_trinhdo.getText());
-                parameters.put("chuyennganh",txt_chuyennganh.getText());
-                parameters.put("chinhtri",txt_chinhtri.getText());
-                parameters.put("doanthe",txt_doanthe.getText());
-                parameters.put("loainhansu",congchuc_yes.isSelected()?"Công chức":"Hợp đồng");
-                parameters.put("hanhopdong", congchuc_no.isSelected()?((JTextField)jdate_hopdong.getDateEditor().getUiComponent()).getText():"Không có");
-                parameters.put("logo", System.getProperty("user.dir") + "\\ReportTemplates\\logo.jpg");
-                //lay anh
-                String imagePath = System.getProperty("user.dir") + "\\ReportTemplates\\avatar.jpg";
-                ImageIcon img = (ImageIcon)lb_avt.getIcon();
-                BufferedImage bi = new BufferedImage(img.getIconWidth(), img.getIconHeight(), BufferedImage.TYPE_INT_RGB);
-                Graphics g = bi.createGraphics();
-                img.paintIcon(null, g, 0,0);
-                g.dispose();
-                ImageIO.write(bi, "jpg", new File(imagePath));
-                parameters.put("image", imagePath);
-                //xuat file
-                JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
-                JRDocxExporter exporter = new JRDocxExporter();
-                exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
-                exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, savePath);
-                exporter.exportReport();
-                //JasperExportManager.exportReportToPdfFile(jasperPrint, "holy.pdf");
-                JOptionPane.showMessageDialog(this, "Xuất file thành công!");
+                if(new File(savePath).exists()){
+                    if(JOptionPane.showConfirmDialog (null, "Đã tồn tại file này, bạn có muốn ghi đè?","Bạn chắc chứ?",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+                        JasperReport jasperReport = JasperCompileManager.compileReport(System.getProperty("user.dir") + "\\ReportTemplates\\hoso.jrxml");
+                        JRDataSource dataSource = new JREmptyDataSource();
+                        HashMap parameters = new HashMap();
+                        parameters.put("hoten",txt_hoten.getText());
+                        parameters.put("quequan",txt_quequan.getText());
+                        parameters.put("gioitinh",gioitinh_nam.isSelected()?"Nam":"Nữ");
+                        parameters.put("dantoc",txt_dantoc.getText());
+                        parameters.put("ngaysinh",((JTextField)jdate_ngaysinh.getDateEditor().getUiComponent()).getText());
+                        parameters.put("sodienthoai",txt_sdt.getText());
+                        parameters.put("phongban",((ComboItem)txt_phongban.getSelectedItem()).getKey());
+                        parameters.put("chucvu",((ComboItem)txt_chucvu.getSelectedItem()).getKey());
+                        parameters.put("trinhdo",txt_trinhdo.getText());
+                        parameters.put("chuyennganh",txt_chuyennganh.getText());
+                        parameters.put("chinhtri",txt_chinhtri.getText());
+                        parameters.put("doanthe",txt_doanthe.getText());
+                        parameters.put("loainhansu",congchuc_yes.isSelected()?"Công chức":"Hợp đồng");
+                        parameters.put("hanhopdong", congchuc_no.isSelected()?((JTextField)jdate_hopdong.getDateEditor().getUiComponent()).getText():"Không có");
+                        parameters.put("logo", System.getProperty("user.dir") + "\\ReportTemplates\\logo.jpg");
+                        //lay anh
+                        String imagePath = System.getProperty("user.dir") + "\\ReportTemplates\\avatar.jpg";
+                        ImageIcon img = (ImageIcon)lb_avt.getIcon();
+                        BufferedImage bi = new BufferedImage(img.getIconWidth(), img.getIconHeight(), BufferedImage.TYPE_INT_RGB);
+                        Graphics g = bi.createGraphics();
+                        img.paintIcon(null, g, 0,0);
+                        g.dispose();
+                        ImageIO.write(bi, "jpg", new File(imagePath));
+                        parameters.put("image", imagePath);
+                        //xuat file
+                        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+                        JRDocxExporter exporter = new JRDocxExporter();
+                        exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+                        exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, savePath);
+                        exporter.exportReport();
+                        //JasperExportManager.exportReportToPdfFile(jasperPrint, "holy.pdf");
+                        JOptionPane.showMessageDialog(this, "Xuất file thành công!");
+                    }
+                }
+                else{
+                    JasperReport jasperReport = JasperCompileManager.compileReport(System.getProperty("user.dir") + "\\ReportTemplates\\hoso.jrxml");
+                    JRDataSource dataSource = new JREmptyDataSource();
+                    HashMap parameters = new HashMap();
+                    parameters.put("hoten",txt_hoten.getText());
+                    parameters.put("quequan",txt_quequan.getText());
+                    parameters.put("gioitinh",gioitinh_nam.isSelected()?"Nam":"Nữ");
+                    parameters.put("dantoc",txt_dantoc.getText());
+                    parameters.put("ngaysinh",((JTextField)jdate_ngaysinh.getDateEditor().getUiComponent()).getText());
+                    parameters.put("sodienthoai",txt_sdt.getText());
+                    parameters.put("phongban",((ComboItem)txt_phongban.getSelectedItem()).getKey());
+                    parameters.put("chucvu",((ComboItem)txt_chucvu.getSelectedItem()).getKey());
+                    parameters.put("trinhdo",txt_trinhdo.getText());
+                    parameters.put("chuyennganh",txt_chuyennganh.getText());
+                    parameters.put("chinhtri",txt_chinhtri.getText());
+                    parameters.put("doanthe",txt_doanthe.getText());
+                    parameters.put("loainhansu",congchuc_yes.isSelected()?"Công chức":"Hợp đồng");
+                    parameters.put("hanhopdong", congchuc_no.isSelected()?((JTextField)jdate_hopdong.getDateEditor().getUiComponent()).getText():"Không có");
+                    parameters.put("logo", System.getProperty("user.dir") + "\\ReportTemplates\\logo.jpg");
+                    //lay anh
+                    String imagePath = System.getProperty("user.dir") + "\\ReportTemplates\\avatar.jpg";
+                    ImageIcon img = (ImageIcon)lb_avt.getIcon();
+                    BufferedImage bi = new BufferedImage(img.getIconWidth(), img.getIconHeight(), BufferedImage.TYPE_INT_RGB);
+                    Graphics g = bi.createGraphics();
+                    img.paintIcon(null, g, 0,0);
+                    g.dispose();
+                    ImageIO.write(bi, "jpg", new File(imagePath));
+                    parameters.put("image", imagePath);
+                    //xuat file
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+                    JRDocxExporter exporter = new JRDocxExporter();
+                    exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+                    exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, savePath);
+                    exporter.exportReport();
+                    //JasperExportManager.exportReportToPdfFile(jasperPrint, "holy.pdf");
+                    JOptionPane.showMessageDialog(this, "Xuất file thành công!");
+                }
             }
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(this, "Thất bại! \n" + e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Xuất file thất bại!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_printActionPerformed
 

@@ -442,16 +442,21 @@ public class hosoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_reloadActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
-        int[] index = table_ns.getSelectedRows();
-        if(JOptionPane.showConfirmDialog (null, "Hành động này sẽ xoá vĩnh viễn " + index.length + " hồ sơ","Bạn chắc chứ?",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
-            int count=0;
-            for(int a:index)
-            {
-                if (new NhanSu().deleteNS((String) table_ns.getValueAt(a, 0)))
-                    count++;
+        try{
+            int[] index = table_ns.getSelectedRows();
+            if(JOptionPane.showConfirmDialog (null, "Hành động này sẽ xoá vĩnh viễn " + index.length + " hồ sơ","Bạn chắc chứ?",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+                int count=0;
+                for(int a:index)
+                {
+                    if (new NhanSu().deleteNS((String) table_ns.getValueAt(a, 0)))
+                        count++;
+                }
+                JOptionPane.showMessageDialog(this,"Đã xoá thành công "+count+" hồ sơ!");
+                LoadData();
             }
-            JOptionPane.showMessageDialog(this,"Đã xoá thành công "+count+" hồ sơ!");
-            LoadData();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Xoá hồ sơ thất bại!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_deleteActionPerformed
 
