@@ -414,13 +414,13 @@ public class phongbanPanel extends javax.swing.JPanel {
             ls2 = new DefaultListModel<ComboItem>();
             int dem=0;
             for(NhanSuPBCVModel z:listNS){
-                if(z.getMaPB()!=null&&z.getMaPB().equals(choose)){
+                if(!z.getMaPB().equals("")&&z.getMaPB().equals(choose)){
                     ls1.addElement(new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS()));
                     dem++;
                 }
                 else{
                     if(isFree.isSelected()){
-                        if(z.getMaPB()==null)
+                        if(z.getMaPB().equals(""))
                             ls2.addElement(new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS()));
                     }
                     else{
@@ -515,7 +515,7 @@ public class phongbanPanel extends javax.swing.JPanel {
                 ComboItem item = new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS());
                 if(!listSoSanh.contains(new ComboItemX(item))){
                     if(isFree.isSelected()){
-                        if(z.getMaPB()==null)
+                        if(z.getMaPB().equals(""))
                             ls2.addElement(item);
                         }
                     else{
@@ -532,7 +532,7 @@ public class phongbanPanel extends javax.swing.JPanel {
                 ComboItem item = new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS());
                 if(!listSoSanh.contains(new ComboItemX(item))){
                     if(isFree.isSelected()){
-                        if(z.getMaPB()==null||z.getMaPB().equals(choose))
+                        if(z.getMaPB().equals("")||z.getMaPB().equals(choose))
                             ls2.addElement(new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS()));
                     }
                     else{
@@ -640,7 +640,7 @@ public class phongbanPanel extends javax.swing.JPanel {
         ls2 = new DefaultListModel<ComboItem>();
         for(NhanSuPBCVModel z:listNS){
             if(isFree.isSelected()){
-                if(z.getMaPB()==null)
+                if(z.getMaPB().equals(""))
                     ls2.addElement(new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS()));
             }
             else{
