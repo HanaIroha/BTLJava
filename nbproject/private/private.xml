@@ -3,10 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/View/hosoPanel.java</file>
+            <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/Model/HoSoTableModel.java</file>
+            <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/DAO/implement/ChucVu.java</file>
+            <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/View/luongPanel.java</file>
+            <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/DAO/implement/DataSource.java</file>
+            <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/Model/NhanSuHoSoModel.java</file>
             <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/View/LoginForm.java</file>
+            <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/View/taikhoanPanel.java</file>
+            <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/Model/BangLuongModel.java</file>
+            <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/View/taikhoanAdminPanel.java</file>
+            <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/View/phongbanPanel.java</file>
+            <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/View/chucvuPanel.java</file>
+            <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/DAO/implement/NhanSu.java</file>
+            <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/View/detailInforNotEdit.java</file>
+            <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/View/salaryCalculatorEdit.java</file>
+            <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/Model/BangLuongTableModel.java</file>
+            <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/DAO/implement/PhongBan.java</file>
             <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/View/MainForm.java</file>
             <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/View/detailInforAdd.java</file>
             <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/View/detailInfor.java</file>
+            <file>file:/C:/Users/Iroha/Desktop/SchoolStudy/BTL%20Java/BTLJava2021/src/Model/BacLuongTableModel.java</file>
         </group>
     </open-files>
 </project-private>
