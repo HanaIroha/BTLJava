@@ -47,7 +47,7 @@ public class luongPanel extends javax.swing.JPanel {
     
     private void prepare(){
         table_bangluong.getTableHeader().setDefaultRenderer(new luongPanel.HeaderColor());
-        table_bangluong.getTableHeader().setBackground(new Color(82,147,255));
+//        table_bangluong.getTableHeader().setBackground(new Color(82,147,255));
         table_bangluong.getTableHeader().setBackground(new Color(32, 136, 203));
         table_bangluong.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         table_bangluong.getColumnModel().getColumn(0).setPreferredWidth(100);
@@ -229,7 +229,7 @@ public class luongPanel extends javax.swing.JPanel {
         btn_setting.setBackground(new java.awt.Color(24, 98, 151));
         btn_setting.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btn_setting.setForeground(new java.awt.Color(255, 255, 255));
-        btn_setting.setText("Chỉnh sửa tính lương");
+        btn_setting.setText("Chỉnh sửa thông số tính lương");
         btn_setting.setBorder(null);
         btn_setting.setBorderPainted(false);
         btn_setting.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -264,7 +264,15 @@ public class luongPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_settingActionPerformed
 
     private void btn_calculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calculateActionPerformed
-        LoadLuongTable();
+        try{
+            if(!new File(System.getProperty("user.dir") + "\\settings.json").exists()){
+            throw new Exception("Vui lòng chỉnh sửa thống số tính lương trước!");
+            }
+            LoadLuongTable();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Lỗi\n"+e.getMessage());
+        }
     }//GEN-LAST:event_btn_calculateActionPerformed
 
     private void btn_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_printActionPerformed

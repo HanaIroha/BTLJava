@@ -61,7 +61,7 @@ public class hosoPanel extends javax.swing.JPanel {
             txt_searchOption.addItem(new ComboItem(new HoSoTableModel().getColumnName(i),String.valueOf(i)));
         }
         table_ns.getTableHeader().setDefaultRenderer(new HeaderColor());
-        table_ns.getTableHeader().setBackground(new Color(82,147,255));
+//        table_ns.getTableHeader().setBackground(new Color(82,147,255));
         table_ns.getTableHeader().setBackground(new Color(32, 136, 203));
         table_ns.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent mouseEvent) {

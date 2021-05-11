@@ -58,8 +58,8 @@ public class phongbanPanel extends javax.swing.JPanel {
                     int index = list.locationToIndex(evt.getPoint());
                     String s = ((ComboItem)ls1.getElementAt(index)).getValue();
                     listOut.add(s);
-                        if(listIn.contains(s))
-                            listIn.remove(s);
+                    if(listIn.contains(s))
+                        listIn.remove(s);
                     ls2.addElement(ls1.getElementAt(index));
                     ls1.removeElementAt(index);
                     jList1.setModel(ls1);
@@ -75,8 +75,8 @@ public class phongbanPanel extends javax.swing.JPanel {
                     int index = list.locationToIndex(evt.getPoint());
                     String s = ((ComboItem)ls2.getElementAt(index)).getValue();
                     listIn.add(s);
-                        if(listOut.contains(s))
-                            listOut.remove(s);
+                    if(listOut.contains(s))
+                        listOut.remove(s);
                     ls1.addElement(ls2.getElementAt(index));
                     ls2.removeElementAt(index);
                     jList1.setModel(ls1);

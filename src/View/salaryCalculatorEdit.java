@@ -51,7 +51,7 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255, 0));
         this.setBackground(new java.awt.Color(255, 255, 255, 0));
         table_luong.getTableHeader().setDefaultRenderer(new HeaderColor());
-        table_luong.getTableHeader().setBackground(new Color(82,147,255));
+//        table_luong.getTableHeader().setBackground(new Color(82,147,255));
         table_luong.getTableHeader().setBackground(new Color(32, 136, 203));
         loadTableData();
         table_luong.revalidate();
