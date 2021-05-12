@@ -55,5 +55,12 @@ public class ChucVu extends DataSource<ChucVuModel> implements IChucVu{
         List<ChucVuModel> result = excute(sql, new ChucVuMapper(), MaCV);
         return result.isEmpty() ? null : result.get(0).getBacLuong();
     }
+
+    @Override
+    public boolean TimChucVuTheoBacLuong(int BacLuong) {
+        String sql = "Select * from dbo.ChucVu WHERE BacLuong = ?";
+        List<ChucVuModel> result = excute(sql, new ChucVuMapper(), BacLuong);
+        return result.isEmpty() ? false : true;
+    }
     
 }

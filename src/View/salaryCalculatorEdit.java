@@ -15,6 +15,7 @@ import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import DAO.implement.BacLuong;
+import DAO.implement.ChucVu;
 import Model.BacLuongTableModel;
 import java.io.File;
 import java.io.FileReader;
@@ -429,6 +430,9 @@ public class salaryCalculatorEdit extends javax.swing.JDialog {
             int bl = Integer.valueOf(txt_bac.getText());
             if(!new BacLuong().CheckBacLuong(bl)){
                 throw new Exception("Bậc lương không tồn tại\nVui lòng chọn bậc lương để xoá!");
+            }
+            if(new ChucVu().TimChucVuTheoBacLuong(bl)){
+                throw new Exception("Có một số chức vụ đang sở hữu bậc lương này\nVui lòng chỉnh lại trước khi xoá!");
             }
             new BacLuong().XoaBacLuong(bl);
             loadTableData();
