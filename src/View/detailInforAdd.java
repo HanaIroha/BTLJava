@@ -77,10 +77,10 @@ public class detailInforAdd extends javax.swing.JDialog {
         jdate_ngaysinh.setDateFormatString("yyyy-MM-dd");
         jdate_hopdong.setDateFormatString("yyyy-MM-dd");
         jdate_ngaythamgia.setDateFormatString("yyyy-MM-dd");
-        txt_phongban.addItem(new ComboItem("Không có",""));
+        txt_phongban.addItem(new ComboItem("Không có",null));
         for(PhongBanModel s:pb)
             txt_phongban.addItem(new ComboItem(s.getTenPB(),s.getMaPB()));
-        txt_chucvu.addItem(new ComboItem("Không có",""));
+        txt_chucvu.addItem(new ComboItem("Không có",null));
         for(ChucVuModel s:cv)
             txt_chucvu.addItem(new ComboItem(s.getTenCV(),s.getMaCV()));
         congchuc_yes.setSelected(true);

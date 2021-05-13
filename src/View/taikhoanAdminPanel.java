@@ -582,7 +582,7 @@ public class taikhoanAdminPanel extends javax.swing.JPanel {
                 bos.write(buf,0,readNum);
             }
             person_image=bos.toByteArray();
-            new Account().createAccount(txt_tentaikhoan.getText(), txt_ten.getText(), String.valueOf(txt_matkhaumoi.getPassword()), person_image);
+            new Account().createAccount(txt_tentaikhoan.getText(), String.valueOf(txt_matkhaumoi.getPassword()), txt_ten.getText(), person_image);
             resetAdd();
             loadDataTable();
             JOptionPane.showMessageDialog(this, "Thêm tài khoản thành công!");

@@ -138,7 +138,7 @@ public class detailInfor extends javax.swing.JDialog {
                 Logger.getLogger(detailInfor.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        txt_phongban.addItem(new ComboItem("Không có",""));
+        txt_phongban.addItem(new ComboItem("Không có",null));
         for(PhongBanModel s:pb)
         {
             txt_phongban.addItem(new ComboItem(s.getTenPB(),s.getMaPB()));
@@ -155,7 +155,7 @@ public class detailInfor extends javax.swing.JDialog {
                 i++;
             }
         }
-        txt_chucvu.addItem(new ComboItem("Không có",""));
+        txt_chucvu.addItem(new ComboItem("Không có",null));
         for(ChucVuModel s:cv)
             txt_chucvu.addItem(new ComboItem(s.getTenCV(),s.getMaCV()));
         i=1;
