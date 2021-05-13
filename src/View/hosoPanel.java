@@ -317,7 +317,6 @@ public class hosoPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_Search = new javax.swing.JButton();
         reload = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
         btn_add = new javax.swing.JButton();
@@ -331,20 +330,6 @@ public class hosoPanel extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1250, 650));
         setPreferredSize(new java.awt.Dimension(1250, 650));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btn_Search.setBackground(new java.awt.Color(24, 98, 151));
-        btn_Search.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btn_Search.setForeground(new java.awt.Color(255, 255, 255));
-        btn_Search.setText("Tìm kiếm");
-        btn_Search.setBorder(null);
-        btn_Search.setBorderPainted(false);
-        btn_Search.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_Search.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_SearchActionPerformed(evt);
-            }
-        });
-        add(btn_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, 100, 50));
 
         reload.setBackground(new java.awt.Color(24, 98, 151));
         reload.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -391,13 +376,13 @@ public class hosoPanel extends javax.swing.JPanel {
         txt_searchOption.setBackground(new java.awt.Color(255, 204, 204));
         txt_searchOption.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txt_searchOption.setOpaque(false);
-        add(txt_searchOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 180, 30));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 170, -1));
+        add(txt_searchOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 180, 30));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, 170, -1));
 
         txt_searchkey.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_searchkey.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         txt_searchkey.setForeground(new java.awt.Color(255, 255, 255));
-        txt_searchkey.setText("Nhập từ khoá...");
+        txt_searchkey.setText("Nhập từ khoá để tìm...");
         txt_searchkey.setBorder(null);
         txt_searchkey.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         txt_searchkey.setOpaque(false);
@@ -409,7 +394,12 @@ public class hosoPanel extends javax.swing.JPanel {
                 txt_searchkeyFocusLost(evt);
             }
         });
-        add(txt_searchkey, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, 170, -1));
+        txt_searchkey.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_searchkeyKeyReleased(evt);
+            }
+        });
+        add(txt_searchkey, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, 170, -1));
 
         table_ns.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         table_ns.setModel(new HoSoTableModel());
@@ -460,58 +450,73 @@ public class hosoPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btn_deleteActionPerformed
 
-    private void btn_SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SearchActionPerformed
-        String key = txt_searchkey.getText();
-        int searchIndex = Integer.valueOf(((ComboItem)txt_searchOption.getSelectedItem()).getValue());
-        ArrayList<NhanSuHoSoModel> dsHoSoz = new ArrayList<>();
-        for(NhanSuHoSoModel z:dsHoSo)
-            switch(searchIndex){
-                case 0:
-                    if(z.getMaNS().contains(key))
-                        dsHoSoz.add(z);
-                    break;
-                case 1:
-                    if(z.getHoTen().contains(key))
-                        dsHoSoz.add(z);
-                    break;
-                case 2:
-                    if(z.getNgaySinh().contains(key))
-                        dsHoSoz.add(z);
-                    break;
-                case 3:
-                    if(z.getGioiTinh().contains(key))
-                        dsHoSoz.add(z);
-                    break;
-                case 4:
-                    if(z.getSoDienThoai().contains(key))
-                        dsHoSoz.add(z);
-                    break;
-                case 5:
-                    if(z.getQueQuan().contains(key))
-                        dsHoSoz.add(z);
-                    break;
-                case 6:
-                    if(z.getDanToc().contains(key))
-                        dsHoSoz.add(z);
-                    break;
-                case 7:
-                    if(z.getTrinhDoHocVan().contains(key))
-                        dsHoSoz.add(z);
-                    break;
-                case  8:
-                    if(z.getChuyenNganh().contains(key))
-                        dsHoSoz.add(z);
-                    break;
-                case 9:
-                    if(z.getPhongBan().contains(key))
-                        dsHoSoz.add(z);
-                    break;
-                case 10:
-                    if(z.getChucVu().contains(key))
-                        dsHoSoz.add(z);
-                    break;
-            }
-        table_ns.setModel(new HoSoTableModel(dsHoSoz));
+    private void txt_searchkeyFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_searchkeyFocusGained
+        if(txt_searchkey.getText().equals("Nhập từ khoá để tìm..."))
+            txt_searchkey.setText("");
+    }//GEN-LAST:event_txt_searchkeyFocusGained
+
+    private void txt_searchkeyFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_searchkeyFocusLost
+        if(txt_searchkey.getText().equals(""))
+            txt_searchkey.setText("Nhập từ khoá để tìm...");
+    }//GEN-LAST:event_txt_searchkeyFocusLost
+
+    private void txt_searchkeyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchkeyKeyReleased
+        if(!txt_searchkey.getText().equals("")){
+            String key = txt_searchkey.getText().toLowerCase();
+            int searchIndex = Integer.valueOf(((ComboItem)txt_searchOption.getSelectedItem()).getValue());
+            ArrayList<NhanSuHoSoModel> dsHoSoz = new ArrayList<>();
+            for(NhanSuHoSoModel z:dsHoSo)
+                switch(searchIndex){
+                    case 0:
+                        if(z.getMaNS().toLowerCase().contains(key))
+                            dsHoSoz.add(z);
+                        break;
+                    case 1:
+                        if(z.getHoTen().toLowerCase().contains(key))
+                            dsHoSoz.add(z);
+                        break;
+                    case 2:
+                        if(z.getNgaySinh().toLowerCase().contains(key))
+                            dsHoSoz.add(z);
+                        break;
+                    case 3:
+                        if(z.getGioiTinh().toLowerCase().contains(key))
+                            dsHoSoz.add(z);
+                        break;
+                    case 4:
+                        if(z.getSoDienThoai().toLowerCase().contains(key))
+                            dsHoSoz.add(z);
+                        break;
+                    case 5:
+                        if(z.getQueQuan().toLowerCase().contains(key))
+                            dsHoSoz.add(z);
+                        break;
+                    case 6:
+                        if(z.getDanToc().toLowerCase().contains(key))
+                            dsHoSoz.add(z);
+                        break;
+                    case 7:
+                        if(z.getTrinhDoHocVan().toLowerCase().contains(key))
+                            dsHoSoz.add(z);
+                        break;
+                    case  8:
+                        if(z.getChuyenNganh().toLowerCase().contains(key))
+                            dsHoSoz.add(z);
+                        break;
+                    case 9:
+                        if(z.getPhongBan().toLowerCase().contains(key))
+                            dsHoSoz.add(z);
+                        break;
+                    case 10:
+                        if(z.getChucVu().toLowerCase().contains(key))
+                            dsHoSoz.add(z);
+                        break;
+                }
+            table_ns.setModel(new HoSoTableModel(dsHoSoz));
+        }
+        else{
+            table_ns.setModel(new HoSoTableModel(dsHoSo));
+        }
         table_ns.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         table_ns.getColumnModel().getColumn(0).setPreferredWidth(60);
         table_ns.getColumnModel().getColumn(1).setPreferredWidth(130);
@@ -525,22 +530,11 @@ public class hosoPanel extends javax.swing.JPanel {
         table_ns.getColumnModel().getColumn(9).setPreferredWidth(130);
         table_ns.getColumnModel().getColumn(10).setPreferredWidth(130);
         table_ns.revalidate();
-    }//GEN-LAST:event_btn_SearchActionPerformed
-
-    private void txt_searchkeyFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_searchkeyFocusGained
-        if(txt_searchkey.getText().equals("Nhập từ khoá..."))
-            txt_searchkey.setText("");
-    }//GEN-LAST:event_txt_searchkeyFocusGained
-
-    private void txt_searchkeyFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_searchkeyFocusLost
-        if(txt_searchkey.getText().equals(""))
-            txt_searchkey.setText("Nhập từ khoá...");
-    }//GEN-LAST:event_txt_searchkeyFocusLost
+    }//GEN-LAST:event_txt_searchkeyKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
-    private javax.swing.JButton btn_Search;
     private javax.swing.JButton btn_add;
     private javax.swing.JButton btn_delete;
     private javax.swing.JScrollPane jScrollPane1;
