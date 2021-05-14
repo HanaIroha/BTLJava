@@ -331,7 +331,6 @@ public class hosoPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         btn_export = new javax.swing.JButton();
-        reload = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
         btn_add = new javax.swing.JButton();
         txt_searchOption = new javax.swing.JComboBox<>();
@@ -357,21 +356,7 @@ public class hosoPanel extends javax.swing.JPanel {
                 btn_exportActionPerformed(evt);
             }
         });
-        add(btn_export, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 130, 50));
-
-        reload.setBackground(new java.awt.Color(24, 98, 151));
-        reload.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        reload.setForeground(new java.awt.Color(255, 255, 255));
-        reload.setText("Tải lại");
-        reload.setBorder(null);
-        reload.setBorderPainted(false);
-        reload.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        reload.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reloadActionPerformed(evt);
-            }
-        });
-        add(reload, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 100, 50));
+        add(btn_export, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, 130, 50));
 
         btn_delete.setBackground(new java.awt.Color(24, 98, 151));
         btn_delete.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -404,8 +389,8 @@ public class hosoPanel extends javax.swing.JPanel {
         txt_searchOption.setBackground(new java.awt.Color(255, 204, 204));
         txt_searchOption.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txt_searchOption.setOpaque(false);
-        add(txt_searchOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 180, 30));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 170, -1));
+        add(txt_searchOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 180, 30));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 170, -1));
 
         txt_searchkey.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_searchkey.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -427,7 +412,7 @@ public class hosoPanel extends javax.swing.JPanel {
                 txt_searchkeyKeyReleased(evt);
             }
         });
-        add(txt_searchkey, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 170, -1));
+        add(txt_searchkey, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 50, 170, -1));
 
         table_ns.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         table_ns.setModel(new HoSoTableModel());
@@ -452,12 +437,6 @@ public class hosoPanel extends javax.swing.JPanel {
         //z.setAlwaysOnTop(true);
         z.setVisible(true);
     }//GEN-LAST:event_btn_addActionPerformed
-
-    private void reloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadActionPerformed
-        txt_searchkey.setText("Nhập từ khoá...");
-        txt_searchOption.setSelectedIndex(0);
-        LoadData();
-    }//GEN-LAST:event_reloadActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         try{
@@ -623,7 +602,6 @@ public class hosoPanel extends javax.swing.JPanel {
     private javax.swing.JButton btn_export;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton reload;
     private javax.swing.JTable table_ns;
     private javax.swing.JComboBox<ComboItem> txt_searchOption;
     private javax.swing.JTextField txt_searchkey;

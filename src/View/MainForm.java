@@ -354,6 +354,7 @@ public class MainForm extends javax.swing.JFrame {
     private void btn_hosoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hosoActionPerformed
         if(indexTab!=1)
         {
+            tab1.LoadData();
             indexTab=1;
             resetTab();
             lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu1.png")));
