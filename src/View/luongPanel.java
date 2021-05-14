@@ -6,7 +6,7 @@
 package View;
 
 import DAO.implement.NhanSu;
-import Model.BangLuongTableModel;
+import Model.CustomTable.BangLuongTableModel;
 import Model.NhanSuModel;
 import java.awt.Color;
 import java.awt.Component;

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package Model.CustomTable;
 
+import Model.AccountModel;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;

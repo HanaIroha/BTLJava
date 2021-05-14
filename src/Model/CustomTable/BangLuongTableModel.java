@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package Model.CustomTable;
 
 import DAO.implement.BacLuong;
 import DAO.implement.ChucVu;
+import Model.BangLuongModel;
+import Model.NhanSuModel;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;

@@ -2,7 +2,7 @@ package View;
 
 import DAO.implement.NhanSu;
 import Model.ComboItem;
-import Model.HoSoTableModel;
+import Model.CustomTable.HoSoTableModel;
 import Model.NhanSuModel;
 import Model.NhanSuHoSoModel;
 import java.awt.Color;

@@ -16,7 +16,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import DAO.implement.BacLuong;
 import DAO.implement.ChucVu;
-import Model.BacLuongTableModel;
+import Model.CustomTable.BacLuongTableModel;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;

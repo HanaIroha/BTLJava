@@ -7,7 +7,7 @@ package View;
 
 import DAO.implement.Account;
 import Model.AccountModel;
-import Model.TaiKhoanTableModel;
+import Model.CustomTable.TaiKhoanTableModel;
 import static View.MainForm.applyQualityRenderingHints;
 import java.awt.AlphaComposite;
 import java.awt.Color;

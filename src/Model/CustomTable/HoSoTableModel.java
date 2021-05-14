@@ -1,7 +1,9 @@
-package Model;
+package Model.CustomTable;
 
 import DAO.implement.PhongBan;
 import DAO.implement.ChucVu;
+import Model.NhanSuHoSoModel;
+import Model.NhanSuModel;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
