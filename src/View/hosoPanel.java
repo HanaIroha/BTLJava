@@ -12,13 +12,26 @@ import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableModel;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 /**
  *
  * @author Iroha
@@ -317,6 +330,7 @@ public class hosoPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn_export = new javax.swing.JButton();
         reload = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
         btn_add = new javax.swing.JButton();
@@ -330,6 +344,20 @@ public class hosoPanel extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1250, 650));
         setPreferredSize(new java.awt.Dimension(1250, 650));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_export.setBackground(new java.awt.Color(24, 98, 151));
+        btn_export.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn_export.setForeground(new java.awt.Color(255, 255, 255));
+        btn_export.setText("Xuất EXCEL");
+        btn_export.setBorder(null);
+        btn_export.setBorderPainted(false);
+        btn_export.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_export.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exportActionPerformed(evt);
+            }
+        });
+        add(btn_export, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 130, 50));
 
         reload.setBackground(new java.awt.Color(24, 98, 151));
         reload.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -376,8 +404,8 @@ public class hosoPanel extends javax.swing.JPanel {
         txt_searchOption.setBackground(new java.awt.Color(255, 204, 204));
         txt_searchOption.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txt_searchOption.setOpaque(false);
-        add(txt_searchOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 180, 30));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, 170, -1));
+        add(txt_searchOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 180, 30));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 170, -1));
 
         txt_searchkey.setBackground(new java.awt.Color(255, 255, 255, 0));
         txt_searchkey.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -399,7 +427,7 @@ public class hosoPanel extends javax.swing.JPanel {
                 txt_searchkeyKeyReleased(evt);
             }
         });
-        add(txt_searchkey, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, 170, -1));
+        add(txt_searchkey, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 170, -1));
 
         table_ns.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         table_ns.setModel(new HoSoTableModel());
@@ -532,11 +560,67 @@ public class hosoPanel extends javax.swing.JPanel {
         table_ns.revalidate();
     }//GEN-LAST:event_txt_searchkeyKeyReleased
 
+    private void btn_exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exportActionPerformed
+        try{
+            JFileChooser chonChoLuu = new JFileChooser();
+            //chonChoLuu.setCurrentDirectory(new File(System.getProperty("user.dir")));
+            chonChoLuu.setSelectedFile(new File("unname.xlsx"));
+            int reponse = chonChoLuu.showSaveDialog(null);
+            if(reponse == JFileChooser.APPROVE_OPTION){
+                String savePath = chonChoLuu.getSelectedFile().getAbsolutePath();
+                if (chonChoLuu.getSelectedFile().getName().length()>5) 
+                {
+                    if(!savePath.substring(savePath.length() - 5).equals(".xlsx"))
+                        savePath =  savePath + ".xlsx";
+                }
+                else{
+                    savePath =  savePath + ".xlsx";
+                }
+                if(new File(savePath).exists()){
+                    if(JOptionPane.showConfirmDialog (null, "Đã tồn tại file này, bạn có muốn ghi đè?","Bạn chắc chứ?",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+                        writeToExcell(table_ns, Paths.get(savePath));
+                        JOptionPane.showMessageDialog(this, "Xuất file thành công!");
+                    }
+                }
+                else{
+                    writeToExcell(table_ns, Paths.get(savePath));
+                    JOptionPane.showMessageDialog(this, "Xuất file thành công!");
+                }
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Xuất file thất bại!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_exportActionPerformed
+
+    private void writeToExcell(JTable table, Path path) throws FileNotFoundException, IOException {
+        Workbook wb = new XSSFWorkbook();
+        Sheet sheet = wb.createSheet();
+        Row row = sheet.createRow(2);
+        TableModel model = table.getModel();
+
+
+        Row headerRow = sheet.createRow(0);
+        for(int headings = 0; headings < model.getColumnCount(); headings++){
+            headerRow.createCell(headings).setCellValue(model.getColumnName(headings));
+        }
+
+        for(int rows = 0; rows < model.getRowCount(); rows++){
+            for(int cols = 0; cols < table.getColumnCount(); cols++){
+                row.createCell(cols).setCellValue(model.getValueAt(rows, cols).toString());
+            }
+
+            
+            row = sheet.createRow((rows + 3)); 
+        }
+        wb.write(new FileOutputStream(path.toString()));   
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JButton btn_add;
     private javax.swing.JButton btn_delete;
+    private javax.swing.JButton btn_export;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton reload;
