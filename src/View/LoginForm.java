@@ -2,12 +2,8 @@ package View;
 
 import Model.AccountModel;
 import DAO.implement.Account;
-import DAO.implement.NhanSu;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import javax.swing.JOptionPane;
 
 /**

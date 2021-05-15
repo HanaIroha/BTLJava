@@ -22,7 +22,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import net.sf.jasperreports.engine.JREmptyDataSource;
-import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -339,6 +338,7 @@ public class luongPanel extends javax.swing.JPanel {
                     }
                     JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(ls);
                     Map<String, Object> parameters = new HashMap<String, Object>();
+                    parameters.put("logo", System.getProperty("user.dir") + "\\ReportTemplates\\logo.jpg");
                     parameters.put("DataSource", itemsJRBean);
                     JasperPrint jasperPrint = JasperFillManager.fillReport(System.getProperty("user.dir") + "\\ReportTemplates\\bangluong.jasper", parameters, new JREmptyDataSource());
         //            OutputStream outputStream = new FileOutputStream(new File(System.getProperty("user.dir") + "\\ReportTemplates\\test.pdf"));

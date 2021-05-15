@@ -156,24 +156,29 @@
 		<field name="thuclinh" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="DataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="logo" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="42" splitType="Stretch">
+		<band height="69" splitType="Stretch">
 			<staticText>
-				<reportElement x="318" y="0" width="169" height="34" forecolor="#3399FF" uuid="aadaff06-0ef7-44db-aeb9-3774f2ef1ec8"/>
+				<reportElement x="318" y="21" width="169" height="34" forecolor="#3399FF" uuid="aadaff06-0ef7-44db-aeb9-3774f2ef1ec8"/>
 				<textElement markup="none">
 					<font size="24" isBold="true"/>
 				</textElement>
 				<text><![CDATA[BẢNG LƯƠNG]]></text>
 			</staticText>
+			<image>
+				<reportElement x="737" y="5" width="50" height="50" uuid="73331659-7523-413f-aeb3-a37eae923365"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<detail>
 		<band height="125" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 6" style="table 6" x="0" y="0" width="802" height="125" uuid="09461296-5315-4858-9546-c7e43c76a5dd"/>
+				<reportElement key="table 6" style="table 6" x="10" y="0" width="802" height="125" uuid="09461296-5315-4858-9546-c7e43c76a5dd"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="DataLuong" uuid="9ebed14d-4a2a-467f-94f9-45d43f382118">
 						<dataSourceExpression><![CDATA[$P{DataSource}]]></dataSourceExpression>
