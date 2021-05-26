@@ -344,7 +344,7 @@ public class MainForm extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/panelDefault.png"))); // NOI18N
         jLabel1.setText("jLabel1");
-        MainPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, -1));
+        MainPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1280, -1));
 
         getContentPane().add(MainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1250, 650));
 
@@ -542,7 +542,7 @@ public class MainForm extends javax.swing.JFrame {
             lb_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/mainMenu5.png")));
             MainPanel.removeAll();
             MainPanel.setLayout(new BorderLayout());
-            if(taikhoan.getUsername().equals("iroha"))
+            if(taikhoan.getUsername().equals("admin"))
                 MainPanel.add(new taikhoanAdminPanel(thisForm, taikhoan));
             else
                 MainPanel.add(new taikhoanPanel(thisForm, taikhoan));
