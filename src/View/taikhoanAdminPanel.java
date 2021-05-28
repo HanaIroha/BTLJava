@@ -527,6 +527,9 @@ public class taikhoanAdminPanel extends javax.swing.JPanel {
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         try{
+            if(txt_tentaikhoan.getText().equals("admin")){
+                throw new Exception("Không thể xoá tài khoản của người quản trị.");
+            }
             new Account().deleteAccount(txt_tentaikhoan.getText());
             imageChange=false;
             lb_avt.setIcon(null);
