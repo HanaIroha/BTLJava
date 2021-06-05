@@ -186,10 +186,10 @@ public class phongbanPanel extends javax.swing.JPanel {
     public void reLoad(){
         ls = new ArrayList<>(new PhongBan().getPhongBan());
         listNS = new ArrayList<>(new PhongBan().getListNS());
-        txt_phongban.removeAllItems();
+        cbb_phongban.removeAllItems();
         for(PhongBanModel z: ls)
         {
-            txt_phongban.addItem(new ComboItem(z.getTenPB(),z.getMaPB()));
+            cbb_phongban.addItem(new ComboItem(z.getTenPB(),z.getMaPB()));
         }
     }
     /**
@@ -201,7 +201,7 @@ public class phongbanPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txt_phongban = new javax.swing.JComboBox<>();
+        cbb_phongban = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         txt_mapb = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -213,7 +213,7 @@ public class phongbanPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         txt_sl = new javax.swing.JTextField();
-        isFree = new javax.swing.JCheckBox();
+        CheckBox_isFree = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -230,15 +230,15 @@ public class phongbanPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txt_phongban.setBackground(new java.awt.Color(255, 204, 204));
-        txt_phongban.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        txt_phongban.setOpaque(false);
-        txt_phongban.addItemListener(new java.awt.event.ItemListener() {
+        cbb_phongban.setBackground(new java.awt.Color(255, 204, 204));
+        cbb_phongban.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        cbb_phongban.setOpaque(false);
+        cbb_phongban.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                txt_phongbanItemStateChanged(evt);
+                cbb_phongbanItemStateChanged(evt);
             }
         });
-        add(txt_phongban, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 50, 290, 50));
+        add(cbb_phongban, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 50, 290, 50));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 330, -1));
 
         txt_mapb.setBackground(new java.awt.Color(255, 255, 255, 0));
@@ -293,17 +293,17 @@ public class phongbanPanel extends javax.swing.JPanel {
         txt_sl.setOpaque(false);
         add(txt_sl, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 300, -1));
 
-        isFree.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        isFree.setForeground(new java.awt.Color(255, 255, 255));
-        isFree.setText("Chưa chỉ định");
-        isFree.setBorder(null);
-        isFree.setOpaque(false);
-        isFree.addItemListener(new java.awt.event.ItemListener() {
+        CheckBox_isFree.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        CheckBox_isFree.setForeground(new java.awt.Color(255, 255, 255));
+        CheckBox_isFree.setText("Chưa chỉ định");
+        CheckBox_isFree.setBorder(null);
+        CheckBox_isFree.setOpaque(false);
+        CheckBox_isFree.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                isFreeItemStateChanged(evt);
+                CheckBox_isFreeItemStateChanged(evt);
             }
         });
-        add(isFree, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 210, -1, -1));
+        add(CheckBox_isFree, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 210, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -405,11 +405,11 @@ public class phongbanPanel extends javax.swing.JPanel {
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 650));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_phongbanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_txt_phongbanItemStateChanged
-        if(txt_phongban.getSelectedItem()!=null){
+    private void cbb_phongbanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbb_phongbanItemStateChanged
+        if(cbb_phongban.getSelectedItem()!=null){
             listIn = new ArrayList<>();
             listOut = new ArrayList<>();
-            String choose = ((ComboItem)txt_phongban.getSelectedItem()).getValue();
+            String choose = ((ComboItem)cbb_phongban.getSelectedItem()).getValue();
             ls1 = new DefaultListModel<ComboItem>();
             ls2 = new DefaultListModel<ComboItem>();
             int dem=0;
@@ -419,7 +419,7 @@ public class phongbanPanel extends javax.swing.JPanel {
                     dem++;
                 }
                 else{
-                    if(isFree.isSelected()){
+                    if(CheckBox_isFree.isSelected()){
                         if(z.getMaPB()==null)
                             ls2.addElement(new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS()));
                     }
@@ -438,10 +438,10 @@ public class phongbanPanel extends javax.swing.JPanel {
                     txt_sl.setText(String.valueOf(dem));
             }
         }
-    }//GEN-LAST:event_txt_phongbanItemStateChanged
+    }//GEN-LAST:event_cbb_phongbanItemStateChanged
 
     private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
-        int choose = txt_phongban.getSelectedIndex();
+        int choose = cbb_phongban.getSelectedIndex();
         try{
             if(txt_tenpb.getText().equals("")){
                 txt_tenpb.requestFocus();
@@ -460,13 +460,13 @@ public class phongbanPanel extends javax.swing.JPanel {
             String sdt = txt_sdt.getText();
             new PhongBan().suaPB(maPB, tenPB, sdt);
             NhanSu nhansuDAO = new NhanSu();
-            String mapb = ((ComboItem)txt_phongban.getSelectedItem()).getValue();
+            String mapb = ((ComboItem)cbb_phongban.getSelectedItem()).getValue();
             for(String z : listIn)
                 nhansuDAO.updatePhongBan(z, mapb, tenUser);
             for(String z : listOut)
                 nhansuDAO.updatePhongBan(z, null, tenUser);
             reLoad();
-            txt_phongban.setSelectedIndex(choose);
+            cbb_phongban.setSelectedIndex(choose);
             JOptionPane.showMessageDialog(background, "Sửa thành công!");
         }
         catch(Exception e){
@@ -503,18 +503,18 @@ public class phongbanPanel extends javax.swing.JPanel {
         }
     }
     
-    private void isFreeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_isFreeItemStateChanged
+    private void CheckBox_isFreeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CheckBox_isFreeItemStateChanged
         ListModel<ComboItem> listTamThoi = jList1.getModel();
         ArrayList<ComboItemX> listSoSanh = new ArrayList<>();
         for(int i = 0; i <listTamThoi.getSize();i++)
             listSoSanh.add(new ComboItemX(listTamThoi.getElementAt(i)));
-        if(txt_phongban.getSelectedItem()==null)
+        if(cbb_phongban.getSelectedItem()==null)
         {
             ls2 = new DefaultListModel<ComboItem>();
             for(NhanSuPBCVModel z:listNS){
                 ComboItem item = new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS());
                 if(!listSoSanh.contains(new ComboItemX(item))){
-                    if(isFree.isSelected()){
+                    if(CheckBox_isFree.isSelected()){
                         if(z.getMaPB()==null)
                             ls2.addElement(item);
                         }
@@ -526,12 +526,12 @@ public class phongbanPanel extends javax.swing.JPanel {
             jList2.setModel(ls2);
         }
         else{
-            String choose = ((ComboItem)txt_phongban.getSelectedItem()).getValue();
+            String choose = ((ComboItem)cbb_phongban.getSelectedItem()).getValue();
             ls2 = new DefaultListModel<ComboItem>();
             for(NhanSuPBCVModel z:listNS){
                 ComboItem item = new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS());
                 if(!listSoSanh.contains(new ComboItemX(item))){
-                    if(isFree.isSelected()){
+                    if(CheckBox_isFree.isSelected()){
                         if(z.getMaPB()==null||z.getMaPB().equals(choose))
                             ls2.addElement(new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS()));
                     }
@@ -542,15 +542,15 @@ public class phongbanPanel extends javax.swing.JPanel {
             }
             jList2.setModel(ls2);
         }
-    }//GEN-LAST:event_isFreeItemStateChanged
+    }//GEN-LAST:event_CheckBox_isFreeItemStateChanged
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         getStartAdd();
     }//GEN-LAST:event_btn_addActionPerformed
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
-        txt_phongban.setEnabled(true);
-        txt_phongban.setSelectedIndex(0);
+        cbb_phongban.setEnabled(true);
+        cbb_phongban.setSelectedIndex(0);
         btn_save.setVisible(false);
         btn_cancel.setVisible(false);
         btn_edit.setEnabled(true);
@@ -590,8 +590,8 @@ public class phongbanPanel extends javax.swing.JPanel {
             for(String z : listIn)
                 a.updatePhongBan(z, maPB, tenUser);
             reLoad();
-            txt_phongban.setEnabled(true);
-            txt_phongban.setSelectedIndex(0);
+            cbb_phongban.setEnabled(true);
+            cbb_phongban.setSelectedIndex(0);
             btn_save.setVisible(false);
             btn_cancel.setVisible(false);
             btn_edit.setEnabled(true);
@@ -608,7 +608,7 @@ public class phongbanPanel extends javax.swing.JPanel {
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         if(JOptionPane.showConfirmDialog (null, "Hành động này sẽ xoá vĩnh viễn phòng ban","Bạn chắc chứ?",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
             try{
-                if(new PhongBan().xoaPB(((ComboItem)txt_phongban.getSelectedItem()).getValue())){
+                if(new PhongBan().xoaPB(((ComboItem)cbb_phongban.getSelectedItem()).getValue())){
                     JOptionPane.showMessageDialog(background, "Xoá thành công!");
                     reLoad();
                 }
@@ -629,8 +629,8 @@ public class phongbanPanel extends javax.swing.JPanel {
         btn_edit.setEnabled(false);
         btn_delete.setEnabled(false);
         btn_add.setEnabled(false);
-        txt_phongban.setEnabled(false);
-        txt_phongban.setSelectedIndex(-1);
+        cbb_phongban.setEnabled(false);
+        cbb_phongban.setSelectedIndex(-1);
         txt_mapb.setText("");
         txt_tenpb.setText("");
         txt_sdt.setText("");
@@ -639,7 +639,7 @@ public class phongbanPanel extends javax.swing.JPanel {
         jList1.setModel(ls1);
         ls2 = new DefaultListModel<ComboItem>();
         for(NhanSuPBCVModel z:listNS){
-            if(isFree.isSelected()){
+            if(CheckBox_isFree.isSelected()){
                 if(z.getMaPB()==null)
                     ls2.addElement(new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS()));
             }
@@ -651,13 +651,14 @@ public class phongbanPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox CheckBox_isFree;
     private javax.swing.JLabel background;
     private javax.swing.JButton btn_add;
     private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_edit;
     private javax.swing.JButton btn_save;
-    private javax.swing.JCheckBox isFree;
+    private javax.swing.JComboBox<ComboItem> cbb_phongban;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -673,7 +674,6 @@ public class phongbanPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextField txt_mapb;
-    private javax.swing.JComboBox<ComboItem> txt_phongban;
     private javax.swing.JTextField txt_sdt;
     private javax.swing.JTextField txt_sl;
     private javax.swing.JTextField txt_tenpb;

@@ -205,7 +205,7 @@ public class taikhoanAdminPanel extends javax.swing.JPanel {
                 btn_manangeActionPerformed(evt);
             }
         });
-        add(btn_manange, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 210, 40));
+        add(btn_manange, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 270, 210, 40));
 
         btn_add.setBackground(new java.awt.Color(24, 98, 151));
         btn_add.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -377,6 +377,7 @@ public class taikhoanAdminPanel extends javax.swing.JPanel {
         if(row>=0)
         {
             imageChange = false;
+            //lay anh cua tai khoan ra tu co so du lieu
             byte[] image=new Account().getAvatar(table_taikhoan.getValueAt(row, 0).toString());
             if(image!=null){
                 ImageIcon imageIcon = new ImageIcon(new ImageIcon(image).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
@@ -418,7 +419,7 @@ public class taikhoanAdminPanel extends javax.swing.JPanel {
     private void btn_manangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_manangeActionPerformed
         if(btn_manange.getText().equals("Quản lý tài khoản")){
             btn_changepass.setEnabled(false);
-            jScrollPane1.setVisible(true);
+          ;  jScrollPane1.setVisible(true);
             btn_add.setVisible(true);
             btn_edit.setVisible(true);
             btn_delete.setVisible(true);
@@ -509,8 +510,8 @@ public class taikhoanAdminPanel extends javax.swing.JPanel {
                 byte[] buf = new byte[1024];
                 for(int readNum; (readNum=fis.read(buf))!=-1;){
                     bos.write(buf,0,readNum);
-            }
-            person_image=bos.toByteArray();
+                }
+                person_image=bos.toByteArray();
             }
             else{
                 person_image=new Account().getAvatar(txt_tentaikhoan.getText());
@@ -598,40 +599,43 @@ public class taikhoanAdminPanel extends javax.swing.JPanel {
     private void btn_changeAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_changeAvatarActionPerformed
         try{
             JFileChooser chooser = new JFileChooser();
-            chooser.showOpenDialog(this);
-            File f = chooser.getSelectedFile();
-            if(f!=null)
-            {
-                String filenamez = f.getAbsolutePath();
-                ImageIcon imageIcon = new ImageIcon(new ImageIcon(filenamez).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
-                lb_avt.setIcon(imageIcon);
-    //            BufferedImage master = new BufferedImage(
-    //                imageIcon.getIconWidth(),
-    //                imageIcon.getIconHeight(),
-    //                BufferedImage.TYPE_INT_RGB);
-    //                Graphics g = master.createGraphics();
-    //            imageIcon.paintIcon(null, g, 0,0);
-    //            g.dispose();
-    //            int diameter = Math.min(master.getWidth(), master.getHeight());
-    //            BufferedImage mask = new BufferedImage(master.getWidth(), master.getHeight(), BufferedImage.TYPE_INT_ARGB);
-    //
-    //            Graphics2D g2d = mask.createGraphics();
-    //            applyQualityRenderingHints(g2d);
-    //            g2d.fillOval(0, 0, diameter - 1, diameter - 1);
-    //            g2d.dispose();
-    //
-    //            BufferedImage masked = new BufferedImage(diameter, diameter, BufferedImage.TYPE_INT_ARGB);
-    //            g2d = masked.createGraphics();
-    //            applyQualityRenderingHints(g2d);
-    //            int x = (diameter - master.getWidth()) / 2;
-    //            int y = (diameter - master.getHeight()) / 2;
-    //            g2d.drawImage(master, x, y, null);
-    //            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.DST_IN));
-    //            g2d.drawImage(mask, 0, 0, null);
-    //            g2d.dispose();
-    //            lb_avt.setIcon(new ImageIcon(masked));
-                imageChange = true;
-                filename = filenamez;
+            int result = chooser.showOpenDialog(this);
+            if (result != JFileChooser.CANCEL_OPTION){
+                File f = chooser.getSelectedFile();
+                if(f!=null)
+                {
+                    String filenamez = f.getAbsolutePath();
+                    ImageIcon imageIcon = new ImageIcon(new ImageIcon(filenamez).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
+                    lb_avt.setIcon(imageIcon);
+        //            BufferedImage master = new BufferedImage(
+        //                imageIcon.getIconWidth(),
+        //                imageIcon.getIconHeight(),
+        //                BufferedImage.TYPE_INT_RGB);
+        //                Graphics g = master.createGraphics();
+        //            imageIcon.paintIcon(null, g, 0,0);
+        //            g.dispose();
+        //            int diameter = Math.min(master.getWidth(), master.getHeight());
+        //            BufferedImage mask = new BufferedImage(master.getWidth(), master.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        //
+        //            Graphics2D g2d = mask.createGraphics();
+        //            applyQualityRenderingHints(g2d);
+        //            g2d.fillOval(0, 0, diameter - 1, diameter - 1);
+        //            g2d.dispose();
+        //
+        //            BufferedImage masked = new BufferedImage(diameter, diameter, BufferedImage.TYPE_INT_ARGB);
+        //            g2d = masked.createGraphics();
+        //            applyQualityRenderingHints(g2d);
+        //            int x = (diameter - master.getWidth()) / 2;
+        //            int y = (diameter - master.getHeight()) / 2;
+        //            g2d.drawImage(master, x, y, null);
+        //            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.DST_IN));
+        //            g2d.drawImage(mask, 0, 0, null);
+        //            g2d.dispose();
+        //            lb_avt.setIcon(new ImageIcon(masked));
+                    imageChange = true;
+                    //luu lai duong dan anh vao filename
+                    filename = filenamez;
+                }
             }
         }
         catch(Exception e){

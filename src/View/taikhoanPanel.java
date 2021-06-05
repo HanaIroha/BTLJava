@@ -133,11 +133,6 @@ public class taikhoanPanel extends javax.swing.JPanel {
         txt_matkhaucu.setForeground(new java.awt.Color(255, 255, 255));
         txt_matkhaucu.setBorder(null);
         txt_matkhaucu.setOpaque(false);
-        txt_matkhaucu.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txt_matkhaucuFocusGained(evt);
-            }
-        });
         add(txt_matkhaucu, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 230, 360, -1));
 
         txt_matkhaumoi.setBackground(new java.awt.Color(255, 255, 255, 0));
@@ -145,11 +140,6 @@ public class taikhoanPanel extends javax.swing.JPanel {
         txt_matkhaumoi.setForeground(new java.awt.Color(255, 255, 255));
         txt_matkhaumoi.setBorder(null);
         txt_matkhaumoi.setOpaque(false);
-        txt_matkhaumoi.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txt_matkhaumoiFocusGained(evt);
-            }
-        });
         add(txt_matkhaumoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 350, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -201,14 +191,6 @@ public class taikhoanPanel extends javax.swing.JPanel {
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/panelDefault.png"))); // NOI18N
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 650));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txt_matkhaucuFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_matkhaucuFocusGained
-
-    }//GEN-LAST:event_txt_matkhaucuFocusGained
-
-    private void txt_matkhaumoiFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_matkhaumoiFocusGained
-
-    }//GEN-LAST:event_txt_matkhaumoiFocusGained
 
     private void btn_changepassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_changepassActionPerformed
         try{

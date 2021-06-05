@@ -193,10 +193,10 @@ public class chucvuPanel extends javax.swing.JPanel {
     public void reLoad(){
         ls = new ArrayList<>(new ChucVu().getChucVu());
         listNS = new ArrayList<>(new PhongBan().getListNS());
-        txt_chucvu.removeAllItems();
+        cbb_chucvu.removeAllItems();
         for(ChucVuModel z: ls)
         {
-            txt_chucvu.addItem(new ComboItem(z.getTenCV(),z.getMaCV()));
+            cbb_chucvu.addItem(new ComboItem(z.getTenCV(),z.getMaCV()));
         }
     }
     /**
@@ -209,7 +209,7 @@ public class chucvuPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         txt_bacluong = new javax.swing.JComboBox<>();
-        txt_chucvu = new javax.swing.JComboBox<>();
+        cbb_chucvu = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         txt_macv = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -221,7 +221,7 @@ public class chucvuPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         txt_sl = new javax.swing.JTextField();
-        isFree = new javax.swing.JCheckBox();
+        CheckBox_isFree = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -244,15 +244,15 @@ public class chucvuPanel extends javax.swing.JPanel {
         txt_bacluong.setOpaque(false);
         add(txt_bacluong, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 120, -1));
 
-        txt_chucvu.setBackground(new java.awt.Color(255, 204, 204));
-        txt_chucvu.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        txt_chucvu.setOpaque(false);
-        txt_chucvu.addItemListener(new java.awt.event.ItemListener() {
+        cbb_chucvu.setBackground(new java.awt.Color(255, 204, 204));
+        cbb_chucvu.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        cbb_chucvu.setOpaque(false);
+        cbb_chucvu.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                txt_chucvuItemStateChanged(evt);
+                cbb_chucvuItemStateChanged(evt);
             }
         });
-        add(txt_chucvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 50, 290, 50));
+        add(cbb_chucvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 50, 290, 50));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 350, -1));
 
         txt_macv.setBackground(new java.awt.Color(255, 255, 255, 0));
@@ -307,17 +307,17 @@ public class chucvuPanel extends javax.swing.JPanel {
         txt_sl.setOpaque(false);
         add(txt_sl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 270, -1));
 
-        isFree.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        isFree.setForeground(new java.awt.Color(255, 255, 255));
-        isFree.setText("Chưa chỉ định");
-        isFree.setBorder(null);
-        isFree.setOpaque(false);
-        isFree.addItemListener(new java.awt.event.ItemListener() {
+        CheckBox_isFree.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        CheckBox_isFree.setForeground(new java.awt.Color(255, 255, 255));
+        CheckBox_isFree.setText("Chưa chỉ định");
+        CheckBox_isFree.setBorder(null);
+        CheckBox_isFree.setOpaque(false);
+        CheckBox_isFree.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                isFreeItemStateChanged(evt);
+                CheckBox_isFreeItemStateChanged(evt);
             }
         });
-        add(isFree, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 250, -1, -1));
+        add(CheckBox_isFree, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 250, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -424,11 +424,11 @@ public class chucvuPanel extends javax.swing.JPanel {
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 650));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_chucvuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_txt_chucvuItemStateChanged
-        if(txt_chucvu.getSelectedItem()!=null){
+    private void cbb_chucvuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbb_chucvuItemStateChanged
+        if(cbb_chucvu.getSelectedItem()!=null){
             listIn = new ArrayList<>();
             listOut = new ArrayList<>();
-            String choose = ((ComboItem)txt_chucvu.getSelectedItem()).getValue();
+            String choose = ((ComboItem)cbb_chucvu.getSelectedItem()).getValue();
             ls1 = new DefaultListModel<ComboItem>();
             ls2 = new DefaultListModel<ComboItem>();
             int dem=0;
@@ -438,7 +438,7 @@ public class chucvuPanel extends javax.swing.JPanel {
                     dem++;
                 }
                 else{
-                    if(isFree.isSelected()){
+                    if(CheckBox_isFree.isSelected()){
                         if(z.getMaCV()==null)
                             ls2.addElement(new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS()));
                     }
@@ -462,10 +462,10 @@ public class chucvuPanel extends javax.swing.JPanel {
                     txt_sl.setText(String.valueOf(dem));
                }
         }
-    }//GEN-LAST:event_txt_chucvuItemStateChanged
+    }//GEN-LAST:event_cbb_chucvuItemStateChanged
 
     private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
-        int choose = txt_chucvu.getSelectedIndex();
+        int choose = cbb_chucvu.getSelectedIndex();
         try{
             if(txt_tencv.getText().equals("")){
                 txt_tencv.requestFocus();
@@ -486,13 +486,13 @@ public class chucvuPanel extends javax.swing.JPanel {
             int BacLuong = (Integer)txt_bacluong.getSelectedItem();
             new ChucVu().suaCV(maCV, tenCV, phuCap, BacLuong);
             NhanSu nhansuDAO = new NhanSu();
-            String mapb = ((ComboItem)txt_chucvu.getSelectedItem()).getValue();
+            String mapb = ((ComboItem)cbb_chucvu.getSelectedItem()).getValue();
             for(String z : listIn)
                 nhansuDAO.updateChucVu(z, mapb, tenUser);
             for(String z : listOut)
                 nhansuDAO.updateChucVu(z, null, tenUser);
             reLoad();
-            txt_chucvu.setSelectedIndex(choose);
+            cbb_chucvu.setSelectedIndex(choose);
             JOptionPane.showMessageDialog(background, "Sửa thành công!");
         }
         catch(Exception e){
@@ -529,18 +529,18 @@ public class chucvuPanel extends javax.swing.JPanel {
         }
     }
     
-    private void isFreeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_isFreeItemStateChanged
+    private void CheckBox_isFreeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CheckBox_isFreeItemStateChanged
         ListModel<ComboItem> listTamThoi = jList1.getModel();
         ArrayList<ComboItemX> listSoSanh = new ArrayList<>();
         for(int i = 0; i <listTamThoi.getSize();i++)
             listSoSanh.add(new ComboItemX(listTamThoi.getElementAt(i)));
-        if(txt_chucvu.getSelectedItem()==null)
+        if(cbb_chucvu.getSelectedItem()==null)
         {
             ls2 = new DefaultListModel<ComboItem>();
             for(NhanSuPBCVModel z:listNS){
                 ComboItem item = new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS());
                 if(!listSoSanh.contains(new ComboItemX(item))){
-                    if(isFree.isSelected()){
+                    if(CheckBox_isFree.isSelected()){
                         if(z.getMaCV()==null)
                             ls2.addElement(item);
                         }
@@ -552,12 +552,12 @@ public class chucvuPanel extends javax.swing.JPanel {
             jList2.setModel(ls2);
         }
         else{
-            String choose = ((ComboItem)txt_chucvu.getSelectedItem()).getValue();
+            String choose = ((ComboItem)cbb_chucvu.getSelectedItem()).getValue();
             ls2 = new DefaultListModel<ComboItem>();
             for(NhanSuPBCVModel z:listNS){
                 ComboItem item = new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS());
                 if(!listSoSanh.contains(new ComboItemX(item))){
-                    if(isFree.isSelected()){
+                    if(CheckBox_isFree.isSelected()){
                         if(z.getMaCV()==null||z.getMaCV().equals(choose))
                             ls2.addElement(new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS()));
                     }
@@ -568,15 +568,15 @@ public class chucvuPanel extends javax.swing.JPanel {
             }
             jList2.setModel(ls2);
         }
-    }//GEN-LAST:event_isFreeItemStateChanged
+    }//GEN-LAST:event_CheckBox_isFreeItemStateChanged
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         getStartAdd();
     }//GEN-LAST:event_btn_addActionPerformed
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
-        txt_chucvu.setEnabled(true);
-        txt_chucvu.setSelectedIndex(0);
+        cbb_chucvu.setEnabled(true);
+        cbb_chucvu.setSelectedIndex(0);
         btn_save.setVisible(false);
         btn_cancel.setVisible(false);
         btn_edit.setEnabled(true);
@@ -620,8 +620,8 @@ public class chucvuPanel extends javax.swing.JPanel {
             for(String z : listIn)
                 a.updateChucVu(z, maCV,tenUser);
             reLoad();
-            txt_chucvu.setEnabled(true);
-            txt_chucvu.setSelectedIndex(0);
+            cbb_chucvu.setEnabled(true);
+            cbb_chucvu.setSelectedIndex(0);
             btn_save.setVisible(false);
             btn_cancel.setVisible(false);
             btn_edit.setEnabled(true);
@@ -638,7 +638,7 @@ public class chucvuPanel extends javax.swing.JPanel {
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         if(JOptionPane.showConfirmDialog (null, "Hành động này sẽ xoá vĩnh viễn phòng ban","Bạn chắc chứ?",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
             try{
-                if(new ChucVu().xoaCV(((ComboItem)txt_chucvu.getSelectedItem()).getValue())){
+                if(new ChucVu().xoaCV(((ComboItem)cbb_chucvu.getSelectedItem()).getValue())){
                     JOptionPane.showMessageDialog(background, "Xoá thành công!");
                     reLoad();
                 }
@@ -659,8 +659,8 @@ public class chucvuPanel extends javax.swing.JPanel {
         btn_edit.setEnabled(false);
         btn_delete.setEnabled(false);
         btn_add.setEnabled(false);
-        txt_chucvu.setEnabled(false);
-        txt_chucvu.setSelectedIndex(-1);
+        cbb_chucvu.setEnabled(false);
+        cbb_chucvu.setSelectedIndex(-1);
         txt_macv.setText("");
         txt_tencv.setText("");
         txt_phucap.setText("");
@@ -670,7 +670,7 @@ public class chucvuPanel extends javax.swing.JPanel {
         jList1.setModel(ls1);
         ls2 = new DefaultListModel<ComboItem>();
         for(NhanSuPBCVModel z:listNS){
-            if(isFree.isSelected()){
+            if(CheckBox_isFree.isSelected()){
                 if(z.getMaCV()==null)
                     ls2.addElement(new ComboItem(z.getMaNS()+" - "+z.getTenNS(),z.getMaNS()));
             }
@@ -682,13 +682,14 @@ public class chucvuPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox CheckBox_isFree;
     private javax.swing.JLabel background;
     private javax.swing.JButton btn_add;
     private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_edit;
     private javax.swing.JButton btn_save;
-    private javax.swing.JCheckBox isFree;
+    private javax.swing.JComboBox<ComboItem> cbb_chucvu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -705,7 +706,6 @@ public class chucvuPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JComboBox<Integer> txt_bacluong;
-    private javax.swing.JComboBox<ComboItem> txt_chucvu;
     private javax.swing.JTextField txt_macv;
     private javax.swing.JTextField txt_phucap;
     private javax.swing.JTextField txt_sl;

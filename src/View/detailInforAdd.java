@@ -546,16 +546,18 @@ public class detailInforAdd extends javax.swing.JDialog {
 
     private void btn_changeAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_changeAvatarActionPerformed
         JFileChooser chooser = new JFileChooser();
-        chooser.showOpenDialog(this);
-        File f = chooser.getSelectedFile();
-        String filenamez = f.getAbsolutePath();
-        if(filenamez!=null)
-        {
-            ImageIcon imageIcon = new ImageIcon(new ImageIcon(filenamez).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
-            lb_avt.setIcon(imageIcon);
-            imageChange = true;
-            filename = filenamez;
-        }
+        int result = chooser.showOpenDialog(this);
+            if(result != JFileChooser.CANCEL_OPTION){
+                File f = chooser.getSelectedFile();
+                if(f!=null)
+                {
+                    String filenamez = f.getAbsolutePath();
+                    ImageIcon imageIcon = new ImageIcon(new ImageIcon(filenamez).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
+                    lb_avt.setIcon(imageIcon);
+                    imageChange = true;
+                    filename = filenamez;
+                }
+            }
     }//GEN-LAST:event_btn_changeAvatarActionPerformed
 
     /**

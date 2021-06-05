@@ -36,7 +36,7 @@ public class BangLuongTableModel extends AbstractTableModel{
     private String name[] = {"Mã nhân sự", "Họ tên", "Năm công tác", "Chức vụ", "Lương cơ bản", "Hệ số lương", "Thưởng thâm niên", "Phụ cấp", "Bảo hiểm", "Thực lĩnh"};
     private Class classes[] = {String.class, String.class, String.class, String.class, String.class, String.class, String.class,String.class, String.class, String.class};
     ArrayList<NhanSuModel> ds = new ArrayList<>();
-    ArrayList<BangLuongModel> dsBacLuong = new ArrayList<>();
+    ArrayList<BangLuongModel> dsBangLuong = new ArrayList<>();
     int luongcoban, baohiem;
     double thuongthamnien, thuongthamnienthem, namthamnien;
     int rowCount=0;
@@ -64,7 +64,7 @@ public class BangLuongTableModel extends AbstractTableModel{
                 a.setThuongThamNien(TinhLuongThamNien(a.getNamCongTac(), a.getHeSoLuong()));
                 a.setPhuCap(new ChucVu().TimPhuCapChucVu(s.getMaCV()));
                 a.setThucLinh(luongcoban*a.getHeSoLuong()+a.getThuongThamNien()+a.getPhuCap()-baohiem);
-                dsBacLuong.add(a);
+                dsBangLuong.add(a);
             }
         }
     }
@@ -121,16 +121,16 @@ public class BangLuongTableModel extends AbstractTableModel{
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch(columnIndex){
-            case 0: return dsBacLuong.get(rowIndex).getMaNS();
-            case 1: return dsBacLuong.get(rowIndex).getHoTen();
-            case 2: return String.valueOf(nf.format(dsBacLuong.get(rowIndex).getNamCongTac()));
-            case 3: return dsBacLuong.get(rowIndex).getChucVu();
+            case 0: return dsBangLuong.get(rowIndex).getMaNS();
+            case 1: return dsBangLuong.get(rowIndex).getHoTen();
+            case 2: return String.valueOf(nf.format(dsBangLuong.get(rowIndex).getNamCongTac()));
+            case 3: return dsBangLuong.get(rowIndex).getChucVu();
             case 4: return String.valueOf(nf.format(luongcoban));
-            case 5: return String.valueOf(nf.format(dsBacLuong.get(rowIndex).getHeSoLuong()));
-            case 6: return String.valueOf(nf.format(dsBacLuong.get(rowIndex).getThuongThamNien()));
-            case 7: return String.valueOf(nf.format(dsBacLuong.get(rowIndex).getPhuCap()));
+            case 5: return String.valueOf(nf.format(dsBangLuong.get(rowIndex).getHeSoLuong()));
+            case 6: return String.valueOf(nf.format(dsBangLuong.get(rowIndex).getThuongThamNien()));
+            case 7: return String.valueOf(nf.format(dsBangLuong.get(rowIndex).getPhuCap()));
             case 8: return String.valueOf(nf.format(baohiem));
-            case 9: return String.valueOf(nf.format(dsBacLuong.get(rowIndex).getThucLinh()));
+            case 9: return String.valueOf(nf.format(dsBangLuong.get(rowIndex).getThucLinh()));
             default: return null;
         }
     }

@@ -673,15 +673,17 @@ public class detailInfor extends javax.swing.JDialog {
     private void btn_changeAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_changeAvatarActionPerformed
         try{
             JFileChooser chooser = new JFileChooser();
-            chooser.showOpenDialog(this);
-            File f = chooser.getSelectedFile();
-            if(f!=null)
-            {
-                String filenamez = f.getAbsolutePath();
-                ImageIcon imageIcon = new ImageIcon(new ImageIcon(filenamez).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
-                lb_avt.setIcon(imageIcon);
-                imageChange = true;
-                filename = filenamez;
+            int result = chooser.showOpenDialog(this);
+            if(result != JFileChooser.CANCEL_OPTION){
+                File f = chooser.getSelectedFile();
+                if(f!=null)
+                {
+                    String filenamez = f.getAbsolutePath();
+                    ImageIcon imageIcon = new ImageIcon(new ImageIcon(filenamez).getImage().getScaledInstance(lb_avt.getWidth(), lb_avt.getHeight(), Image.SCALE_SMOOTH));
+                    lb_avt.setIcon(imageIcon);
+                    imageChange = true;
+                    filename = filenamez;
+                }
             }
         }
         catch(Exception e){
